@@ -202,7 +202,7 @@
           <button type="button" class="btn btn-enter" style="margin-top:1rem" aria-label="Enter Long Term Investing Mode" data-enter="ltim">Enter</button>
         </article>
         <article class="card mode-card">
-          <p class="kicker">Prints daily at 6am</p>
+          <p class="kicker" data-dtm-kicker>Prints daily at 6am</p>
           <h2 style="margin-top:.5rem;font-size:24px">Day Trading Mode</h2>
           <p style="margin-top:.5rem;line-height:1.65" class="dim">The plays for the day, posted fresh every trading day. Positions run 1 to 10 days, every play graded with the exit written on the line.</p>
           <button type="button" class="btn btn-enter" style="margin-top:1rem" aria-label="Enter Day Trading Mode" data-enter="day">Enter</button>
@@ -422,6 +422,128 @@ var BOARD = {"dateLabel": "Wednesday, November 18, 2026", "gradedLine": "WEDNESD
   var $ = function(id){ return document.getElementById(id); };
   var esc = function(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); };
 
+  /* ---------- viewer time-zone conversion ----------
+     Every converted clock time is anchored in Pacific market time
+     (America/Los_Angeles). The stored Pacific values never change;
+     only the rendered text converts to the viewer's own zone, with
+     the viewer's short zone name (PT/CT/ET etc., DST-correct for the
+     date in question). For a Pacific viewer the output is exactly
+     the stored text (e.g. "1:00 PM PT"). */
+  var PACIFIC_TZ = "America/Los_Angeles";
+  var MONTH_NUM = { January:1, February:2, March:3, April:4, May:5, June:6, July:7, August:8, September:9, October:10, November:11, December:12 };
+  function partsInZone(date, tz){
+    var fmt = new Intl.DateTimeFormat("en-US", { timeZone: tz, year:"numeric", month:"2-digit", day:"2-digit", hour:"2-digit", minute:"2-digit", second:"2-digit", hourCycle:"h23" });
+    var map = {};
+    fmt.formatToParts(date).forEach(function(p){ map[p.type] = p.value; });
+    return { year: parseInt(map.year, 10), month: parseInt(map.month, 10), day: parseInt(map.day, 10), hour: parseInt(map.hour, 10) % 24, minute: parseInt(map.minute, 10), second: parseInt(map.second || "0", 10) };
+  }
+  function pacificInstant(y, mo, d, hh, mi){
+    var wall = Date.UTC(y, mo - 1, d, hh, mi, 0);
+    var utc = wall;
+    for(var i = 0; i < 3; i++){
+      var p = partsInZone(new Date(utc), PACIFIC_TZ);
+      var asUTC = Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute, p.second);
+      var diff = wall - asUTC;
+      if(diff === 0) break;
+      utc += diff;
+    }
+    return new Date(utc);
+  }
+  function to24Hour(h, ap){
+    var hh = parseInt(h, 10) % 12;
+    if(String(ap).toUpperCase() === "PM") hh += 12;
+    return hh;
+  }
+  function parseLongDate(s){
+    var m = String(s == null ? "" : s).match(/([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})/);
+    if(!m || !MONTH_NUM[m[1]]) return null;
+    return { y: parseInt(m[3], 10), mo: MONTH_NUM[m[1]], d: parseInt(m[2], 10) };
+  }
+  function shortZoneName(date){
+    try {
+      var parts = new Intl.DateTimeFormat("en-US", { hour:"numeric", timeZoneName:"short" }).formatToParts(date);
+      for(var i = 0; i < parts.length; i++){
+        if(parts[i].type === "timeZoneName"){
+          var v = parts[i].value;
+          var viewerTz = "";
+          try { viewerTz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch(e2) {}
+          var isNorthAm = /^America\//.test(viewerTz) || /^Canada\//.test(viewerTz) || viewerTz === "Pacific/Honolulu" || /^US\//.test(viewerTz);
+          if(isNorthAm){
+            var map = { PST:"PT", PDT:"PT", MST:"MT", MDT:"MT", CST:"CT", CDT:"CT", EST:"ET", EDT:"ET", AKST:"AKT", AKDT:"AKT" };
+            if(map[v]) return map[v];
+          }
+          return v;
+        }
+      }
+    } catch(e) {}
+    return "PT";
+  }
+  function formatViewerTime(date){
+    var t = new Intl.DateTimeFormat("en-US", { hour:"numeric", minute:"2-digit", hour12:true }).format(date);
+    return t + " " + shortZoneName(date);
+  }
+  function formatViewerDateLong(date){
+    return new Intl.DateTimeFormat("en-US", { weekday:"long", month:"long", day:"numeric", year:"numeric" }).format(date);
+  }
+  /* Exit line: convert only the "H:MM AM/PM PT" time; any session
+     DATE in the line names the trading session and stays unchanged.
+     The anchor date for the conversion is that session date when the
+     line carries one, otherwise the board's own date. */
+  function convertExitRule(raw){
+    if(!raw || String(raw).indexOf("PT") === -1) return raw;
+    var dateMatch = String(raw).match(/(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday),\s+[A-Za-z]+\s+\d{1,2},\s+\d{4}/);
+    var anchor = dateMatch ? parseLongDate(dateMatch[0]) : (typeof BOARD !== "undefined" ? parseLongDate(BOARD.dateLabel) : null);
+    if(!anchor) return raw;
+    return String(raw).replace(/(\d{1,2}):(\d{2})\s*(AM|PM)\s*PT/g, function(_, h, mi, ap){
+      return formatViewerTime(pacificInstant(anchor.y, anchor.mo, anchor.d, to24Hour(h, ap), parseInt(mi, 10)));
+    });
+  }
+  /* DTM price stamp: the closing-prices DATE stays unchanged (it
+     names the trading session); "market closed at" converts the time
+     only; "Checked at" is a real-world instant — both its time and
+     its date convert to the viewer's local rendering of it. */
+  function convertDtmStamp(raw){
+    var s = String(raw == null ? "" : raw);
+    var closeDateM = s.match(/official closing prices of ([A-Za-z]+, [A-Za-z]+ \d{1,2}, \d{4})/);
+    var checkedM = s.match(/Checked at (\d{1,2}):(\d{2})\s*(AM|PM)\s*PT on ([A-Za-z]+, [A-Za-z]+ \d{1,2}, \d{4})/);
+    if(!checkedM) return s;
+    var checkedAnchor = parseLongDate(checkedM[4]);
+    if(!checkedAnchor) return s;
+    var out = s.replace(/market closed at (\d{1,2}):(\d{2})\s*(AM|PM)\s*PT/, function(_, h, mi, ap){
+      var anchor = closeDateM ? parseLongDate(closeDateM[1]) : checkedAnchor;
+      if(!anchor) return _;
+      return "market closed at " + formatViewerTime(pacificInstant(anchor.y, anchor.mo, anchor.d, to24Hour(h, ap), parseInt(mi, 10)));
+    });
+    out = out.replace(/Checked at \d{1,2}:\d{2}\s*(?:AM|PM)\s*PT on [A-Za-z]+, [A-Za-z]+ \d{1,2}, \d{4}/, function(){
+      var inst = pacificInstant(checkedAnchor.y, checkedAnchor.mo, checkedAnchor.d, to24Hour(checkedM[1], checkedM[3]), parseInt(checkedM[2], 10));
+      return "Checked at " + formatViewerTime(inst) + " on " + formatViewerDateLong(inst);
+    });
+    return out;
+  }
+  /* Crypto Top 5 stamp: a real-world instant — both time and date
+     convert to the viewer's local rendering, date kept bold. */
+  function cryptoStampHTML(){
+    var rawTime = "7:14 PM PT";
+    var rawDate = "Tuesday, November 17, 2026";
+    var dp = parseLongDate(rawDate);
+    var tm = rawTime.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/);
+    if(!dp || !tm) return 'Prices as of ' + esc(rawTime) + ' on <strong style="color:var(--text)">' + esc(rawDate) + '</strong>.';
+    var inst = pacificInstant(dp.y, dp.mo, dp.d, to24Hour(tm[1], tm[3]), parseInt(tm[2], 10));
+    return 'Prices as of ' + esc(formatViewerTime(inst)) + ' on <strong style="color:var(--text)">' + esc(formatViewerDateLong(inst)) + '</strong>.';
+  }
+  /* Front-page DTM kicker: 6:00 AM Pacific converts to the viewer's
+     zone, hour only, in the kicker's own "6am" form. */
+  function renderDtmKicker(){
+    var el = document.querySelector("[data-dtm-kicker]");
+    if(!el) return;
+    var todayPt = partsInZone(new Date(), PACIFIC_TZ);
+    var inst = pacificInstant(todayPt.year, todayPt.month, todayPt.day, 6, 0);
+    var parts = new Intl.DateTimeFormat("en-US", { hour:"numeric", hour12:true }).formatToParts(inst);
+    var hourVal = "", period = "";
+    parts.forEach(function(p){ if(p.type === "hour") hourVal = p.value; if(p.type === "dayPeriod") period = p.value; });
+    if(hourVal) el.textContent = "Prints daily at " + hourVal + period.toLowerCase();
+  }
+
   $("disclaimer-body").innerHTML = DISCLAIMER_PARAS.map(function(p){ return "<p>"+esc(p)+"</p>"; }).join("");
 
 
@@ -554,9 +676,9 @@ var BOARD = {"dateLabel": "Wednesday, November 18, 2026", "gradedLine": "WEDNESD
   var STOP_FACE_TEXT = "Sell at close (1:00 PM PT).";
   function exitRuleHTML(p){
     if(entryMode !== "ltim" && STOP_PLAYS[p.ticker]){
-      return esc(STOP_FACE_TEXT);
+      return esc(convertExitRule(STOP_FACE_TEXT));
     }
-    return escBoard(p.exitRule);
+    return escBoard(convertExitRule(p.exitRule));
   }
   function wireStopTaps(root){
     var btns = root.querySelectorAll("[data-stop-btn]");
@@ -765,7 +887,7 @@ var BOARD = {"dateLabel": "Wednesday, November 18, 2026", "gradedLine": "WEDNESD
       s.footerLines.forEach(function(line){ h += '<p style="margin-top:.75rem;line-height:1.65" class="dim">'+escBoard(line)+'</p>'; });
     }
     if(s.exitRule){
-      h += '<p class="exitbox"><strong>Your exit, on this play:</strong> '+escBoard(s.exitRule)+'</p>';
+      h += '<p class="exitbox"><strong>Your exit, on this play:</strong> '+escBoard(convertExitRule(s.exitRule))+'</p>';
     }
     h += '</section>';
     return h;
@@ -823,7 +945,7 @@ var BOARD = {"dateLabel": "Wednesday, November 18, 2026", "gradedLine": "WEDNESD
       + '<p style="margin-top:.25rem;font-size:14px" class="dim">'+escBoard(BOARD.gradedLine)+'</p></div>'
       + '</div>'
       + '<p style="margin-top:.75rem;line-height:1.65;font-weight:700"><strong>***THIS IS A RESEARCH TOOL TO HELP YOU MAKE AN INFORMED DECISION***</strong></p>'
-      + '<p style="margin-top:.75rem;line-height:1.65" class="dim dtm-price-stamp-line" data-dtm-price-stamp>'+escBoard(DTM_PRICE_STAMP)+'</p>';
+      + '<p style="margin-top:.75rem;line-height:1.65" class="dim dtm-price-stamp-line" data-dtm-price-stamp>'+escBoard(convertDtmStamp(DTM_PRICE_STAMP))+'</p>';
     var spySec = spyQqqSection();
     var spyAtTop = !!(spySec && spySec.plays && spySec.plays.length);
     if(spyAtTop) h += sectionHTML(spySec);
@@ -1131,7 +1253,7 @@ var BOARD = {"dateLabel": "Wednesday, November 18, 2026", "gradedLine": "WEDNESD
        sections; the panel itself keeps its prices and stamp. */
     h += '<section style="margin-top:1.5rem"><div class="about-head-row"><h3 style="font-size:18px;line-height:1.4">Top 5 Cryptos</h3>' + cryptoAboutTapHTML("Top 5 Cryptos") + '</div><article class="card" style="margin-top:.75rem">'
       + cryptoTop5ListHTML()
-      + '<p style="margin-top:.75rem;font-size:13px;line-height:1.5" class="faint">Prices as of 7:14 PM PT on <strong style="color:var(--text)">Tuesday, November 17, 2026</strong>.</p></article></section>';
+      + '<p style="margin-top:.75rem;font-size:13px;line-height:1.5" class="faint">' + cryptoStampHTML() + '</p></article></section>';
 
     /* Day tells */
     h += '<section style="margin-top:2rem"><div class="about-head-row"><h3 style="font-size:20px">Day Trades</h3><span class="pill pill-soon">Coming Soon</span></div>'
@@ -1318,6 +1440,7 @@ var BOARD = {"dateLabel": "Wednesday, November 18, 2026", "gradedLine": "WEDNESD
     if(b) setTab(b.getAttribute("data-tab"));
   });
   document.getElementById("door-date").textContent = new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" }).format(new Date());
+  renderDtmKicker();
   renderDoorIntro();
   show("door");
 })();
