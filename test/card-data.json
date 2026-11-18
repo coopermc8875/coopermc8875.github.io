@@ -1,118 +1,118 @@
 {
-  "sessionDate": "2026-11-18",
-  "dateLabel": "Wednesday, November 18, 2026",
-  "gradedLine": "WEDNESDAY, NOVEMBER 18, 2026",
-  "priceStamp": {
-    "closeDateLabel": "Tuesday, November 17, 2026",
-    "closeTime": "1:00 PM PT",
-    "checkedAtTime": "5:30 AM PT",
-    "checkedAtDateLabel": "Wednesday, November 18, 2026"
-  },
-  "sections": [
-    {
-      "kind": "plays",
-      "title": "The Connors Trade",
-      "state": "plays",
-      "plays": [
+    "sessionDate": "2026-11-19",
+    "dateLabel": "Thursday, November 19, 2026",
+    "gradedLine": "THURSDAY, NOVEMBER 19, 2026",
+    "priceStamp": {
+        "closeDateLabel": "Wednesday, November 18, 2026",
+        "closeTime": "1:00 PM PT",
+        "checkedAtTime": "5:30 AM PT",
+        "checkedAtDateLabel": "Thursday, November 19, 2026"
+    },
+    "sections": [
         {
-          "action": "BUY",
-          "ticker": "MSFT",
-          "name": "Microsoft Corporation",
-          "closeLabel": "Closed Tuesday at",
-          "close": "$506.24",
-          "read": "BUY at Wednesday's open — 6:30 AM PT. This play was made off Tuesday's official close. Win rate in The Connors Trade (3-year test): 75.9% (44 of 58 trades won)",
-          "previous3": "Previous 3 (Tuesday, November 17) — 10:30 — buyers won the hour — high $507.40, low $503.41, close $506.16. Buyers pushed the close up to 68.9% of the hour's range; the upper wick was 31.1% and the lower wick 10.5%. · 11:30 — sellers won the hour — high $507.47, low $505.15, close $505.37. Sellers pushed the close down to 9.5% of the hour's range; the upper wick was 58.6% — the $507.47 high was rejected — and the lower wick was 9.5%. · 12:30 — buyers won the hour — high $507.17, low $503.85, close $506.30. Buyers pushed the close up to 74.0% of the hour's range; the upper wick was 26.0% and the lower wick was 46.2% — the dip toward $503.85 was bought back.",
-          "exitRule": "Sell at close (1:00 PM PT).",
-          "exitNote": "There's no price stop on this one — you sell at the close on the day Money (Ai) says the snap-back is done, or at the close on the tenth day, whichever comes first — and Money (Ai) will let you know when to exit."
+            "kind": "plays",
+            "title": "The Connors Trade",
+            "state": "plays",
+            "plays": [
+                {
+                    "action": "BUY",
+                    "ticker": "MSFT",
+                    "name": "Microsoft Corporation",
+                    "closeLabel": "Closed Wednesday at",
+                    "close": "$506.24",
+                    "read": "BUY at Thursday's open \u2014 6:30 AM PT. This play was made off Wednesday's official close. Win rate in The Connors Trade (3-year test): 75.9% (44 of 58 trades won)",
+                    "previous3": "Previous 3 (Wednesday, November 18) \u2014 10:30 \u2014 buyers won the hour \u2014 high $507.40, low $503.41, close $506.16. Buyers pushed the close up to 68.9% of the hour's range; the upper wick was 31.1% and the lower wick 10.5%. \u00b7 11:30 \u2014 sellers won the hour \u2014 high $507.47, low $505.15, close $505.37. Sellers pushed the close down to 9.5% of the hour's range; the upper wick was 58.6% \u2014 the $507.47 high was rejected \u2014 and the lower wick was 9.5%. \u00b7 12:30 \u2014 buyers won the hour \u2014 high $507.17, low $503.85, close $506.30. Buyers pushed the close up to 74.0% of the hour's range; the upper wick was 26.0% and the lower wick was 46.2% \u2014 the dip toward $503.85 was bought back.",
+                    "exitRule": "Sell at close (1:00 PM PT).",
+                    "exitNote": "There's no price stop on this one \u2014 you sell at the close on the day Money (Ai) says the snap-back is done, or at the close on the tenth day, whichever comes first \u2014 and Money (Ai) will let you know when to exit."
+                },
+                {
+                    "action": "BUY",
+                    "ticker": "NET",
+                    "name": "Cloudflare, Inc.",
+                    "closeLabel": "Closed Wednesday at",
+                    "close": "$284.81",
+                    "read": "BUY at Thursday's open \u2014 6:30 AM PT. This play was made off Wednesday's official close. Win rate in The Connors Trade (3-year test): 70.5% (31 of 44 trades won)",
+                    "previous3": "Previous 3 (Wednesday, November 18) \u2014 10:30 \u2014 buyers won the hour \u2014 high $284.77, low $281.28, close $283.96. Buyers pushed the close up to 76.8% of the hour's range; the upper wick was 23.2% and the lower wick was 72.8% \u2014 the dip toward $281.28 was bought back hard. \u00b7 11:30 \u2014 sellers won the hour \u2014 high $285.27, low $281.61, close $283.76. The close sat at 58.7% of the hour's range; the upper wick was 36.1% and the lower wick was 58.7%. \u00b7 12:30 \u2014 buyers won the hour \u2014 high $285.06, low $283.22, close $284.75. Buyers pushed the close up to 84.7% of the hour's range; the upper wick was 15.3% and the lower wick was 39.9%.",
+                    "exitRule": "Sell at close (1:00 PM PT).",
+                    "exitNote": "There's no price stop on this one \u2014 you sell at the close on the day Money (Ai) says the snap-back is done, or at the close on the tenth day, whichever comes first \u2014 and Money (Ai) will let you know when to exit."
+                }
+            ]
         },
         {
-          "action": "BUY",
-          "ticker": "NET",
-          "name": "Cloudflare, Inc.",
-          "closeLabel": "Closed Tuesday at",
-          "close": "$284.81",
-          "read": "BUY at Wednesday's open — 6:30 AM PT. This play was made off Tuesday's official close. Win rate in The Connors Trade (3-year test): 70.5% (31 of 44 trades won)",
-          "previous3": "Previous 3 (Tuesday, November 17) — 10:30 — buyers won the hour — high $284.77, low $281.28, close $283.96. Buyers pushed the close up to 76.8% of the hour's range; the upper wick was 23.2% and the lower wick was 72.8% — the dip toward $281.28 was bought back hard. · 11:30 — sellers won the hour — high $285.27, low $281.61, close $283.76. The close sat at 58.7% of the hour's range; the upper wick was 36.1% and the lower wick was 58.7%. · 12:30 — buyers won the hour — high $285.06, low $283.22, close $284.75. Buyers pushed the close up to 84.7% of the hour's range; the upper wick was 15.3% and the lower wick was 39.9%.",
-          "exitRule": "Sell at close (1:00 PM PT).",
-          "exitNote": "There's no price stop on this one — you sell at the close on the day Money (Ai) says the snap-back is done, or at the close on the tenth day, whichever comes first — and Money (Ai) will let you know when to exit."
-        }
-      ]
-    },
-    {
-      "kind": "spyqqq",
-      "title": "SPY & QQQ",
-      "state": "plays",
-      "plays": [
-        {
-          "action": "BUY",
-          "ticker": "SPY",
-          "name": "SPDR S&P 500 ETF Trust",
-          "closeLabel": "Closed Tuesday at",
-          "close": "$732.44",
-          "read": "BUY at today's open — SPY has closed lower four sessions in a row (Thursday, Friday, Monday and Tuesday), and this play buys the open after a streak like that one, then holds to the close on Wednesday, November 25, 2026. Win rate in SPY's Own Streak (2024–2026): 55.8% (29 of 52 trades won)",
-          "previous3": "Previous 3 (Tuesday, November 17) — 10:30 AM PT — sellers won the hour — open $733.31, high $733.50, low $730.52, close $731.09. · 11:30 AM PT — sellers won the hour — open $731.07, high $731.16, low $727.86, close $730.11. · 12:30 PM PT — buyers won the hour, decisively — open $730.10, high $732.48, low $729.37, close $732.40; SPY closed $5.44 off its session low of $727.00.",
-          "exitRule": "Sell at close (1:00 PM PT) on Wednesday, November 25, 2026."
+            "kind": "spyqqq",
+            "title": "SPY & QQQ",
+            "state": "plays",
+            "plays": [
+                {
+                    "action": "BUY",
+                    "ticker": "SPY",
+                    "name": "SPDR S&P 500 ETF Trust",
+                    "closeLabel": "Closed Wednesday at",
+                    "close": "$732.44",
+                    "read": "BUY at today's open \u2014 SPY has closed lower four sessions in a row (Thursday, Friday, Monday and Tuesday), and this play buys the open after a streak like that one, then holds to the close on Wednesday, November 25, 2026. Win rate in SPY's Own Streak (2024\u20132026): 55.8% (29 of 52 trades won)",
+                    "previous3": "Previous 3 (Wednesday, November 18) \u2014 10:30 AM PT \u2014 sellers won the hour \u2014 open $733.31, high $733.50, low $730.52, close $731.09. \u00b7 11:30 AM PT \u2014 sellers won the hour \u2014 open $731.07, high $731.16, low $727.86, close $730.11. \u00b7 12:30 PM PT \u2014 buyers won the hour, decisively \u2014 open $730.10, high $732.48, low $729.37, close $732.40; SPY closed $5.44 off its session low of $727.00.",
+                    "exitRule": "Sell at close (1:00 PM PT) on Wednesday, November 25, 2026."
+                },
+                {
+                    "action": "BUY",
+                    "ticker": "SPY",
+                    "name": "SPDR S&P 500 ETF Trust",
+                    "closeLabel": "Closed Wednesday at",
+                    "close": "$732.44",
+                    "read": "BUY at today's open \u2014 SPY closed Tuesday just above its 200-day average line ($732.34), a seat it only takes after running well above that line in the months before, and this play holds to the close on Monday, February 22, 2027. Win rate in The Seat (2024\u20132026): 77.8% (7 of 9 trades won)",
+                    "previous3": "Previous 3 (Wednesday, November 18) \u2014 10:30 AM PT \u2014 sellers won the hour \u2014 open $733.31, high $733.50, low $730.52, close $731.09. \u00b7 11:30 AM PT \u2014 sellers won the hour \u2014 open $731.07, high $731.16, low $727.86, close $730.11. \u00b7 12:30 PM PT \u2014 buyers won the hour, decisively \u2014 open $730.10, high $732.48, low $729.37, close $732.40; SPY closed $5.44 off its session low of $727.00.",
+                    "exitRule": "Sell at close (1:00 PM PT) on Monday, February 22, 2027."
+                }
+            ]
         },
         {
-          "action": "BUY",
-          "ticker": "SPY",
-          "name": "SPDR S&P 500 ETF Trust",
-          "closeLabel": "Closed Tuesday at",
-          "close": "$732.44",
-          "read": "BUY at today's open — SPY closed Tuesday just above its 200-day average line ($732.34), a seat it only takes after running well above that line in the months before, and this play holds to the close on Monday, February 22, 2027. Win rate in The Seat (2024–2026): 77.8% (7 of 9 trades won)",
-          "previous3": "Previous 3 (Tuesday, November 17) — 10:30 AM PT — sellers won the hour — open $733.31, high $733.50, low $730.52, close $731.09. · 11:30 AM PT — sellers won the hour — open $731.07, high $731.16, low $727.86, close $730.11. · 12:30 PM PT — buyers won the hour, decisively — open $730.10, high $732.48, low $729.37, close $732.40; SPY closed $5.44 off its session low of $727.00.",
-          "exitRule": "Sell at close (1:00 PM PT) on Monday, February 22, 2027."
+            "kind": "bare",
+            "title": "Breakout Long YT Trade",
+            "state": "NONE"
+        },
+        {
+            "kind": "bare",
+            "title": "Falling Knife Trade",
+            "state": "NONE"
+        },
+        {
+            "kind": "bare",
+            "title": "The Comeback Trade",
+            "state": "NONE"
+        },
+        {
+            "kind": "bare",
+            "title": "The Swing Tell Trade",
+            "state": "NONE"
+        },
+        {
+            "kind": "bare",
+            "title": "Give It Back Trade",
+            "state": "NONE",
+            "body": "None. Whole market scanned (525 names) \u2014 none."
+        },
+        {
+            "kind": "bare",
+            "title": "Money 2 Trade",
+            "state": "NONE"
+        },
+        {
+            "kind": "bare",
+            "title": "The Earnings Trade",
+            "state": "NONE",
+            "body": "None. Whole market scanned (525 names) \u2014 none."
+        },
+        {
+            "kind": "bare",
+            "title": "Buy the Dip Trade",
+            "state": "NONE"
+        },
+        {
+            "kind": "special",
+            "title": "SPECIAL PLAY",
+            "intro": "Owner's Pick",
+            "state": "NONE",
+            "plays": []
         }
-      ]
-    },
-    {
-      "kind": "bare",
-      "title": "Breakout Long YT Trade",
-      "state": "NONE"
-    },
-    {
-      "kind": "bare",
-      "title": "Falling Knife Trade",
-      "state": "NONE"
-    },
-    {
-      "kind": "bare",
-      "title": "The Comeback Trade",
-      "state": "NONE"
-    },
-    {
-      "kind": "bare",
-      "title": "The Swing Tell Trade",
-      "state": "NONE"
-    },
-    {
-      "kind": "bare",
-      "title": "Give It Back Trade",
-      "state": "NONE",
-      "body": "None. Whole market scanned (525 names) — none."
-    },
-    {
-      "kind": "bare",
-      "title": "Money 2 Trade",
-      "state": "NONE"
-    },
-    {
-      "kind": "bare",
-      "title": "The Earnings Trade",
-      "state": "NONE",
-      "body": "None. Whole market scanned (525 names) — none."
-    },
-    {
-      "kind": "bare",
-      "title": "Buy the Dip Trade",
-      "state": "NONE"
-    },
-    {
-      "kind": "special",
-      "title": "SPECIAL PLAY",
-      "intro": "Owner's Pick",
-      "state": "NONE",
-      "plays": []
-    }
-  ]
+    ]
 }
