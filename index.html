@@ -1,0 +1,1325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Safe Guards — The Door (Live-Link Copy)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    color-scheme: light dark;
+    --bg:#f4f4f1; --surface:#ffffff; --text:#191d1a; --dim:#4c554f; --mid:#333935; --faint:#7f8a82;
+    --border:#d8dcd4; --accent:#9a7414; --gold:#d9b45c; --safe:#1e3a30; --safe-line:#356450;
+    --up:#1d7a43; --down:#b3372c; --radius:14px;
+    --serif:"Spectral",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1210; --surface:#171b18; --text:#eceee9; --dim:#b3bcb5; --mid:#d0d5cf; --faint:#7c867f;
+      --border:#2c332e; --accent:#e8c877; --gold:#e3c26e; --safe:#1d3a2f; --safe-line:#2e5747;
+      --up:#4cc177; --down:#e2705f;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+  .wrap{margin:0 auto;width:100%;max-width:42rem;padding:0 1rem 4rem}
+  .serif{font-family:var(--serif)}
+  .mono{font-family:var(--mono)}
+  .kicker{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin:0}
+  .kicker-sm{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin:0}
+  .dim{color:var(--dim)} .mid{color:var(--mid)} .faint{color:var(--faint)}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem}
+  .section{margin-top:3rem;border-top:1px solid var(--border);padding-top:2rem}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.25;margin:0}
+  p{margin:0}
+  .btn{display:block;width:100%;border:0;cursor:pointer;border-radius:var(--radius);background:var(--safe);color:#fff;font-family:var(--sans);font-weight:600;transition:opacity .15s}
+  .btn:hover{opacity:.9}
+  .btn-enter{padding:1.25rem;font-size:30px;line-height:1.2}
+  .btn-main{padding:.9rem 1.25rem;font-size:16px}
+  .btn-ghost{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+  .btn-ghost:hover{background:var(--bg);opacity:1}
+  .mode-grid{display:grid;gap:1rem;margin-top:1.5rem}
+  @media(min-width:640px){.mode-grid{grid-template-columns:1fr 1fr}}
+  .mode-card{text-align:center;border:2px solid var(--safe-line)}
+  .ltim-card{position:relative}
+  .ltim-star{position:absolute;top:.45rem;left:.15rem;font-size:22px;line-height:1;color:var(--gold);pointer-events:none}
+  .letter-body{margin-top:1.25rem;font-family:var(--serif);font-size:17px;line-height:1.65}
+  .letter-body p+p{margin-top:1rem}
+  .face{border-radius:9999px;object-fit:cover;box-shadow:0 0 0 2px var(--gold);flex-shrink:0}
+  .face-door{box-shadow:0 0 0 2px var(--safe-line)}
+  .spec{display:grid;grid-template-columns:1fr 1fr;gap:.75rem 1rem;margin-top:1rem;font-size:14px}
+  @media(min-width:640px){.spec{grid-template-columns:repeat(4,1fr)}}
+  .spec dt{color:var(--faint)} .spec dd{margin:.125rem 0 0;font-weight:500}
+  .steps{display:grid;gap:.75rem;margin-top:1.5rem;list-style:none;padding:0}
+  @media(min-width:640px){.steps{grid-template-columns:1fr 1fr}}
+  .steps li{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem}
+  .plate{margin-top:1.5rem;border:2px solid var(--safe-line);background:var(--safe);color:#fff;border-radius:var(--radius);padding:1.25rem}
+  .plate .sub{color:rgba(255,255,255,.7);font-size:14px}
+  .plate .soft{color:rgba(255,255,255,.75);font-size:14px;line-height:1.6}
+  .qrbox{background:#fff;border-radius:6px;padding:6px;display:inline-block;line-height:0}
+  .bubble{max-width:28rem;background:var(--bg);border-radius:16px;border-bottom-left-radius:4px;padding:.75rem 1rem;font-size:14px;line-height:1.6}
+  table{width:100%;border-collapse:collapse;text-align:left;font-size:14px}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);font-weight:600;padding:.625rem 1rem;border-bottom:1px solid var(--border)}
+  td{padding:.75rem 1rem;border-bottom:1px solid var(--border);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  .tblwrap{margin-top:.75rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);overflow:hidden}
+  .exitbox{margin-top:.75rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);padding:.75rem 1rem;line-height:1.6}
+  /* Disclaimer gate: the text sits in a fixed-height box with its own
+     vertical scroll — the gate itself never stretches to the text length,
+     and the accept / decline controls stay put below the box. */
+  .disc-scroll{height:20rem;max-height:60vh;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-right:.5rem}
+  .disc-scroll:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .pill{display:inline-block;border-radius:9999px;padding:.125rem .5rem;font-size:12px;font-weight:700;text-transform:uppercase}
+  .pill-on{background:var(--safe);color:#fff}
+  .pill-watch{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+  .pill-soon{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+  .info-btn{margin-top:.75rem;border:1px solid var(--border);background:var(--surface);color:var(--accent);cursor:pointer;border-radius:9999px;padding:.375rem 1rem;font-size:12px;font-weight:700;letter-spacing:.14em;font-family:var(--sans);text-transform:uppercase}
+  .info-btn:hover{background:var(--bg)}
+  .info-text{margin-top:.75rem;border-top:1px solid var(--border);padding-top:.75rem;line-height:1.65;overflow-wrap:break-word}
+  .tabs{display:flex;flex-wrap:wrap;gap:.375rem;padding-bottom:.5rem}
+  .tabs button{border:1px solid var(--border);background:var(--surface);color:var(--dim);cursor:pointer;border-radius:9999px;padding:.5rem 1rem;font-size:14px;font-weight:600;white-space:nowrap;font-family:var(--sans)}
+  .tabs button[aria-pressed="true"]{background:var(--safe);color:#fff;border-color:var(--safe)}
+  .tabbar{position:sticky;top:0;z-index:10;margin:1.25rem -1rem 0;border-bottom:1px solid var(--border);background:var(--bg);padding:.5rem 1rem 0}
+  .open-cards{list-style:none;margin:.75rem 0 0;padding:0;display:grid;gap:.625rem}
+  .open-cards li{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem}
+  @media(min-width:640px){.open-cards{display:none}}
+  .open-table{display:none}
+  @media(min-width:640px){.open-table{display:block}}
+  .stack{display:grid;gap:.75rem}
+  .stack-lg{display:grid;gap:1rem}
+  a{color:var(--accent)}
+  .hidden{display:none !important}
+  .fig{font-family:var(--mono);font-size:20px;font-weight:600;white-space:nowrap}
+  .set-price-line{margin-top:.375rem;font-size:13px;line-height:1.5;color:var(--text)}
+  .current-price-line{margin-top:.375rem;font-size:13px;line-height:1.5;color:var(--text)}
+  /* LTIM cards only: the signed percentage at the end of the
+     Current-price line stands out — bold and a step bigger, in the
+     line's own dark color (no green/red, no new color). */
+  .pct-change{font-weight:700;font-size:1.25em}
+  .row-between{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:.75rem}
+  /* LTIM trajectories — the only 3 horizons, made to stand out */
+  .traj-overview{display:grid;gap:.75rem;margin-top:1.25rem}
+  @media(min-width:640px){.traj-overview{grid-template-columns:repeat(3,1fr)}}
+  .traj-chip{background:var(--safe);border:2px solid var(--gold);border-radius:var(--radius);padding:1.125rem 1rem 1rem;text-align:center;color:#fff}
+  .traj-chip .t-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--gold);margin:0}
+  .traj-chip .t-horizon{font-family:var(--serif);font-size:32px;font-weight:700;line-height:1.1;margin-top:.375rem}
+  .traj-chip .t-name{margin-top:.375rem;font-size:13px;line-height:1.45;color:rgba(255,255,255,.82)}
+  .traj-banner{background:var(--safe);border:2px solid var(--gold);border-radius:var(--radius);padding:1.25rem;color:#fff}
+  .traj-banner .b-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--gold);margin:0}
+  .traj-banner .b-horizon{font-family:var(--serif);font-size:44px;font-weight:700;line-height:1.05;margin-top:.5rem;letter-spacing:.01em}
+  @media(max-width:480px){.traj-banner .b-horizon{font-size:38px}}
+  .traj-banner .b-title{font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.25;margin-top:.375rem;color:#fff}
+  .traj-banner .b-sub{margin-top:.375rem;font-size:14px;line-height:1.55;color:rgba(255,255,255,.82)}
+  .horizon-pills{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1rem}
+  .horizon-pills span{display:inline-block;background:var(--safe);color:#fff;border:1.5px solid var(--gold);border-radius:9999px;padding:.45rem .9rem;font-family:var(--serif);font-size:17px;font-weight:700;line-height:1.2;white-space:nowrap}
+  .horizon-pills.left{justify-content:flex-start}
+  /* Front-page LTIM horizon pills are doors into their trajectory
+     lists (LTIM card on the door stage only — only pills carrying
+     data-door-traj are live). Look unchanged: same dark-green pill,
+     white text; they only gain the tap. */
+  .horizon-pills span[data-door-traj]{cursor:pointer}
+  .horizon-pills span[data-door-traj]:hover{filter:brightness(1.15)}
+  .horizon-pills span[data-door-traj]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  /* Picker chips are whole-card tap targets (LTIM room only — only
+     chips carrying data-traj are live). */
+  .traj-chip[data-traj]{cursor:pointer}
+  .traj-chip[data-traj]:hover{filter:brightness(1.1)}
+  .traj-chip[data-traj]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  /* Bold Door outline across both rooms — the same 2px deep-green line
+     as the front-page mode cards, on primary cards only: DTM play cards
+     (stacked cards on phone, the table container on wide screens), the
+     LTIM picker's trajectory cards, and every LTIM company card. Inner
+     elements (exit box, taps, buttons, chips, text) keep their styling. */
+  #tab-front .open-cards li{border:2px solid var(--safe-line)}
+  #tab-front .tblwrap{border:2px solid var(--safe-line)}
+  #tab-ltim .card{border:2px solid var(--safe-line)}
+  #tab-crypto .card{border:2px solid var(--safe-line)}
+  /* Crypto Currency is the third mode card — it spans the full width
+     of the door's mode grid, sitting at the bottom under DTM and LTIM. */
+  .mode-grid .crypto-card{grid-column:1/-1}
+  .traj-chip[data-traj]{border-color:var(--safe-line)}
+  /* DTM play-card taps get the same bold Door outline as the cards —
+     the trailing stop tap and the 3 HOUR CANDLE READS tap only. The
+     exit box keeps its light outline. */
+  .info-btn[data-stop-btn],.info-btn[data-prev3-btn]{border:2px solid var(--safe-line)}
+  /* CLOSE tap at the bottom of each opened DTM panel and each
+     opened LTIM MORE INFO panel — the same gold-text pill form
+     as the taps that open the panels, with the same 2px
+     deep-green outline those taps carry. */
+  .info-btn[data-close-btn]{border:2px solid var(--safe-line)}
+  /* ABOUT taps on the Day Trading Mode board — the same deep-green
+     outline treatment as the TRAILING STOP / 3 HOUR CANDLE READS /
+     CLOSE taps, in the same .info-btn pill family. One tap per
+     section, sitting beside the section heading (the play's name),
+     outside any card or inner box. */
+  .info-btn[data-about-btn]{border:2px solid var(--safe-line)}
+  .info-btn[data-about-close-btn]{border:2px solid var(--safe-line)}
+  /* Crypto room ABOUT taps — the same form as the Day Trading Mode
+     ABOUT taps above: one tap beside each item's heading, outside
+     the item's inner box (its card), opening that item's own screen
+     with a CLOSE tap at the bottom. */
+  .info-btn[data-crypto-about-btn]{border:2px solid var(--safe-line)}
+  .info-btn[data-crypto-about-close-btn]{border:2px solid var(--safe-line)}
+  .about-head-row{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .75rem}
+  .about-head-row .info-btn{margin-top:0}
+  /* DTM play cards: the direction word (BUY / SHORT) no longer sits in
+     the card headline — it leads the opening sentence instead, set in
+     the headline ticker's own treatment (the board sans at weight 700)
+     a clear step larger than the sentence around it, so it jumps off
+     the card. The rest of the sentence keeps its size and weight. */
+  .dir-word{font-family:var(--sans);font-weight:700;font-size:1.4em;letter-spacing:.01em}
+  /* LTIM company-card MORE INFO tap gets the same bold Door outline
+     as the cards — gold text, size, and tap behavior unchanged. */
+  #tab-ltim .info-btn[data-info-btn]{border:2px solid var(--safe-line)}
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+
+  <!-- ================= STAGE: THE DOOR ================= -->
+  <div id="stage-door">
+    <section style="margin-top:2rem">
+      <div id="door-intro" style="margin-bottom:1.75rem;text-align:center"></div>
+      <p class="serif" style="text-align:center;font-size:24px;font-size:clamp(17px,5.9vw,30px);white-space:nowrap;font-weight:600;line-height:1.25;margin-bottom:.5rem;color:var(--text)">&ldquo;KNOWLEDGE is PRICELESS&rdquo;</p>
+      <h1 style="text-align:center;font-size:30px" id="door-date">Tuesday, November 17, 2026</h1>
+      <p style="margin-top:.75rem;line-height:1.65;text-align:center;font-weight:700" class="dim">Pick your Mode, tap Enter, sign the disclaimer.</p>
+      <div class="mode-grid">
+        <article class="card mode-card ltim-card">
+          <span class="ltim-star" aria-hidden="true">★</span>
+          <p class="kicker">Prints 1st of each month · long only</p>
+          <h2 style="margin-top:.5rem;font-size:24px">Long Term Investing Mode</h2>
+          <p style="margin-top:.5rem;line-height:1.65" class="dim">Investing, not trading. Holds from 30 days out to years, every name with its full why — new investing ideas every 1st of the month.</p>
+          <p style="margin-top:.875rem;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--accent)">Only 3 trajectories in LTIM</p>
+          <div class="horizon-pills" aria-label="The three LTIM trajectories: 30 days, 6 months, 1 to 5 years">
+            <span role="button" tabindex="0" data-door-traj="s1" aria-label="Open the 30-Day Trajectory list">30 Days</span><span role="button" tabindex="0" data-door-traj="s2" aria-label="Open the 6-Month Trajectory list">6 Months</span><span role="button" tabindex="0" data-door-traj="s3" aria-label="Open the 1–5 Year Trajectory list">1–5 Years</span>
+          </div>
+          <button type="button" class="btn btn-enter" style="margin-top:1rem" aria-label="Enter Long Term Investing Mode" data-enter="ltim">Enter</button>
+        </article>
+        <article class="card mode-card">
+          <p class="kicker">Prints daily at 6am</p>
+          <h2 style="margin-top:.5rem;font-size:24px">Day Trading Mode</h2>
+          <p style="margin-top:.5rem;line-height:1.65" class="dim">The plays for the day, posted fresh every trading day. Positions run 1 to 10 days, every play graded with the exit written on the line.</p>
+          <button type="button" class="btn btn-enter" style="margin-top:1rem" aria-label="Enter Day Trading Mode" data-enter="day">Enter</button>
+        </article>
+        <article class="card mode-card crypto-card">
+          <p class="kicker">In build · every play coming soon</p>
+          <h2 style="margin-top:.5rem;font-size:24px">Crypto Currency</h2>
+          <p style="margin-top:.5rem;line-height:1.65" class="dim">One room for crypto — the day tells and the long-term lists together, long and short. The room is built and open; every play in it stands as COMING SOON until it earns its place.</p>
+          <button type="button" class="btn btn-enter" style="margin-top:1rem" aria-label="Enter Crypto Currency" data-enter="crypto">Enter</button>
+        </article>
+      </div>
+      <p style="margin-top:.75rem;text-align:center;font-size:14px" class="faint">TradingPlaces Las Vegas · Safe Guards</p>
+    </section>
+  </div>
+
+  <!-- ================= STAGE: DISCLAIMER ================= -->
+  <div id="stage-disclaimer" class="hidden">
+    <section style="margin-top:1.5rem">
+      <h2 style="margin-top:.5rem;font-size:24px">Disclaimer</h2>
+      <div class="card" style="margin-top:1.25rem;line-height:1.65">
+        <div class="disc-scroll" tabindex="0" role="region" aria-label="Disclaimer — scroll to read the full text">
+          <div id="disclaimer-body" style="display:grid;gap:1rem"></div>
+          <p style="padding-top:.25rem;font-size:14px" class="faint">— End of disclaimer v1.0 —</p>
+        </div>
+      </div>
+      <div id="disclaimer-actions" style="margin-top:1.25rem;display:flex;flex-direction:column;gap:.75rem">
+        <button type="button" class="btn btn-main" id="btn-accept" style="flex:1">I have read and accept</button>
+        <button type="button" class="btn btn-main btn-ghost" id="btn-decline" style="flex:1">Not now — keep the door closed</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= STAGE: THE ROOM ================= -->
+  <div id="stage-room" class="hidden">
+    <nav class="tabbar" id="room-tabbar" aria-label="Room pages">
+      <div class="tabs" id="room-tabs">
+        <button type="button" data-tab="front" aria-pressed="true">Front</button>
+        <button type="button" data-tab="ltim" aria-pressed="false">Long Term</button>
+        <button type="button" data-tab="crypto" aria-pressed="false">Crypto</button>
+        <button type="button" data-tab="record" aria-pressed="false">Back Pages</button>
+        <button type="button" data-tab="social" aria-pressed="false">Social</button>
+      </div>
+    </nav>
+
+    <div id="tab-front"></div>
+    <div id="tab-ltim" class="hidden"></div>
+    <div id="tab-crypto" class="hidden"></div>
+    <div id="tab-record" class="hidden"></div>
+    <div id="tab-social" class="hidden"></div>
+
+    <footer style="margin-top:3rem;border-top:1px solid var(--border);padding-top:1.5rem;font-size:14px;line-height:1.65" class="dim">
+      <button type="button" class="btn btn-main btn-ghost" id="btn-close" style="width:auto;padding:.75rem 1.25rem">Close the door</button>
+    </footer>
+  </div>
+</div>
+
+<script>
+var LETTER_PARAS = [
+  "I'm an AI agent built to navigate the stock market — to watch it, test it, and translate it into plain words.",
+];
+var DISCLAIMER_PARAS = [
+  "Trading and investing involve substantial risk of loss. You can lose some or all of the money you put in, and no one — including us — can promise you a profit.",
+  "Everything in Day Trading Mode, Long Term Investing Mode and Crypto Currency is published for education and information. It shows you a method and its graded record; it is not personal financial advice, and it is not a recommendation fitted to your situation. What you do with your own money is your decision, made with your own judgment.",
+  "Past performance does not guarantee future results. A system that made money before can lose money next — markets change, and every method on this desk has losing days, losing weeks, and losing trades. Those losses are part of the record we show you, and they will happen again.",
+  "Simulated and paper-trading results have limits: they do not involve real money at risk, they may not reflect fees, slippage, or the pressure of trading your own funds, and they can look better than live results for those reasons alone.",
+  "Leveraged products (including 3× funds) and short selling carry additional risk and can lose value fast, including more than a slow market move would suggest.",
+  "Read everything, understand the method before you use it, and never trade or invest money you cannot afford to lose. If you need advice for your personal situation, talk to a licensed financial professional.",
+  "100% money-back guarantee: if your daily card is not delivered by the morning of the next trading day after your purchase, your purchase price is refunded in full on request.",
+];
+var SHELVES = [
+  {
+    id: "s1",
+    strategy: "Investment Strategy 1",
+    horizon: "30-day",
+    title: "30+ DAYS",
+    intro:
+      "Strong companies whose stock has been climbing steadily over the last three to six months, picked to run the next 30 days or more.",
+    names: [
+      { ticker: "XOM", price: "$167.21", status: "on", name: "Exxon Mobil", why: "Exxon Mobil is the largest oil and gas company in the United States. Third-quarter revenue rose 32.7% to $113.2 billion and net income more than doubled to $15.4 billion — refining strength on a $332 billion annual revenue base.", info: "Exxon Mobil explores for and produces oil and natural gas, refines crude into fuels, and manufactures petrochemicals, selling them worldwide. Its position is structural: scale across production, refining, and chemicals means it earns at every stage from the well to the pump, and no competitor matches its footprint in all three. The financial picture: $332.2 billion in revenue last year, and the most recent quarter accelerated sharply — revenue up 32.7% year over year to $113.2 billion, net income up 104% to $15.4 billion. The balance sheet carries about $12.2 billion in cash against about $34.2 billion in debt and leases, and the dividend is $1.07 a share, paid every quarter. Why it is on this trajectory: short windows are historically this name's strength, and the current quarter's numbers are the strongest on this list." },
+      { ticker: "LLY", price: "$1,415.55", status: "on", name: "Eli Lilly", why: "Eli Lilly is the leader in diabetes and weight-loss medicine. Revenue grew 44.7% last year to $65.2 billion and net income nearly doubled to $20.6 billion — the fastest growth of any major drugmaker.", info: "Eli Lilly sells medicines for diabetes, weight loss, cancer, immune disorders, and Alzheimer's disease; its diabetes and weight-loss franchise is the growth engine. The advantage is compounding: patented medicines, manufacturing capacity rivals cannot replicate quickly, and a pipeline that keeps extending the franchise. The financial picture: revenue of $65.2 billion last year, up 44.7%, with net income of $20.6 billion, up 94.9% — and the most recent quarter kept the pace, revenue up 38.6% to $24.4 billion. Against that growth the balance sheet carries about $4.9 billion in cash and about $49.5 billion in debt — it borrows to build capacity ahead of demand. The dividend is $1.73 a share, paid every quarter. Why it is on this trajectory: the fastest-growing large drugmaker in the market, and a consistent leader in short windows across three years of testing." },
+      { ticker: "ABBV", price: "$292.82", status: "on", name: "AbbVie", why: "AbbVie is one of the world's largest drugmakers, built on immunology. Revenue reached $61.2 billion last year, led by Skyrizi and Rinvoq — each growing at roughly 25% a year — alongside Botox.", info: "AbbVie's revenue comes from immunology medicines Skyrizi and Rinvoq, the wrinkle treatment Botox, and a neuroscience portfolio; it built its name on Humira, once the world's best-selling drug. The transition past Humira is the story: the two successor medicines are growing fast enough to carry the company. The financial picture: revenue of $61.2 billion last year, up 8.6%, with Skyrizi and Rinvoq each growing at roughly a quarter a year. The balance sheet carries about $10.8 billion in cash against about $80.9 billion in debt and leases — much of it borrowed to acquire companies, including the maker of Botox — and the dividend is $1.82 a share, paid every quarter, raised from $1.73. Why it is on this trajectory: a major drugmaker whose growth is being carried by two fast-growing successor medicines, Skyrizi and Rinvoq, alongside Botox." },
+      { ticker: "MA", price: "$645.73", status: "on", name: "Mastercard", why: "Mastercard operates one of the two global card-payment networks. It earned $15.0 billion on $32.8 billion of revenue last year — keeping about 46 cents of every revenue dollar as profit, with revenue up 16.4%.", info: "Mastercard runs the network that moves money between banks every time one of its cards is used, anywhere on earth, and takes a small percentage of each transaction. The model is the advantage: the network is already built, so additional volume costs very little to process — which is why roughly 46 cents of every revenue dollar reaches the bottom line. The financial picture: revenue of $32.8 billion last year, up 16.4%, and net income of $15.0 billion, up 16.3% — growth and profitability compounding together. The balance sheet carries about $10.1 billion in cash against about $23.9 billion in total debt, and the dividend is $0.87 a share, paid every quarter. Why it is on this trajectory: one of the most reliable earners in the market — a strong performer in every short window tested." },
+      { ticker: "V", price: "$416.77", status: "on", name: "Visa", why: "Visa is the world's largest payments network. Revenue rose 14.8% last year to $45.9 billion, producing $23.5 billion in net income — more than half of every revenue dollar kept as profit.", info: "Visa operates the largest card network on earth — the toll road between shoppers, merchants, and banks — taking a small fee on an enormous volume of everyday spending. Like its one true peer, its network is already built, so growth converts to profit at an exceptional rate: more than half of last year's revenue survived as net income. The financial picture: revenue of $45.9 billion in its last fiscal year, up 14.8%, and net income of $23.5 billion, up 17.2%. The balance sheet carries about $12.9 billion in cash against about $22.1 billion in total debt, and the dividend is $0.78 a share, paid every quarter, recently raised 16%. Why it is on this trajectory: a proven short-window earner with the strongest profit conversion in finance." },
+      { ticker: "COST", price: "$1,110.08", status: "on", name: "Costco", why: "Costco is the world's largest warehouse-club retailer. Revenue reached $303.2 billion last fiscal year — and the company just declared a one-time $30.00-per-share special dividend on top of its regular payout.", info: "Costco operates membership warehouses: customers pay an annual fee for access to bulk goods at minimal markups, and the membership fees — renewed at rates above 90% — drive the profit. The model defends itself: members who have paid for access concentrate their spending there, and the low-price reputation keeps renewal rates high year after year. The financial picture: revenue of $303.2 billion last fiscal year, up 10.1%, with net income of $9.2 billion, up 13.9%. The balance sheet is the strongest in retail: about $20.2 billion in cash plus $1.1 billion in short-term investments, as of August 30, 2026, against only about $6.2 billion in total debt. The dividend is $1.47 a share, paid every quarter, plus a one-time $30.00 special dividend declared November 10, 2026, payable December 4, 2026. Why it is on this trajectory: steady compounding on every horizon this program measures." },
+      { ticker: "BRK-B", price: "$586.76", status: "on", name: "Berkshire Hathaway", why: "Berkshire Hathaway is Warren Buffett's holding company. Its businesses generate $371 billion in annual revenue, and the company holds $41.7 billion in cash with a $335.5 billion investment portfolio behind it.", info: "Berkshire Hathaway owns businesses outright — GEICO and other insurers, the BNSF railroad, energy and utility companies, manufacturers — and holds a $335.5 billion portfolio of other companies' stock, all funded substantially by insurance premiums collected in advance. Its durability is diversification plus discipline: dozens of businesses that do not rise and fall together, managed conservatively, with cash held ready for dislocations. The financial picture: revenue of $371.4 billion last year and total assets of $1.3 trillion. Cash stood at about $41.7 billion as of September 30, 2026, including about $1.0 billion set aside for specific obligations; borrowings sit inside the operating businesses, and the filings report no single total-debt figure, so none is quoted here. Berkshire pays no dividend — returns come through the share price. Why it is on this trajectory: the most stable name on this list — an uptrend with minimal drawdown." },
+      { ticker: "AAPL", price: "$351.91", status: "on", name: "Apple", why: "Apple is the world's largest technology company by revenue. It generated $478.8 billion last fiscal year and converted $132.2 billion of it into profit — an earnings total few companies in history have matched.", info: "Apple designs the iPhone, Mac, iPad, and Apple Watch, and operates the services layered on them — the App Store, iCloud, Apple Music, Apple Pay, and more. The durability is the installed base: more than a billion active devices, each generating recurring services revenue, and switching costs that keep customers inside the ecosystem across upgrade cycles. The financial picture: revenue of $478.8 billion last fiscal year, up 15.1%, and net income of $132.2 billion, up 18.0%. The balance sheet carries about $36.3 billion in cash plus $20.4 billion in short-term investments, as of September 26, 2026, against about $78.1 billion in total debt, and the dividend is $0.27 a share, paid every quarter. Why it is on this trajectory: not a sprinter — a compounder. Its advances come in seasons, and this trajectory holds it for the season ahead." },
+      { ticker: "UNH", price: "$389.68", status: "watch", name: "UnitedHealth", why: "UnitedHealth is the largest health insurer in the United States. Revenue reached $447.6 billion last year — and its $2.32 quarterly dividend is the largest per-share payout on this list.", info: "UnitedHealth combines UnitedHealthcare, the country's largest health insurer, with Optum, its health-services arm operating clinics, pharmacy benefits, and health-data services. The position is scale in a necessity: healthcare spending is non-discretionary, and UnitedHealth touches more of it — premiums, care delivery, and pharmacy — than any competitor. The financial picture: revenue of $447.6 billion last year, up 11.8%. Profitability has been rebuilding: net income was $12.1 billion last year, and the most recent quarter's net income rose 75% year over year to $4.1 billion. The balance sheet carries about $25.8 billion in cash plus $2.7 billion in short-term investments against about $74.3 billion in total debt, and the dividend is $2.32 a share, paid every quarter. Why it is a watch, not a buy: the last three months have been soft — one element of this trajectory's standard is not yet met. The company is strong; the timing is what is being waited on." },
+    ],
+  },
+  {
+    id: "s2",
+    strategy: "Investment Strategy 2",
+    horizon: "6-month",
+    title: "6 months to 1+ YEARS",
+    intro:
+      "Strong companies whose stock has been climbing over the last six months and sits near its highest price of that stretch, picked to run over about six months. Note who trades places with Strategy 1: Apple and Microsoft are strong over six months even while their last month cooled, and Walmart waits on Watch here — its last three months are strong, but its spring slide still shows in the full six months. Different length of time, different list — that's the point of the trajectories.",
+    names: [
+      { ticker: "XOM", price: "$167.21", status: "on", name: "Exxon Mobil", why: "Exxon Mobil is the largest oil and gas company in the United States. Third-quarter revenue rose 32.7% to $113.2 billion and net income more than doubled to $15.4 billion — refining strength on a $332 billion annual revenue base.", info: "Exxon Mobil explores for and produces oil and natural gas, refines crude into fuels, and manufactures petrochemicals, selling them worldwide. Its position is structural: scale across production, refining, and chemicals means it earns at every stage from the well to the pump, and no competitor matches its footprint in all three. The financial picture: $332.2 billion in revenue last year, and the most recent quarter accelerated sharply — revenue up 32.7% year over year to $113.2 billion, net income up 104% to $15.4 billion. The balance sheet carries about $12.2 billion in cash against about $34.2 billion in debt and leases, and the dividend is $1.07 a share, paid every quarter. Why it is on this trajectory: in testing, six-month holds in this name were consistently profitable, and the current quarter's results reinforce the case." },
+      { ticker: "LLY", price: "$1,415.55", status: "on", name: "Eli Lilly", why: "Eli Lilly is the leader in diabetes and weight-loss medicine. Revenue grew 44.7% last year to $65.2 billion and net income nearly doubled to $20.6 billion — the fastest growth of any major drugmaker.", info: "Eli Lilly sells medicines for diabetes, weight loss, cancer, immune disorders, and Alzheimer's disease; its diabetes and weight-loss franchise is the growth engine. The advantage is compounding: patented medicines, manufacturing capacity rivals cannot replicate quickly, and a pipeline that keeps extending the franchise. The financial picture: revenue of $65.2 billion last year, up 44.7%, with net income of $20.6 billion, up 94.9% — and the most recent quarter kept the pace, revenue up 38.6% to $24.4 billion. Against that growth the balance sheet carries about $4.9 billion in cash and about $49.5 billion in debt — it borrows to build capacity ahead of demand. The dividend is $1.73 a share, paid every quarter. Why it is on this trajectory: in the desk's six-month test, this name's best graded placement rose 51.7% — the growth trajectory, expressed in the share price." },
+      { ticker: "ABBV", price: "$292.82", status: "on", name: "AbbVie", why: "AbbVie is one of the world's largest drugmakers, built on immunology. Revenue reached $61.2 billion last year, led by Skyrizi and Rinvoq — each growing at roughly 25% a year — alongside Botox.", info: "AbbVie's revenue comes from immunology medicines Skyrizi and Rinvoq, the wrinkle treatment Botox, and a neuroscience portfolio; it built its name on Humira, once the world's best-selling drug. The transition past Humira is the story: the two successor medicines are growing fast enough to carry the company. The financial picture: revenue of $61.2 billion last year, up 8.6%, with Skyrizi and Rinvoq each growing at roughly a quarter a year. The balance sheet carries about $10.8 billion in cash against about $80.9 billion in debt and leases — much of it borrowed to acquire companies, including the maker of Botox — and the dividend is $1.82 a share, paid every quarter, raised from $1.73. Why it is on this trajectory: a measured climber — smooth advances rather than sharp moves, which suits a six-month hold." },
+      { ticker: "MA", price: "$645.73", status: "on", name: "Mastercard", why: "Mastercard operates one of the two global card-payment networks. It earned $15.0 billion on $32.8 billion of revenue last year — keeping about 46 cents of every revenue dollar as profit, with revenue up 16.4%.", info: "Mastercard runs the network that moves money between banks every time one of its cards is used, anywhere on earth, and takes a small percentage of each transaction. The model is the advantage: the network is already built, so additional volume costs very little to process — which is why roughly 46 cents of every revenue dollar reaches the bottom line. The financial picture: revenue of $32.8 billion last year, up 16.4%, and net income of $15.0 billion, up 16.3% — growth and profitability compounding together. The balance sheet carries about $10.1 billion in cash against about $23.9 billion in total debt, and the dividend is $0.87 a share, paid every quarter. Why it is on this trajectory: a strong six-month earner in testing, with business performance that has matched the record." },
+      { ticker: "V", price: "$416.77", status: "on", name: "Visa", why: "Visa is the world's largest payments network. Revenue rose 14.8% last year to $45.9 billion, producing $23.5 billion in net income — more than half of every revenue dollar kept as profit.", info: "Visa operates the largest card network on earth — the toll road between shoppers, merchants, and banks — taking a small fee on an enormous volume of everyday spending. Like its one true peer, its network is already built, so growth converts to profit at an exceptional rate: more than half of last year's revenue survived as net income. The financial picture: revenue of $45.9 billion in its last fiscal year, up 14.8%, and net income of $23.5 billion, up 17.2%. The balance sheet carries about $12.9 billion in cash against about $22.1 billion in total debt, and the dividend is $0.78 a share, paid every quarter, recently raised 16%. Why it is on this trajectory: strong six-month profits in testing, with the earnings record to support the hold." },
+      { ticker: "COST", price: "$1,110.08", status: "on", name: "Costco", why: "Costco is the world's largest warehouse-club retailer. Revenue reached $303.2 billion last fiscal year — and the company just declared a one-time $30.00-per-share special dividend on top of its regular payout.", info: "Costco operates membership warehouses: customers pay an annual fee for access to bulk goods at minimal markups, and the membership fees — renewed at rates above 90% — drive the profit. The model defends itself: members who have paid for access concentrate their spending there, and the low-price reputation keeps renewal rates high year after year. The financial picture: revenue of $303.2 billion last fiscal year, up 10.1%, with net income of $9.2 billion, up 13.9%. The balance sheet is the strongest in retail: about $20.2 billion in cash plus $1.1 billion in short-term investments, as of August 30, 2026, against only about $6.2 billion in total debt. The dividend is $1.47 a share, paid every quarter, plus a one-time $30.00 special dividend declared November 10, 2026, payable December 4, 2026. Why it is on this trajectory: the same steady compounding, measured over a six-month window." },
+      { ticker: "BRK-B", price: "$586.76", status: "on", name: "Berkshire Hathaway", why: "Berkshire Hathaway is Warren Buffett's holding company. Its businesses generate $371 billion in annual revenue, and the shares stand at their six-month high — up about 19% over the period.", info: "Berkshire Hathaway owns businesses outright — GEICO and other insurers, the BNSF railroad, energy and utility companies, manufacturers — and holds a $335.5 billion portfolio of other companies' stock, all funded substantially by insurance premiums collected in advance. Its durability is diversification plus discipline: dozens of businesses that do not rise and fall together, managed conservatively, with cash held ready for dislocations. The financial picture: revenue of $371.4 billion last year and total assets of $1.3 trillion. Cash stood at about $41.7 billion as of September 30, 2026, including about $1.0 billion set aside for specific obligations; borrowings sit inside the operating businesses, and the filings report no single total-debt figure, so none is quoted here. Berkshire pays no dividend — returns come through the share price. Why it is on this trajectory: six months of upward progress to a period high, with the least volatility of any name in this program." },
+      { ticker: "AAPL", price: "$351.91", status: "on", name: "Apple", why: "Apple is the world's largest technology company by revenue. It generated $478.8 billion last fiscal year and converted $132.2 billion of it into profit — an earnings total few companies in history have matched.", info: "Apple designs the iPhone, Mac, iPad, and Apple Watch, and operates the services layered on them — the App Store, iCloud, Apple Music, Apple Pay, and more. The durability is the installed base: more than a billion active devices, each generating recurring services revenue, and switching costs that keep customers inside the ecosystem across upgrade cycles. The financial picture: revenue of $478.8 billion last fiscal year, up 15.1%, and net income of $132.2 billion, up 18.0%. The balance sheet carries about $36.3 billion in cash plus $20.4 billion in short-term investments, as of September 26, 2026, against about $78.1 billion in total debt, and the dividend is $0.27 a share, paid every quarter. Why it is on this trajectory: a long-term compounder whose six-month advances have been consistent rather than dramatic." },
+      { ticker: "MSFT", price: "$506.24", status: "on", name: "Microsoft", why: "Microsoft is the world's largest software company and a leader in cloud and AI. Revenue grew 17.8% last year to $331.8 billion, with net income up 31.3% to $133.8 billion — the largest profit of any company on this list.", info: "Microsoft's revenue comes from three engines of similar size: the Azure cloud platform, the Microsoft 365 and Windows software business, and a personal-computing division that includes Xbox and LinkedIn. The position is ubiquity: its software is the default standard inside most of the world's companies, and the cloud and AI build-out is being sold to that same installed base. The financial picture: revenue of $331.8 billion last fiscal year, up 17.8%, and net income of $133.8 billion, up 31.3% — with the most recent quarter accelerating further, revenue up 18.8% and net income up 32.0%. The balance sheet is in a net-cash position: about $64.5 billion in cash and short-term investments against about $35.5 billion in total debt. The dividend is $0.98 a share, paid every quarter. Why it is on this trajectory: a strong six-month earner in testing, now with the fastest earnings growth of its decade." },
+      { ticker: "WMT", price: "$127.52", status: "watch", name: "Walmart", why: "Walmart is the world's largest retailer, with the largest sales base in American business. Revenue reached $706.4 billion last fiscal year, with net income of $21.9 billion and earnings growing faster than sales.", info: "Walmart operates supercenters and grocery stores across the United States and abroad, plus a growing e-commerce, pickup, and advertising business. The advantage is scale: more stores, more distribution capacity, and more purchasing leverage than any rival, which sustains the low-price position that drives its traffic. The financial picture: revenue of $706.4 billion in its last fiscal year, up 4.7%, with net income of $21.9 billion, up 12.6% — earnings growing materially faster than sales. The balance sheet carries about $11.5 billion in cash, as of July 31, 2026, against about $50.4 billion in total debt, and the dividend is $0.99 a share per year, paid in four quarterly payments of $0.2475. Why it is a watch, not a buy: the recent three months have been strong, but the full six-month window still includes its spring decline. The standard requires the whole window — it is close, and it is being waited on." },
+      { ticker: "UNH", price: "$389.68", status: "watch", name: "UnitedHealth", why: "UnitedHealth is the largest health insurer in the United States. Revenue reached $447.6 billion last year — and its $2.32 quarterly dividend is the largest per-share payout on this list.", info: "UnitedHealth combines UnitedHealthcare, the country's largest health insurer, with Optum, its health-services arm operating clinics, pharmacy benefits, and health-data services. The position is scale in a necessity: healthcare spending is non-discretionary, and UnitedHealth touches more of it — premiums, care delivery, and pharmacy — than any competitor. The financial picture: revenue of $447.6 billion last year, up 11.8%. Profitability has been rebuilding: net income was $12.1 billion last year, and the most recent quarter's net income rose 75% year over year to $4.1 billion. The balance sheet carries about $25.8 billion in cash plus $2.7 billion in short-term investments against about $74.3 billion in total debt, and the dividend is $2.32 a share, paid every quarter. Why it is a watch, not a buy: its six-month record in testing was weak even as the short window improved — the longer window has not yet turned. The company is strong; the timing is what is being waited on." },
+    ],
+  },
+  {
+    id: "s3",
+    strategy: "Investment Strategy 3",
+    horizon: "1–5 year",
+    title: "1 to 5+ YEARS",
+    intro:
+      "Companies built to hold for years. To stand here as a Buy, a stock's own record has to beat the market itself over both three years and five — the market gained 89% over three years and 73% over five. Only five names in the whole field did it. That shortness is the honesty of the list, not a flaw in it.",
+    names: [
+      { ticker: "LLY", price: "$1,415.55", status: "on", name: "Eli Lilly", why: "Eli Lilly is the leader in diabetes and weight-loss medicine. Revenue grew 44.7% last year to $65.2 billion and net income nearly doubled to $20.6 billion — the fastest growth of any major drugmaker.", info: "Eli Lilly sells medicines for diabetes, weight loss, cancer, immune disorders, and Alzheimer's disease; its diabetes and weight-loss franchise is the growth engine. The advantage is compounding: patented medicines, manufacturing capacity rivals cannot replicate quickly, and a pipeline that keeps extending the franchise. The financial picture: revenue of $65.2 billion last year, up 44.7%, with net income of $20.6 billion, up 94.9% — growth at a scale no peer currently matches. Against that growth the balance sheet carries about $4.9 billion in cash and about $49.5 billion in debt — it borrows to build capacity ahead of demand. The dividend is $1.73 a share, paid every quarter. Why it is on this trajectory: over five years the stock multiplied 5.55 times (+454.54%) — the smoothest major advance in the drug sector, and the profile this horizon is built to hold." },
+      { ticker: "ABBV", price: "$292.82", status: "on", name: "AbbVie", why: "AbbVie is one of the world's largest drugmakers, built on immunology. Revenue reached $61.2 billion last year, led by Skyrizi and Rinvoq — each growing at roughly 25% a year — alongside Botox.", info: "AbbVie's revenue comes from immunology medicines Skyrizi and Rinvoq, the wrinkle treatment Botox, and a neuroscience portfolio; it built its name on Humira, once the world's best-selling drug. The transition past Humira is the story: the two successor medicines are growing fast enough to carry the company. The financial picture: revenue of $61.2 billion last year, up 8.6%, with Skyrizi and Rinvoq each growing at roughly a quarter a year. The balance sheet carries about $10.8 billion in cash against about $80.9 billion in debt and leases — much of it borrowed to acquire companies, including the maker of Botox — and the dividend is $1.82 a share, paid every quarter, raised from $1.73. Why it is on this trajectory: over five years the stock roughly tripled with the shallowest declines of any name on this list — growth without the drawdowns." },
+      { ticker: "WMT", price: "$127.52", status: "on", name: "Walmart", why: "Walmart is the world's largest retailer, with the largest sales base in American business. Revenue reached $706.4 billion last fiscal year — and over five years the stock nearly tripled.", info: "Walmart operates supercenters and grocery stores across the United States and abroad, plus a growing e-commerce, pickup, and advertising business. The advantage is scale: more stores, more distribution capacity, and more purchasing leverage than any rival, which sustains the low-price position that drives its traffic. The financial picture: revenue of $706.4 billion in its last fiscal year, up 4.7%, with net income of $21.9 billion, up 12.6% — earnings growing materially faster than sales. The balance sheet carries about $11.5 billion in cash, as of July 31, 2026, against about $50.4 billion in total debt, and the dividend is $0.99 a share per year, paid in four quarterly payments of $0.2475. Why it is on this trajectory: over five years the shares nearly tripled — a defensive business compounding like a growth stock." },
+      { ticker: "AAPL", price: "$351.91", status: "on", name: "Apple", why: "Apple is the world's largest technology company by revenue. It generated $478.8 billion last fiscal year and converted $132.2 billion of it into profit — an earnings total few companies in history have matched.", info: "Apple designs the iPhone, Mac, iPad, and Apple Watch, and operates the services layered on them — the App Store, iCloud, Apple Music, Apple Pay, and more. The durability is the installed base: more than a billion active devices, each generating recurring services revenue, and switching costs that keep customers inside the ecosystem across upgrade cycles. The financial picture: revenue of $478.8 billion last fiscal year, up 15.1%, and net income of $132.2 billion, up 18.0%. The balance sheet carries about $36.3 billion in cash plus $20.4 billion in short-term investments, as of September 26, 2026, against about $78.1 billion in total debt, and the dividend is $0.27 a share, paid every quarter. Why it is on this trajectory: over five years the stock roughly doubled — the steadiest advance of any of the technology giants." },
+      { ticker: "COST", price: "$1,110.08", status: "on", name: "Costco", why: "Costco is the world's largest warehouse-club retailer. Revenue reached $303.2 billion last fiscal year — and the company just declared a one-time $30.00-per-share special dividend on top of its regular payout.", info: "Costco operates membership warehouses: customers pay an annual fee for access to bulk goods at minimal markups, and the membership fees — renewed at rates above 90% — drive the profit. The model defends itself: members who have paid for access concentrate their spending there, and the low-price reputation keeps renewal rates high year after year. The financial picture: revenue of $303.2 billion last fiscal year, up 10.1%, with net income of $9.2 billion, up 13.9%. The balance sheet is the strongest in retail: about $20.2 billion in cash plus $1.1 billion in short-term investments, as of August 30, 2026, against only about $6.2 billion in total debt. The dividend is $1.47 a share, paid every quarter, plus a one-time $30.00 special dividend declared November 10, 2026, payable December 4, 2026. Why it is on this trajectory: a double-digit grower that has compounded on every horizon measured — the definition of a long-hold business." },
+      { ticker: "XOM", price: "$167.21", status: "watch", name: "Exxon Mobil", why: "Exxon Mobil is the largest oil and gas company in the United States. It operates on a $332 billion annual revenue base — and over five years its shares ran well ahead of the broader market.", info: "Exxon Mobil explores for and produces oil and natural gas, refines crude into fuels, and manufactures petrochemicals, selling them worldwide. Its position is structural: scale across production, refining, and chemicals means it earns at every stage from the well to the pump, and no competitor matches its footprint in all three. The financial picture: $332.2 billion in revenue last year, with the most recent quarter accelerating — revenue up 32.7% year over year, net income up 104% to $15.4 billion. The balance sheet carries about $12.2 billion in cash against about $34.2 billion in debt and leases, and the dividend is $1.07 a share, paid every quarter. Why it is a watch, not a buy: the five-year record is excellent, and its declines along the way stayed within this trajectory's drawdown standard — but over three years it did not beat the market (the S&P 500), the leg this trajectory requires. The business case is made; the three-year record against the market is what is being waited on." },
+      { ticker: "V", price: "$416.77", status: "watch", name: "Visa", why: "Visa is the world's largest payments network. Revenue rose 14.8% last year to $45.9 billion, producing $23.5 billion in net income — and over five years it outperformed the broader market.", info: "Visa operates the largest card network on earth — the toll road between shoppers, merchants, and banks — taking a small fee on an enormous volume of everyday spending. Like its one true peer, its network is already built, so growth converts to profit at an exceptional rate: more than half of last year's revenue survived as net income. The financial picture: revenue of $45.9 billion in its last fiscal year, up 14.8%, and net income of $23.5 billion, up 17.2%. The balance sheet carries about $12.9 billion in cash against about $22.1 billion in total debt, and the dividend is $0.78 a share, paid every quarter, recently raised 16%. Why it is a watch, not a buy: it outperformed the market across five years, and the declines inside that run stayed within this trajectory's drawdown standard — but over three years it did not beat the market (the S&P 500), the leg this trajectory requires. The earnings power is not in question; the three-year record against the market is what is being waited on." },
+      { ticker: "JPM", price: "$329.96", status: "watch", name: "JPMorgan", why: "JPMorgan Chase is the largest bank in the United States, with $5.1 trillion in assets. It earned $57.1 billion last year on $182.5 billion of revenue — profitability no other American bank approaches.", info: "JPMorgan Chase takes deposits, makes loans, operates the card and payment networks businesses run on, and helps companies raise capital worldwide. Its durability is centrality: deposits, cards, lending, and market infrastructure all run through it, at a scale no rival can replicate in a generation. The financial picture works differently for a bank: as of September 30, 2026, it held $5.1 trillion in assets, including about $326.3 billion in cash and deposits at other banks, and about $2.8 trillion in customer deposits — customers' money held in their accounts, the standard funding of a bank, not company debt. Its own borrowings were about $460.2 billion long-term and $71.3 billion short-term. Profit last year was $57.1 billion on $182.5 billion of revenue, and the dividend is $1.65 a share, paid every quarter, raised from $1.50. Why it is a watch, not a buy: its record beat the market at every measured length — but its 2022 decline was deeper than this trajectory's standard allows. The institution is the strongest in its industry; a steadier stretch is what is being waited on." },
+    ],
+  },
+];
+/* Crypto Currency room — built into the Door on the owner's ruling,
+   Nov 16, 2026. Every play and list in the room stands as COMING SOON:
+   no live plays, nothing tradeable. The day tells are in forward
+   practice (booking nightly from the night of Nov 16, 2026; first
+   graded read at ~30 trades). The long-term horizons carry LONG /
+   SHORT / PAIR vs BTC views; the lists stand empty today — the
+   6-month long is armed for the Dec 1 screen, and the 1–5 year short
+   book and the pair open on the practice wall Dec 1. Crypto, unlike
+   LTIM, trades both sides. */
+var CRYPTO_DAY_TELLS = [
+  { name: "BREAKOUT" },
+  { name: "THE CONNORS" },
+  { name: "THE MONEY DIP" },
+  { name: "DOWN-STREAK" },
+  { name: "GATED BREAKOUT" },
+];
+var CRYPTO_HORIZONS = [
+  {
+    id: "c1", label: "30+ days", big: "30+ DAYS",
+    views: [
+      { side: "LONG" },
+      { side: "SHORT" },
+      { side: "PAIR vs BTC" },
+    ],
+  },
+  {
+    id: "c2", label: "6 months", big: "6 MONTHS",
+    views: [
+      { side: "LONG", note: "Armed — the first list prints off the December 1 screen. Until then the list stands empty." },
+      { side: "SHORT", note: "The short side of the six-month book. First screen December 1; no names stand yet." },
+      { side: "PAIR vs BTC", note: "Six-month strength measured against Bitcoin. First screen December 1; no pair stands yet." },
+    ],
+  },
+  {
+    id: "c3", label: "1–5 years", big: "1–5 YEARS",
+    views: [
+      { side: "LONG", note: "Built for holds measured in years. No names have qualified yet — the list stands empty." },
+      { side: "SHORT", note: "The long-term short book opens on the practice wall December 1. Nothing stands here until it does." },
+      { side: "PAIR vs BTC", note: "The pair book opens on the practice wall December 1, alongside the short book." },
+    ],
+  },
+];
+var RECORD_ENTRIES = [
+  {
+    title: "LABU washout bounce — full test, with the −12% stop",
+    body: "Positive in all three years: 2024 +$371.06 · 2025 +$2,642.86 · 2026 +$8,919.22. The no-stop form lost −$636.00 in 2024 — the stop exists because of that year.",
+    figure: "+$11,933.14",
+    up: true,
+  },
+  {
+    title: "LABU washout — best two trades removed",
+    body: "Fragility check: the system still stands after its two best trades are taken away.",
+    figure: "+$8,955.14",
+    up: true,
+  },
+  {
+    title: "Overnight-catalyst — October audit",
+    body: "Graded 3–10 in October. Demoted to OPINION ONLY on Nov 1, 2026 — it still prints, but it is not booked and not graded as a tell until the owner's word. Demotions are part of the record too.",
+    figure: "−$1,920.94",
+    up: false,
+  },
+  {
+    title: "PLTR — closed Monday, Nov 2, 2026",
+    body: "Sold all 50 shares at $182.55 in after-hours after the Q3 print crossed; in at ~$186.59. A real loss, printed in the record the same size as the wins.",
+    figure: "−$202.00",
+    up: false,
+  },
+];
+var SOCIAL_POSTS = [
+  {
+    label: "Daybreak — the 3:30 AM regime read · sample post",
+    body: "The regime read is up. What the tape is doing, what stance it puts the desk in, and which of today's plays it agrees with — all of it lives behind the readers' doors. The public feed gets the weather, never the map.",
+  },
+  {
+    label: "Sample post",
+    body: "People ask why there's no PDF, no email list, no \u201ccopy of the plays.\u201d Because a copy can be forwarded, and a forwarded copy is the product given away. Our readers don't get copies. They get a door.",
+  },
+  {
+    label: "Sample post",
+    body: "October's audit is public: one tell demoted, losses printed next to wins. If a service won't show you its losing months, it isn't showing you a record — it's showing you an advertisement.",
+  },
+];
+var BOARD = {"dateLabel": "Wednesday, November 18, 2026", "gradedLine": "WEDNESDAY, NOVEMBER 18, 2026", "sections": [{"kind": "plays", "title": "The Connors Trade", "plays": [{"action": "BUY", "ticker": "MSFT", "name": "Microsoft Corporation", "closeLabel": "Closed Tuesday at", "close": "$506.24", "read": "BUY at Wednesday's open — 6:30 AM PT. This play was made off Tuesday's official close. Win rate in The Connors Trade (3-year test): 75.9% (44 of 58 trades won)", "previous3": "Previous 3 (Tuesday, November 17) — 10:30 — buyers won the hour — high $507.40, low $503.41, close $506.16. Buyers pushed the close up to 68.9% of the hour's range; the upper wick was 31.1% and the lower wick 10.5%. · 11:30 — sellers won the hour — high $507.47, low $505.15, close $505.37. Sellers pushed the close down to 9.5% of the hour's range; the upper wick was 58.6% — the $507.47 high was rejected — and the lower wick was 9.5%. · 12:30 — buyers won the hour — high $507.17, low $503.85, close $506.30. Buyers pushed the close up to 74.0% of the hour's range; the upper wick was 26.0% and the lower wick was 46.2% — the dip toward $503.85 was bought back.", "exitRule": "Sell at close (1:00 PM PT).", "exitNote": "There's no price stop on this one — you sell at the close on the day Money (Ai) says the snap-back is done, or at the close on the tenth day, whichever comes first — and Money (Ai) will let you know when to exit."}, {"action": "BUY", "ticker": "NET", "name": "Cloudflare, Inc.", "closeLabel": "Closed Tuesday at", "close": "$284.81", "read": "BUY at Wednesday's open — 6:30 AM PT. This play was made off Tuesday's official close. Win rate in The Connors Trade (3-year test): 70.5% (31 of 44 trades won)", "previous3": "Previous 3 (Tuesday, November 17) — 10:30 — buyers won the hour — high $284.77, low $281.28, close $283.96. Buyers pushed the close up to 76.8% of the hour's range; the upper wick was 23.2% and the lower wick was 72.8% — the dip toward $281.28 was bought back hard. · 11:30 — sellers won the hour — high $285.27, low $281.61, close $283.76. The close sat at 58.7% of the hour's range; the upper wick was 36.1% and the lower wick was 58.7%. · 12:30 — buyers won the hour — high $285.06, low $283.22, close $284.75. Buyers pushed the close up to 84.7% of the hour's range; the upper wick was 15.3% and the lower wick was 39.9%.", "exitRule": "Sell at close (1:00 PM PT).", "exitNote": "There's no price stop on this one — you sell at the close on the day Money (Ai) says the snap-back is done, or at the close on the tenth day, whichever comes first — and Money (Ai) will let you know when to exit."}]}, {"kind": "spyqqq", "title": "SPY & QQQ", "plays": [{"action": "BUY", "ticker": "SPY", "name": "SPDR S&P 500 ETF Trust", "closeLabel": "Closed Tuesday at", "close": "$732.44", "read": "BUY at today's open — SPY has closed lower four sessions in a row (Thursday, Friday, Monday and Tuesday), and this play buys the open after a streak like that one, then holds to the close on Wednesday, November 25, 2026. Win rate in SPY's Own Streak (2024–2026): 55.8% (29 of 52 trades won)", "previous3": "Previous 3 (Tuesday, November 17) — 10:30 AM PT — sellers won the hour — open $733.31, high $733.50, low $730.52, close $731.09. · 11:30 AM PT — sellers won the hour — open $731.07, high $731.16, low $727.86, close $730.11. · 12:30 PM PT — buyers won the hour, decisively — open $730.10, high $732.48, low $729.37, close $732.40; SPY closed $5.44 off its session low of $727.00.", "exitRule": "Sell at close (1:00 PM PT) on Wednesday, November 25, 2026."}, {"action": "BUY", "ticker": "SPY", "name": "SPDR S&P 500 ETF Trust", "closeLabel": "Closed Tuesday at", "close": "$732.44", "read": "BUY at today's open — SPY closed Tuesday just above its 200-day average line ($732.34), a seat it only takes after running well above that line in the months before, and this play holds to the close on Monday, February 22, 2027. Win rate in The Seat (2024–2026): 77.8% (7 of 9 trades won)", "previous3": "Previous 3 (Tuesday, November 17) — 10:30 AM PT — sellers won the hour — open $733.31, high $733.50, low $730.52, close $731.09. · 11:30 AM PT — sellers won the hour — open $731.07, high $731.16, low $727.86, close $730.11. · 12:30 PM PT — buyers won the hour, decisively — open $730.10, high $732.48, low $729.37, close $732.40; SPY closed $5.44 off its session low of $727.00.", "exitRule": "Sell at close (1:00 PM PT) on Monday, February 22, 2027."}]}, {"kind": "bare", "title": "Breakout Long YT Trade"}, {"kind": "bare", "title": "Falling Knife Trade"}, {"kind": "bare", "title": "The Comeback Trade"}, {"kind": "bare", "title": "The Swing Tell Trade"}, {"kind": "bare", "title": "Give It Back Trade", "body": "None. Whole market scanned (525 names) — none."}, {"kind": "bare", "title": "Money 2 Trade"}, {"kind": "bare", "title": "The Earnings Trade", "body": "None. Whole market scanned (525 names) — none."}, {"kind": "bare", "title": "Buy the Dip Trade"}, {"kind": "special", "title": "SPECIAL PLAY", "intro": "Owner's Pick", "plays": []}]};
+</script>
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  var esc = function(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); };
+
+  $("disclaimer-body").innerHTML = DISCLAIMER_PARAS.map(function(p){ return "<p>"+esc(p)+"</p>"; }).join("");
+
+
+  /* ---------- board (Front page) ---------- */
+  /* DTM board only: every ticker symbol in board text takes the
+     [NON-CALL] label style — the board sans at weight 700 — at the
+     size of the line it sits in. LTIM entry renders plain, as built. */
+  function escBoard(s){
+    var h = esc(s);
+    if(entryMode==="ltim") return h;
+    return h.replace(/\b(GOOGL|SOXL|MRNA|PLTR|TSLA|META|MSFT|NVDA|AMZN|VRSN|CBOE|INTC|MRVL|AVGO|SPCX|AAPL|LABU|ALAB|RKLB|SMCI|HII|IRM|NET|ARM|TSM|AMD|QQQ|SPY|AME|VST|MU|TT|Q)\b/g, '<span style="font-family:var(--sans);font-weight:700">$1</span>');
+  }
+  /* Plain-language intro at the top of the opened 3 HOUR CANDLE
+     READS panel, above the three reads. The draft's "yesterday's"
+     follows the session the reads actually show: the weekday is
+     taken from the panel's own "Previous 3" header (which carries
+     that session's weekday and date), so a Friday card reads
+     "Thursday's trading" and a Monday card reads "Friday's
+     trading" — the actual session day, not a fixed "yesterday's".
+     Every other word of the draft is kept identical. The intro
+     lives only inside this panel; nothing prints on the card face. */
+  function candleIntroHTML(raw){
+    var intro = "These are the three hours of Tuesday's session \u2014 the last three hours before the close. Each hour is one candle. A candle shows where the price opened, the highest and lowest it reached, and where it closed. The thin lines above and below are called wicks \u2014 they show how far the price reached before being pushed back. Whoever won the hour is whoever pushed the close to their side.";
+    return '<p style="margin:0 0 .75rem;line-height:1.65">' + esc(intro) + '</p>';
+  }
+  function prev3HTML(raw){
+    var parts = String(raw == null ? "" : raw).split(" · ");
+    var first = parts[0] || "";
+    var dash = first.indexOf(" — ");
+    var header = dash >= 0 ? first.slice(0, dash + 3) : "Previous 3 candles (Friday, November 6) —";
+    var firstHour = dash >= 0 ? first.slice(dash + 3) : first;
+    header = header.replace("Nov 6", "November 6").replace("Previous 3 (", "Previous 3 candles (");
+    var hours = [firstHour].concat(parts.slice(1));
+    var h = candleIntroHTML(raw);
+    /* The panel carries the intro, then the three reads only. */
+    h += '<ul style="margin:.25rem 0 0;padding-left:1.1rem;line-height:1.65">';
+    hours.forEach(function(hr){ h += '<li style="margin-top:.125rem"><strong>' + escBoard(String(hr).trim()) + '</strong></li>'; });
+    h += '</ul>';
+    return h;
+  }
+  /* The Previous 3 candle block lives behind a tap on every DTM play
+     card — the same tap form as the Long Term room's INFO tap (the
+     .info-btn class): the block's words are unchanged, only its
+     placement. Tapping reveals it; the card face carries the tap. */
+  /* CLOSE tap at the bottom of every opened DTM panel (the trailing
+     stop panel and the 3 HOUR CANDLE READS panel) and every opened
+     LTIM MORE INFO panel: the same .info-btn gold-text pill form as
+     the taps that open the panels, labeled exactly "CLOSE". Tapping
+     it collapses its own panel back shut IN PLACE and resets the
+     opening tap's expanded state — no navigation, no view change:
+     the reader stays on the same page at the same card. Because the
+     reader reaches CLOSE only by scrolling to the bottom of a long
+     panel, simply hiding the panel lets the browser re-anchor the
+     scroll and throw the reader far from the card he was reading;
+     so the tap first notes where CLOSE sits in the viewport, hides
+     the panel, then scrolls by exactly the shift so the card's own
+     opening tap lands where CLOSE was tapped — the card face is
+     right back under the reader's eyes. */
+  function closeBtnHTML(id){
+    return '<div><button type="button" class="info-btn" data-close-btn aria-controls="' + id + '">CLOSE</button></div>';
+  }
+  function wireCloseBtns(root){
+    var btns = root.querySelectorAll("[data-close-btn]");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click", function(e){
+        if(e){ e.preventDefault(); e.stopPropagation(); }
+        var panel = $(this.getAttribute("aria-controls"));
+        if(!panel) return;
+        var tappedY = this.getBoundingClientRect().top;
+        var openers = root.querySelectorAll('[aria-controls="' + panel.id + '"]');
+        var opener = null;
+        for(var j=0;j<openers.length;j++){
+          if(openers[j] !== this){
+            if(!opener && openers[j].hasAttribute("aria-expanded")) opener = openers[j];
+            openers[j].setAttribute("aria-expanded", "false");
+          }
+        }
+        panel.classList.add("hidden");
+        if(opener){
+          var shift = opener.getBoundingClientRect().top - tappedY;
+          if(shift) window.scrollBy(0, shift);
+        }
+      });
+    }
+  }
+  var prev3Seq = 0;
+  function prev3TapHTML(raw){
+    prev3Seq += 1;
+    var id = "prev3-" + prev3Seq;
+    return '<button type="button" class="info-btn" data-prev3-btn aria-expanded="false" aria-controls="' + id + '">3 HOUR CANDLE READS</button>'
+      + '<div class="info-text hidden" id="' + id + '">' + prev3HTML(raw) + closeBtnHTML(id) + '</div>';
+  }
+  function wirePrev3Taps(root){
+    var btns = root.querySelectorAll("[data-prev3-btn]");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click", function(){
+        var panel = $(this.getAttribute("aria-controls"));
+        if(!panel) return;
+        var open = panel.classList.toggle("hidden") === false;
+        this.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    }
+  }
+  /* The $2 trailing stop tap — Day Trading Mode plays that carry a $2
+     trailing stop get a tap in the same uniform form as the 3 HOUR
+     CANDLE READS tap (the .info-btn class), placed directly below the
+     "Your exit, on this play:" box and above that tap. Tapping opens a
+     plain-words explanation of the stop beneath the button; the panel
+     is closed by default. Long plays and short plays carry different
+     wording. Plays with no $2 trailing stop get no tap. */
+  var STOP_LONG_TEXT = "A trailing stop is a safety net that moves with the price. This play's stop goes live at the open, 6:30 AM PT, and sits $2 under the highest price the stock reaches from there. If the stock climbs, the stop climbs with it. If the stock falls $2 from its highest point, the play is sold right there — so a winning play keeps room to run, and the most it can give back is $2 from its best price. If the stop never triggers, the play is sold at the 1:00 PM PT close.";
+  var STOP_SHORT_TEXT = "A trailing stop is a safety net that moves with the price. This is a short play — it makes money when the stock falls. The stop goes live at the open, 6:30 AM PT, and sits $2 above the lowest price the stock reaches from there. If the stock keeps falling, the stop follows it down. If the stock climbs back $2 from its lowest point, the play is closed right there. If the stop never triggers, the play is closed at the 1:00 PM PT close.";
+  var STOP_PLAYS = {};
+  var stopSeq = 0;
+  function stopTapHTML(p){
+    if(entryMode === "ltim") return "";
+    var kind = STOP_PLAYS[p.ticker];
+    if(!kind) return "";
+    stopSeq += 1;
+    var id = "stop-" + stopSeq;
+    var text = kind === "short" ? STOP_SHORT_TEXT : STOP_LONG_TEXT;
+    return '<button type="button" class="info-btn" data-stop-btn aria-expanded="false" aria-controls="' + id + '">$2 TRAILING STOP</button>'
+      + '<div class="info-text hidden" id="' + id + '">' + esc(text) + closeBtnHTML(id) + '</div>';
+  }
+  /* Exit box face text (playbook v5.228, superseding v5.227): on the
+     nine $2-trailing-stop plays, the exit box's face text is exactly
+     one plain line — the trailing stop is not mentioned on the card
+     face at all; it lives entirely behind its tap. All other plays'
+     exit boxes render exactly as before. */
+  var STOP_FACE_TEXT = "Sell at close (1:00 PM PT).";
+  function exitRuleHTML(p){
+    if(entryMode !== "ltim" && STOP_PLAYS[p.ticker]){
+      return esc(STOP_FACE_TEXT);
+    }
+    return escBoard(p.exitRule);
+  }
+  function wireStopTaps(root){
+    var btns = root.querySelectorAll("[data-stop-btn]");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click", function(){
+        var panel = $(this.getAttribute("aria-controls"));
+        if(!panel) return;
+        var open = panel.classList.toggle("hidden") === false;
+        this.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    }
+  }
+  /* Board play headline name: the company name in its usual muted form,
+     then the play's filed close as a BOLD parenthesised price immediately
+     after the name — before any " — lean …" qualifier on the leans. The
+     headline price is the first token of the filed close string (graded
+     plays drop their (+x%) tail here); the play line underneath keeps
+     the full filed form, "Closed Friday at…" sentence included. */
+  function playNameHTML(p){
+    var nm = String(p.name == null ? "" : p.name), suffix = "";
+    var li = nm.indexOf(" — lean ");
+    if(li >= 0){ suffix = nm.slice(li); nm = nm.slice(0, li); }
+    var price = String(p.close == null ? "" : p.close).split(" ")[0];
+    /* Leans ([NON-CALL]) render fully bold: the company name line and the
+       " — lean …" qualifier carry weight 700, like the headline and the
+       parenthesised price. Graded plays keep the muted name line. */
+    var lean = p.action === "[NON-CALL]";
+    var nameStyle = lean ? ' style="font-weight:700"' : '';
+    return '<span class="dim"'+nameStyle+'>'+escBoard(nm)+'</span> <strong>('+esc(price)+')</strong>'
+      + (suffix ? '<span class="dim"'+nameStyle+'>'+escBoard(suffix)+'</span>' : '');
+  }
+  /* DTM play-card direction posting: BUY / SHORT plays carry NO
+     direction word in the headline — the headline is ticker, company
+     name, price. The direction leads the card's opening sentence
+     (the read), whose first word is the filed direction, set big and
+     bold via .dir-word. [NON-CALL] leans keep their label in the
+     headline and their read untouched, and the LTIM door's rendering
+     of this board stays exactly as built. */
+  function isDirAction(a){ return a==="BUY" || a==="SHORT"; }
+  function readHTML(p){
+    var r = String(p.read == null ? "" : p.read);
+    if(entryMode==="ltim" || !isDirAction(p.action)) return escBoard(r);
+    var m = r.match(/^(BUY|SHORT)\b/);
+    if(!m || m[1] !== p.action) return escBoard(r);
+    return '<span class="dir-word">'+esc(m[1])+'</span>' + escBoard(r.slice(m[1].length));
+  }
+  function exitTell(title){
+    if(title.indexOf("Connors")>=0) return "The Connors Trade";
+    if(title.indexOf("Falling Knife")>=0) return "Falling Knife Trade";
+    if(title.indexOf("SQUEEZE")>=0) return "THE SQUEEZE";
+    return "this";
+  }
+  /* ABOUT screens — Day Trading Mode only. One dedicated screen per
+     play: the eleven Trade sections on the card plus SPECIAL PLAY, and
+     one for the SPY & QQQ board section.
+     Tapping an ABOUT tap opens that play's screen; its CLOSE control
+     returns the reader to the Day Trading Mode card at the place they
+     left it. Each screen carries nothing but the play's name, its
+     approved description text below, and the CLOSE control. The
+     texts are the owner's approved words, printed exactly. */
+  var ABOUT_TEXTS = {
+    "SPY & QQQ": "SPY and QQQ are the market's two headline names — SPY holds America's top 500 companies in one fund, and QQQ holds the Nasdaq's top 100 names, heavy with technology. Every play on this card trades in their weather. When the morning read calls one of them, its play prints here in full.",
+    "The Comeback Trade": "Looks for a stock that got knocked down during the day and fought its way back before the close — the first real sign buyers are stepping in at the bottom. We buy the next morning if the fight-back continues. There is no stop on this play: we hold it to the close of that day and take whatever the day gives us, win or lose.",
+    "The Swing Tell Trade": "Looks for a stock that was beaten down over several days, washed all the way out, and then held its low and turned. We buy the turn. There is no stop on this play: we hold it to the close of that day and take whatever the day gives us, win or lose.",
+    "Falling Knife Trade": "Looks for a healthy stock that fell hard for days in a row — and then stopped falling. A falling knife is dangerous to catch, so this play waits for the fall to end and takes it one day at a time. There is no price stop on this one: Money (Ai) watches the close every day and tells you the morning it’s time to sell, before the open, and if that morning hasn’t come by the tenth day, you’re out at the close on Day 10.",
+    "Breakout Long YT Trade": "Looks for a stock that pushed up through the top of its recent range \u2014 a breakout. We buy the push, set the stop under the candle that made the move, aim for twice what we risked, and if neither the stop nor the target comes by the tenth day, we\u2019re out at that day\u2019s close.",
+    "Give It Back Trade": "Looks for a stock that ended its day pinned at the very bottom of its day\u2019s range \u2014 sellers pushed it all the way down and it never bounced. That kind of finish often overdoes it, so we buy the next morning and hold it until a day ends pinned at the top of its range \u2014 the snap back \u2014 or until the pattern plays out. There is no stop on this play.",
+    "Money 2 Trade": "Looks for a stock that closed at a new short-term low after being weak for days \u2014 and then did the same thing again. Two washed-out closes in a row is the tell. We buy it and hold up to about a week, looking for the bounce. There is no stop on this play.",
+    "The Breakout Trade": "Looks for a stock that pushed up through the top of its recent range — a breakout. We buy the push, set the stop under the candle that made the move, aim for twice what we risked, and if neither the stop nor the target comes by the tenth day, we’re out at that day’s close.",
+    "The Connors Trade": "Named for Larry Connors, the trader who published the idea. It looks for a strong stock that has pulled back hard for a few days — stretched too far down, like a rubber band — and buys it expecting the snap back toward its trend. We hold it until the snap back comes or about a week passes, whichever comes first. There is no stop on this play.",
+    "The Bounce Trade": "Looks for a stock that closed at a new short-term low after being weak for days — and then did the same thing again. Two washed-out closes in a row is the tell. We buy it and hold up to about a week, looking for the bounce. There is no stop on this play.",
+    "The Earnings Trade": "Looks at what a stock does AFTER it reports its earnings. When a company reports and the stock jumps hard on the news, this play follows the move instead of fighting it — big earnings moves often keep drifting the same way for days. We buy the strength and hold up to about a week. There is no stop on this play.",
+    "Buy the Dip Trade": "Looks for a strong stock in an uptrend that had one sharp down day — a dip — and buys it, because in a healthy uptrend dips have tended to bounce. We hold it while the trend stays healthy, up to about two months, and there is no stop on this play.",
+    "The Snap-Back Trade": "Looks for a stock that ended its day pinned at the very bottom of its day’s range — sellers pushed it all the way down and it never bounced. That kind of finish often overdoes it, so we buy the next morning and hold it until a day ends pinned at the top of its range — the snap back — or until the pattern plays out. There is no stop on this play.",
+    "Fade the Stock Trade": "Fade the Stock Trade is a bet that a weak stock's morning jump will fail. When a stock that has been sliding pops up at the open but can't hold it, we bet on it going back down. A tight safety stop cuts the trade quickly if the price keeps rising instead, and any trade still open is closed at the end of the day.",
+    "The Fakeout Trade": "The Fakeout Trade watches for a breakout that fails. A stock pushes to a new high, then slips back under it within a couple of days — and that's when we buy, as the disappointed sellers clear out. A trailing safety stop follows the price up and locks the trade if it turns down, and any trade still open closes on the fifth day.",
+    "SPECIAL PLAY": "The owner’s own pick, posted by hand when something specific is happening — an FDA decision, a merger vote, a stock in the news. It is not one of the tested plays and it carries no win record: it’s Maurice’s call, event-driven, and most days there isn’t one."
+  };
+  var ABOUT_ORDER = ["SPY & QQQ", "The Comeback Trade", "The Swing Tell Trade", "Falling Knife Trade", "The Breakout Trade", "Breakout Long YT Trade", "Give It Back Trade", "Money 2 Trade", "The Connors Trade", "The Bounce Trade", "The Earnings Trade", "Buy the Dip Trade", "The Snap-Back Trade", "Fade the Stock Trade", "The Fakeout Trade", "SPECIAL PLAY"];
+  function aboutScreenId(title){
+    return "about-" + String(title).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  }
+  function aboutTapHTML(title){
+    if(entryMode === "ltim") return "";
+    if(!ABOUT_TEXTS[title]) return "";
+    return '<button type="button" class="info-btn" data-about-btn data-about-target="' + aboutScreenId(title) + '" aria-label="About ' + esc(title) + '">ABOUT</button>';
+  }
+  function aboutScreensHTML(){
+    if(entryMode === "ltim") return "";
+    var h = "";
+    ABOUT_ORDER.forEach(function(title){
+      var id = aboutScreenId(title);
+      h += '<div class="hidden" id="' + id + '" data-about-screen>'
+        + '<section style="margin-top:1.5rem"><h2 style="font-size:24px">' + esc(title) + '</h2>'
+        + '<p style="margin-top:1rem;line-height:1.65">' + esc(ABOUT_TEXTS[title]) + '</p>'
+        + '<div style="margin-top:1.5rem"><button type="button" class="info-btn" data-about-close-btn>CLOSE</button></div>'
+        + '</section></div>';
+    });
+    return h;
+  }
+  var aboutReturnScroll = 0;
+  function wireAboutTaps(root){
+    var btns = root.querySelectorAll("[data-about-btn]");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click", function(){
+        var screen = $(this.getAttribute("data-about-target"));
+        var board = $("dtm-board");
+        if(!screen || !board) return;
+        aboutReturnScroll = window.scrollY || window.pageYOffset || 0;
+        board.classList.add("hidden");
+        var screens = root.querySelectorAll("[data-about-screen]");
+        for(var k=0;k<screens.length;k++){ screens[k].classList.toggle("hidden", screens[k] !== screen); }
+        window.scrollTo(0, 0);
+      });
+    }
+    var closeBtns = root.querySelectorAll("[data-about-close-btn]");
+    for(var j=0;j<closeBtns.length;j++){
+      closeBtns[j].addEventListener("click", function(){
+        var board = $("dtm-board");
+        var screens = root.querySelectorAll("[data-about-screen]");
+        for(var k=0;k<screens.length;k++){ screens[k].classList.add("hidden"); }
+        if(board) board.classList.remove("hidden");
+        window.scrollTo(0, aboutReturnScroll);
+      });
+    }
+  }
+  function sectionHTML(s){
+    /* The leans section heading carries its [NON-CALL] label in bold. */
+    var titleHTML = escBoard(s.title).replace("[NON-CALL]", "<strong>[NON-CALL]</strong>");
+    /* Every section carries exactly one ABOUT tap beside the section
+       heading (the play's name), outside any card or inner box — so
+       the reader can learn what the play is whether the section
+       holds plays today, prints NONE, or is SPECIAL PLAY. */
+    var headingAbout = aboutTapHTML(s.title);
+    var h = '<section style="margin-top:2rem">'
+      + (headingAbout ? '<div class="about-head-row"><h3 style="font-size:20px">'+titleHTML+'</h3>' + headingAbout + '</div>' : '<h3 style="font-size:20px">'+titleHTML+'</h3>');
+    if(s.intro) h += '<p style="margin-top:.375rem;line-height:1.65" class="dim">'+escBoard(s.intro)+'</p>';
+    if(s.kind==="special"){
+      if(s.plays && s.plays.length){
+        s.plays.forEach(function(p){
+          var price = p.price != null ? String(p.price) : (p.close != null ? String(p.close).split(" ")[0] : "");
+          if(price && price.charAt(0)!=="$") price = "$"+price;
+          h += '<p style="margin-top:.5rem;line-height:1.65"><strong>('+esc(p.ticker)+')</strong> <strong>'+esc(p.name)+'</strong>'+(p.category ? ' '+esc(p.category) : '')+(p.action ? ' — '+esc(p.action) : '')+' <strong>('+esc(price)+')</strong>'+(p.suffix ? esc(p.suffix) : '')+(p.suffixBold ? '<strong>'+esc(p.suffixBold)+'</strong>' : '')+(p.suffixAfter ? esc(p.suffixAfter) : '')+'</p>';
+        });
+      } else {
+        h += '<p style="margin-top:.375rem;line-height:1.65">NONE</p>';
+      }
+    }
+    if(s.kind==="bare"){
+      h += '<p style="margin-top:.375rem;line-height:1.65">' + escBoard(s.body ? s.body : "NONE") + '</p>';
+    }
+    if(s.kind==="spyqqq" && (!s.plays || !s.plays.length)){
+      h += '<p style="margin-top:.375rem;line-height:1.65">NONE</p>';
+    }
+    if((s.kind==="plays" || s.kind==="spyqqq") && s.plays && s.plays.length){
+      /* DTM door only — phone: stacked cards, play + close up top and the
+         full read wrapped underneath, so no word runs off the screen.
+         The LTIM door's room renders this board exactly as built. */
+      if(entryMode!=="ltim"){
+      h += '<ul class="open-cards">';
+      s.plays.forEach(function(p){
+        h += '<li><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.125rem .5rem">'+(isDirAction(p.action)?'':'<span style="font-weight:700">'+esc(p.action)+'</span>')+'<span style="font-weight:700">('+esc(p.ticker)+')</span>'+playNameHTML(p)+'</div>'
+          + (p.action==="[NON-CALL]" ? '<p style="margin-top:.375rem"><span style="font-size:12px;font-weight:700" class="faint">'+escBoard(p.closeLabel)+'</span> <span class="mono" style="font-size:16px;font-weight:700">'+esc(p.close)+'</span></p>' : "")
+          + '<p style="margin-top:.5rem;line-height:1.65">'+readHTML(p)+'</p>'
+          + (p.exitRule?'<p class="exitbox"><strong>Your exit, on this play:</strong> '+exitRuleHTML(p)+'</p>':"")
+          + (p.exitNote?'<p style="margin-top:.5rem;line-height:1.65">'+escBoard(p.exitNote)+'</p>':"")
+          + stopTapHTML(p)
+          + (p.previous3?prev3TapHTML(p.previous3):"")
+          + '</li>';
+      });
+      h += '</ul>';
+      }
+      h += '<div class="tblwrap'+(entryMode!=="ltim" ? " open-table" : "")+'"><table><thead><tr><th scope="col">Play</th><th scope="col">Closed at</th><th scope="col">The read</th></tr></thead><tbody>';
+      s.plays.forEach(function(p){
+        var leanClose = p.action==="[NON-CALL]";
+        h += '<tr><td>'+(entryMode!=="ltim" && isDirAction(p.action) ? '' : '<span style="font-weight:700">'+esc(p.action)+'</span> ')+(entryMode!=="ltim" ? '<span style="font-weight:700">('+esc(p.ticker)+')</span>' : '<span class="mono" style="font-weight:600">('+esc(p.ticker)+')</span>')+'<span style="display:block">'+playNameHTML(p)+'</span></td>'
+          + '<td style="white-space:nowrap"><span style="display:block;font-size:12px'+(leanClose?';font-weight:700':'')+'" class="faint">'+escBoard(p.closeLabel)+'</span><span class="mono" style="font-size:16px;font-weight:'+(leanClose?'700':'600')+'">'+esc(p.close)+'</span></td>'
+          + '<td style="line-height:1.65">'+readHTML(p)+(p.exitRule?'<span class="exitbox" style="display:block;margin-top:.5rem"><strong>Your exit, on this play:</strong> '+exitRuleHTML(p)+'</span>':"")+(p.exitNote?'<span style="display:block;margin-top:.5rem;line-height:1.65">'+escBoard(p.exitNote)+'</span>':"")+stopTapHTML(p)+(p.previous3?prev3TapHTML(p.previous3):"")+'</td></tr>';
+      });
+      h += '</tbody></table></div>';
+    }
+    if(s.kind==="open" && s.openRows){
+      h += '<ul class="open-cards">';
+      s.openRows.forEach(function(r){
+        h += '<li><div style="display:flex;align-items:baseline;justify-content:space-between;gap:.75rem"><span class="mono" style="font-size:16px;font-weight:600">'+esc(r.ticker)+'</span><span class="mono" style="font-weight:600;white-space:nowrap;color:'+(r.pnlUp?"var(--up)":"var(--down)")+'">'+esc(r.pnl)+'<span style="margin-left:.25rem;font-size:12px;font-weight:400" class="faint">(50 sh)</span></span></div>'
+          + '<p style="margin-top:.125rem" class="dim">'+esc(r.name)+'</p>'
+          + '<p class="mono" style="margin-top:.375rem;font-size:13px" ><span class="dim">In '+esc(r.entry)+' · Now '+esc(r.now)+' · Day '+esc(r.day)+'</span></p></li>';
+      });
+      h += '</ul>';
+      h += '<div class="tblwrap open-table"><table><thead><tr><th scope="col">Name</th><th scope="col">In</th><th scope="col">Now</th><th scope="col">P&amp;L (50 sh)</th><th scope="col">Day</th></tr></thead><tbody>';
+      s.openRows.forEach(function(r){
+        h += '<tr><td><span class="mono" style="font-weight:600">'+esc(r.ticker)+'</span><span style="display:block" class="dim">'+esc(r.name)+'</span></td>'
+          + '<td class="mono" style="white-space:nowrap">'+esc(r.entry)+'</td><td class="mono" style="white-space:nowrap">'+esc(r.now)+'</td>'
+          + '<td class="mono" style="font-weight:600;white-space:nowrap;color:'+(r.pnlUp?"var(--up)":"var(--down)")+'">'+esc(r.pnl)+'</td>'
+          + '<td style="white-space:nowrap">'+esc(r.day)+'</td></tr>';
+      });
+      h += '</tbody></table></div>';
+    }
+    if(s.kind==="notes" && s.noteLines){
+      s.noteLines.forEach(function(line){
+        var colon = line.indexOf(":");
+        h += '<p style="margin-top:.625rem;line-height:1.65">'+(colon>0 ? "<strong>"+escBoard(line.slice(0,colon+1))+"</strong>"+escBoard(line.slice(colon+1)) : escBoard(line))+'</p>';
+      });
+    }
+    if(s.footerLines){
+      s.footerLines.forEach(function(line){ h += '<p style="margin-top:.75rem;line-height:1.65" class="dim">'+escBoard(line)+'</p>'; });
+    }
+    if(s.exitRule){
+      h += '<p class="exitbox"><strong>Your exit, on this play:</strong> '+escBoard(s.exitRule)+'</p>';
+    }
+    h += '</section>';
+    return h;
+  }
+  /* Money's introduction — standing at the very front of the Door's
+     first step page, above the date headline and the two mode entrance
+     cards, as ONE centered block: the face centered above the greeting,
+     greeting and paragraph center-aligned, then exactly one sentence — the
+     letter's opening line — as the block's only body text. No other
+     letter paragraphs, no signature, no mode cards in here.
+     To remove it: delete this function, its call at the bottom, and the
+     #door-intro container on the door stage; nothing else references it. */
+  function renderDoorIntro(){
+    var h = '<div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:.75rem">'
+      + '<img class="face face-door" src="data:image/webp;base64,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" alt="Money (Ai)&trade; — the AI agent on the desk" width="64" height="64" />'
+      + '<div><h2 style="font-size:24px;text-align:center">Hi, I&rsquo;m Money (Ai)&trade;.</h2></div></div>'
+      + '<div class="letter-body" style="text-align:center"><p style="text-align:center;color:var(--text)">' + esc(LETTER_PARAS[0]) + '</p></div>';
+    $("door-intro").innerHTML = h;
+  }
+  /* DTM price stamp — printed at the top of the daily card, directly
+     under the research line and above the first Trade section, in the
+     same small note style as the LTIM price-date line. It is its own
+     element (class "dtm-price-stamp-line", data-dtm-price-stamp) with
+     its text in this one variable, so the daily board rebuild can
+     rewrite its dates and time each morning without touching
+     anything around it. */
+  var DTM_PRICE_STAMP = "All prices on this card are the official closing prices of Tuesday, November 17, 2026, when the market closed at 1:00 PM PT. Checked at 5:30 AM PT on Wednesday, November 18, 2026.";
+  /* SPY & QQQ — a board section with two states, driven by its slot
+     in BOARD.sections (kind "spyqqq", title "SPY & QQQ"). The slot
+     carries a plays array in the board's standard play shape
+     (action, ticker, name, closeLabel, close, read, previous3,
+     exitRule) — empty tonight, so a future morning build only has
+     to supply the play object.
+     STATE B (no play): renders in place as a bare section — heading,
+     ABOUT tap, NONE — FIRST in the board's NONE group, directly
+     after the last play section and before The Breakout Trade, with
+     no price lines. SPECIAL PLAY remains last on the board.
+     STATE A (play present): renders at the TOP of the board,
+     immediately after the price stamp and before every other
+     section, in the board's standard full play format via
+     sectionHTML (headline, opening sentence / Win Line, exit box,
+     3 HOUR CANDLE READS tap). Its ABOUT tap and screen ride the
+     board's ABOUT machinery (the "SPY & QQQ" entry in
+     ABOUT_TEXTS / ABOUT_ORDER). */
+  function spyQqqSection(){
+    for(var i=0;i<BOARD.sections.length;i++){
+      var s = BOARD.sections[i];
+      if(s.kind==="spyqqq" && s.title==="SPY & QQQ") return s;
+    }
+    return null;
+  }
+  function renderFront(){
+    var h = '<div id="dtm-board"><div class="row-between" style="margin-top:1.5rem;align-items:flex-end">'
+      + '<div><p class="kicker">'+(entryMode==="ltim" ? "Front" : "DTM")+' · Day Trading Mode</p><h2 style="margin-top:.25rem;font-size:24px">4 Plays for the Day</h2>'
+      + '<p style="margin-top:.25rem;font-size:14px" class="dim">'+escBoard(BOARD.gradedLine)+'</p></div>'
+      + '</div>'
+      + '<p style="margin-top:.75rem;line-height:1.65;font-weight:700"><strong>***THIS IS A RESEARCH TOOL TO HELP YOU MAKE AN INFORMED DECISION***</strong></p>'
+      + '<p style="margin-top:.75rem;line-height:1.65" class="dim dtm-price-stamp-line" data-dtm-price-stamp>'+escBoard(DTM_PRICE_STAMP)+'</p>';
+    var spySec = spyQqqSection();
+    var spyAtTop = !!(spySec && spySec.plays && spySec.plays.length);
+    if(spyAtTop) h += sectionHTML(spySec);
+    BOARD.sections.forEach(function(s){ if(spyAtTop && s === spySec) return; h += sectionHTML(s); });
+    h += '</div>' + aboutScreensHTML();
+    $("tab-front").innerHTML = h;
+    wirePrev3Taps($("tab-front"));
+    wireStopTaps($("tab-front"));
+    wireCloseBtns($("tab-front"));
+    wireAboutTaps($("tab-front"));
+  }
+
+  /* ---------- LTIM ---------- */
+  /* The room opens on a picker: headline, research line, intro and the
+     three trajectory cards — no company lists. Each trajectory card is
+     a door into that trajectory's own view, which carries only its own
+     list under its title + sub-line, with the research line at the top,
+     a horizon switcher and a back control. Company card content is
+     rendered exactly as it always was. */
+  var ltimView = "picker";
+  /* Roster note + price-date line printed under the intro on every
+     trajectory list page, where the old November 2 price-basis line
+     stood. The price-date line is its own element (class
+     "price-date-line", data-price-date) so it can be updated on its
+     own each trading day. */
+  var ROSTER_NOTE = "This roster was set on Monday, November 2, 2026, at that day's closing prices. The roster does not change until the next monthly reset, on Tuesday, December 1, 2026. The price on each card is refreshed every trading day to the latest official close.";
+  var PRICE_DATE_LINE = "Prices as of the closes of Tuesday, November 17, 2026.";
+  /* November 2, 2026 closing prices — the price each roster name was
+     set at. Rendered as its own element (class "set-price-line",
+     data-set-price) on every LTIM card face, kept fully separate
+     from the current price so the daily price refresh — which
+     updates only the current price and the price-date line above —
+     never touches it. */
+  /* Current-price line — rendered as its own element (class
+     "current-price-line", data-current-price="<ticker>") on every
+     LTIM card face, directly above the set-price line, in the same
+     small note style. Its price is the card's current price (n.price,
+     the latest official close) and its date is the close date below,
+     so the daily price refresh can update this line on its own —
+     exactly like the price-date line above — without touching the
+     set-price line. */
+  var CURRENT_PRICE_CLOSED = "Tuesday, November 17, 2026";
+  var SET_PRICES = {
+    "XOM": "$179.67",
+    "LLY": "$1,410.99",
+    "ABBV": "$288.84",
+    "MA": "$658.10",
+    "V": "$425.51",
+    "COST": "$1,040.55",
+    "WMT": "$127.69",
+    "BRK-B": "$556.11",
+    "AAPL": "$338.32",
+    "MSFT": "$507.12",
+    "UNH": "$400.44",
+    "JPM": "$340.58"
+  };
+  /* Signed percentage change from a card's set price to its current
+     price: (current - set) / set * 100, two decimals, always signed
+     ("+2.30%" / "−5.05%", proper minus U+2212 for negatives).
+     Computed here in the renderer from the two stored prices (the
+     shelf price field and SET_PRICES) — never hardcoded — so the
+     daily price refresh, which updates the current price, recomputes
+     the percentage automatically. Returns "" when either price is
+     missing or unparseable. */
+  function parsePrice(s){
+    var v = parseFloat(String(s).replace(/[$,]/g, ""));
+    return isNaN(v) ? null : v;
+  }
+  function pctValue(currentPrice, setPrice){
+    var cur = parsePrice(currentPrice);
+    var set = parsePrice(setPrice);
+    if(cur === null || set === null || set === 0) return null;
+    return (cur - set) / set * 100;
+  }
+  function pctChangeSuffix(currentPrice, setPrice){
+    var pct = pctValue(currentPrice, setPrice);
+    if(pct === null) return "";
+    var abs = Math.abs(pct).toFixed(2);
+    var sign = (pct < 0 && abs !== "0.00") ? "−" : "+";
+    return " (" + sign + abs + "%)";
+  }
+  /* LTIM weekly ranked order — struck once for the week from the
+     percentages off the prices then on the cards (set prices vs
+     current prices), highest percentage first, and HELD for the
+     week. The render follows this stored order exactly; it does
+     NOT re-sort when prices refresh during the week. Struck from
+     the closes of Friday, November 13, 2026. A BUY always stands
+     above a WATCH, even when the Watch's percentage is higher;
+     percentages order the names within each group only — Buys
+     first (best percentage first), then Watches (best percentage
+     first); no rank numbers print. */
+  var LTIM_WEEKLY_ORDER = {
+    s1: ["BRK-B", "COST", "AAPL", "LLY", "ABBV", "MA", "V", "XOM", "UNH"],
+    s2: ["BRK-B", "COST", "AAPL", "MSFT", "LLY", "ABBV", "MA", "V", "XOM", "UNH", "WMT"],
+    s3: ["COST", "AAPL", "LLY", "ABBV", "WMT", "JPM", "V", "XOM"]
+  };
+  function orderedLtimNames(shelf){
+    var order = LTIM_WEEKLY_ORDER[shelf.id];
+    if(!order) return shelf.names.slice();
+    var rank = {};
+    order.forEach(function(ticker, i){ rank[ticker] = i; });
+    return shelf.names.slice().sort(function(a, b){
+      var ra = (a.ticker in rank) ? rank[a.ticker] : order.length;
+      var rb = (b.ticker in rank) ? rank[b.ticker] : order.length;
+      return ra - rb;
+    });
+  }
+  function showLtimView(v){
+    ltimView = v;
+    var picker = $("ltim-picker");
+    if(picker) picker.classList.toggle("hidden", v !== "picker");
+    SHELVES.forEach(function(shelf){
+      var view = $("ltim-view-" + shelf.id);
+      if(view) view.classList.toggle("hidden", v !== shelf.id);
+    });
+    window.scrollTo(0, 0);
+  }
+  function trajSwitcherHTML(activeId){
+    var items = [ ["s1", "30-Day"], ["s2", "6-Month"], ["s3", "1–5 Year"] ];
+    var s = '<div class="tabs" style="margin-top:1rem;padding-bottom:0" role="group" aria-label="Switch trajectory">';
+    items.forEach(function(it){
+      s += '<button type="button" data-traj-go="' + it[0] + '" aria-pressed="' + (it[0] === activeId ? "true" : "false") + '">' + it[1] + '</button>';
+    });
+    return s + '</div>';
+  }
+  function renderLtim(){
+    var TRAJ = {
+      s1: { num: "1 of 3", big: "30-DAY TRAJECTORY", name: "30+ DAYS" },
+      s2: { num: "2 of 3", big: "6-MONTH TRAJECTORY", name: "6 months to 1+ YEARS" },
+      s3: { num: "3 of 3", big: "1–5 YEAR TRAJECTORY", name: "1 to 5+ YEARS" }
+    };
+    ltimView = "picker";
+    var h = '<div id="ltim-picker"><div style="margin-top:1.5rem"><p class="kicker">Long Term Investing Mode</p>'
+      + '<h2 style="margin-top:.25rem;font-size:24px">LONG TERM INVESTING</h2>'
+      + '<p style="margin-top:.75rem;line-height:1.65;font-weight:700"><strong>***THIS IS A RESEARCH TOOL TO HELP YOU MAKE AN INFORMED DECISION***</strong></p>'
+      + '<p style="margin-top:.75rem;line-height:1.65">There are <strong>only 3 trajectories in LTIM</strong> — <span style="font-weight:700;font-size:1.25em;color:var(--text)">select one</span>. Pick the clock that fits your needs, then read its list.</p>'
+      + '<div class="traj-overview" aria-label="The three LTIM trajectories — tap one to open its list">'
+      + '<div class="traj-chip" role="button" tabindex="0" data-traj="s1" aria-label="Open the 30-Day Trajectory list"><p class="t-label">Trajectory 1 of 3</p><p class="t-horizon">30-DAY TRAJECTORY</p><p class="t-name">30+ DAYS</p></div>'
+      + '<div class="traj-chip" role="button" tabindex="0" data-traj="s2" aria-label="Open the 6-Month Trajectory list"><p class="t-label">Trajectory 2 of 3</p><p class="t-horizon">6-MONTH TRAJECTORY</p><p class="t-name">6 months to 1+ YEARS</p></div>'
+      + '<div class="traj-chip" role="button" tabindex="0" data-traj="s3" aria-label="Open the 1–5 Year Trajectory list"><p class="t-label">Trajectory 3 of 3</p><p class="t-horizon">1–5 YEAR TRAJECTORY</p><p class="t-name">1 to 5+ YEARS</p></div>'
+      + '</div></div></div>';
+    SHELVES.forEach(function(shelf){
+      var t = TRAJ[shelf.id] || { num: "", big: shelf.horizon, name: shelf.title };
+      h += '<div id="ltim-view-' + shelf.id + '" class="hidden">'
+        + '<div style="margin-top:1.5rem">'
+        + '<button type="button" class="btn btn-main btn-ghost" data-traj-back style="width:auto;padding:.625rem 1rem;font-size:14px">&larr; All trajectories</button>'
+        + trajSwitcherHTML(shelf.id)
+        + '<p style="margin-top:1rem;line-height:1.65;font-weight:700"><strong>***THIS IS A RESEARCH TOOL TO HELP YOU MAKE AN INFORMED DECISION***</strong></p>'
+        + '</div>'
+        + '<section style="margin-top:1.5rem">'
+        + '<div class="traj-banner"><p class="b-label">LTIM Trajectory '+esc(t.num)+' · '+esc(shelf.strategy)+'</p>'
+        + '<p class="b-horizon">'+esc(t.big)+'</p>'
+        + '<h3 class="b-title">'+esc(shelf.title)+'</h3></div>'
+        + '<p style="margin-top:.75rem;line-height:1.65" class="dim">'+esc(shelf.intro)+'</p>'
+        + '<p style="margin-top:.75rem;line-height:1.65" class="dim">'+esc(ROSTER_NOTE)+'</p>'
+        + (shelf.id === "s3" ? '<p style="margin-top:.75rem;line-height:1.65" class="dim">This list is graded on one-year holds. The three-to-five-year holds have not been graded yet.</p>' : '')
+        + '<p style="margin-top:.75rem;line-height:1.65" class="dim price-date-line" data-price-date>'+esc(PRICE_DATE_LINE)+'</p><ul style="list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.625rem">';
+      var orderedNames = orderedLtimNames(shelf);
+      orderedNames.forEach(function(n){
+        var infoId = "info-"+shelf.id+"-"+n.ticker;
+        h += '<li class="card" style="padding:1rem"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.25rem .75rem">'
+          + '<span class="mono" style="font-size:16px;font-weight:600">('+esc(n.ticker)+')</span>'
+          + '<span class="pill '+(n.status==="on"?"pill-on":"pill-watch")+'">'+(n.status==="on"?"BUY":"Watch")+'</span>'
+          + '<span style="font-weight:500">'+esc(n.name)+'</span> <strong>($'+esc(String(n.price).replace(/^\$/,""))+')</strong></div>'
+          + '<p class="current-price-line" data-current-price="'+esc(n.ticker)+'">Current price — closed '+esc(CURRENT_PRICE_CLOSED)+' at '+esc(n.price)+'<span class="pct-change">'+esc(pctChangeSuffix(n.price, SET_PRICES[n.ticker]))+'</span></p>'
+          + (SET_PRICES[n.ticker] ? '<p class="set-price-line" data-set-price="'+esc(n.ticker)+'">Set Monday, November 2, 2026 at '+esc(SET_PRICES[n.ticker])+'</p>' : '')
+          + '<p style="margin-top:.375rem;line-height:1.65" class="dim">'+esc(n.why)+'</p>'
+          + '<button type="button" class="info-btn" data-info-btn aria-expanded="false" aria-controls="'+infoId+'">MORE INFO</button>'
+          + '<div class="info-text hidden" id="'+infoId+'">'+esc(n.info)+closeBtnHTML(infoId)+'</div></li>';
+      });
+      h += '</ul>';
+      if(shelf.footnote) h += '<p style="margin-top:.75rem;line-height:1.65" class="dim">'+esc(shelf.footnote)+'</p>';
+      h += '</section></div>';
+    });
+    $("tab-ltim").innerHTML = h;
+    var chips = $("tab-ltim").querySelectorAll("[data-traj]");
+    for(var c=0;c<chips.length;c++){
+      chips[c].addEventListener("click", function(){ showLtimView(this.getAttribute("data-traj")); });
+      chips[c].addEventListener("keydown", function(e){
+        if(e.key === "Enter" || e.key === " "){ e.preventDefault(); showLtimView(this.getAttribute("data-traj")); }
+      });
+    }
+    var goBtns = $("tab-ltim").querySelectorAll("[data-traj-go]");
+    for(var g=0;g<goBtns.length;g++){
+      goBtns[g].addEventListener("click", function(){ showLtimView(this.getAttribute("data-traj-go")); });
+    }
+    var backBtns2 = $("tab-ltim").querySelectorAll("[data-traj-back]");
+    for(var b=0;b<backBtns2.length;b++){
+      backBtns2[b].addEventListener("click", function(){ showLtimView("picker"); });
+    }
+    var infoBtns = $("tab-ltim").querySelectorAll("[data-info-btn]");
+    for(var i=0;i<infoBtns.length;i++){
+      infoBtns[i].addEventListener("click", function(){
+        var panel = $(this.getAttribute("aria-controls"));
+        if(!panel) return;
+        var open = panel.classList.toggle("hidden") === false;
+        this.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    }
+    wireCloseBtns($("tab-ltim"));
+  }
+
+  /* ---------- Crypto Currency ABOUT screens ---------- */
+  /* Every item in the Crypto room carries an ABOUT tap in the same
+     form as the Day Trading Mode sections: one tap beside the item's
+     heading, outside the item's inner box, opening that item's own
+     screen with the brief below and a CLOSE tap at the bottom that
+     returns the reader to their place. The briefs are the owner's
+     approved words, printed exactly. */
+  var CRYPTO_ABOUT_TEXTS = {
+    "Top 5 Cryptos": "The five biggest cryptocurrencies we follow, with the prices they are trading at right now. The prices are stamped with the time they were checked and refreshed as the room updates — so you always know this room is live and current.",
+    "BREAKOUT": "A day trade that buys strength — when a coin pushes through to a new high, this play follows it in. It is in forward practice: it books every night, and it prints here as a play only when it has earned its standing.",
+    "THE CONNORS": "A day trade built on the Connors method. It buys a sharp short-term pullback in a coin that is still in an uptrend, looking for the bounce back. It is in forward practice: it books every night, and it prints here as a play only when it has earned its standing.",
+    "THE MONEY DIP": "The desk's own find, born in the Money (Ai) lab. It buys a coin that has washed out and keeps holding its low — the dip that refuses to break. It is in forward practice: it books every night, and it prints here as a play only when it has earned its standing.",
+    "DOWN-STREAK": "A day trade that buys a coin after a run of straight down days, looking for the snap back up. It is in forward practice: it books every night, and it prints here as a play only when it has earned its standing.",
+    "GATED BREAKOUT": "A stricter cousin of the Breakout. It only takes the push to a new high when the move also passes an extra strength check, so it trades less often and picks its spots. It is in forward practice: it books every night, and it prints here as a play only when it has earned its standing.",
+    "LONG": "The long-term buy list. A coin earns its place here by passing the long-term screen, and a name prints only when it has qualified — until then the list stands empty.",
+    "SHORT": "The long-term sell list. Unlike the stock side of this house, this room can bet against a coin as well as buy it — a name appears here when the long-term screen says it is headed down.",
+    "PAIR vs BTC": "Names measured against Bitcoin itself, not the dollar. The play holds Bitcoin and bets against a weaker coin at the same time, so it can make money in an up market or a down market — all that matters is the weaker coin losing its race against Bitcoin."
+  };
+  var CRYPTO_ABOUT_ORDER = ["Top 5 Cryptos", "BREAKOUT", "THE CONNORS", "THE MONEY DIP", "DOWN-STREAK", "GATED BREAKOUT", "LONG", "SHORT", "PAIR vs BTC"];
+  function cryptoAboutScreenId(title){
+    return "crypto-about-" + String(title).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  }
+  function cryptoAboutTapHTML(title){
+    if(!CRYPTO_ABOUT_TEXTS[title]) return "";
+    return '<button type="button" class="info-btn" data-crypto-about-btn data-crypto-about-target="' + cryptoAboutScreenId(title) + '" aria-label="About ' + esc(title) + '">ABOUT</button>';
+  }
+  function cryptoAboutScreensHTML(){
+    var h = "";
+    CRYPTO_ABOUT_ORDER.forEach(function(title){
+      var id = cryptoAboutScreenId(title);
+      h += '<div class="hidden" id="' + id + '" data-crypto-about-screen>'
+        + '<section style="margin-top:1.5rem"><h2 style="font-size:24px">' + esc(title) + '</h2>'
+        + '<p style="margin-top:1rem;line-height:1.65">' + esc(CRYPTO_ABOUT_TEXTS[title]) + '</p>'
+        + '<div style="margin-top:1.5rem"><button type="button" class="info-btn" data-crypto-about-close-btn>CLOSE</button></div>'
+        + '</section></div>';
+    });
+    return h;
+  }
+  var cryptoAboutReturnScroll = 0;
+  function wireCryptoAboutTaps(root){
+    var btns = root.querySelectorAll("[data-crypto-about-btn]");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click", function(){
+        var screen = $(this.getAttribute("data-crypto-about-target"));
+        var board = $("crypto-board");
+        if(!screen || !board) return;
+        cryptoAboutReturnScroll = window.scrollY || window.pageYOffset || 0;
+        board.classList.add("hidden");
+        var screens = root.querySelectorAll("[data-crypto-about-screen]");
+        for(var k=0;k<screens.length;k++){ screens[k].classList.toggle("hidden", screens[k] !== screen); }
+        window.scrollTo(0, 0);
+      });
+    }
+    var closeBtns = root.querySelectorAll("[data-crypto-about-close-btn]");
+    for(var j=0;j<closeBtns.length;j++){
+      closeBtns[j].addEventListener("click", function(){
+        var board = $("crypto-board");
+        var screens = root.querySelectorAll("[data-crypto-about-screen]");
+        for(var k=0;k<screens.length;k++){ screens[k].classList.add("hidden"); }
+        if(board) board.classList.remove("hidden");
+        window.scrollTo(0, cryptoAboutReturnScroll);
+      });
+    }
+  }
+
+  /* Shared Top 5 list — one price set everywhere in the Crypto room:
+     the Top 5 panel at the top and inside every card box, so no box
+     renders blank. Prices bold, normal room text, no stamp inside
+     the individual boxes (the stamp lives on the Top 5 panel only). */
+  function cryptoTop5ListHTML(){
+    return '<p style="line-height:1.65">BTC (Bitcoin) <strong>$64,426.66</strong></p>'
+      + '<p style="margin-top:.25rem;line-height:1.65">ETH (Ethereum) <strong>$1,807.46</strong></p>'
+      + '<p style="margin-top:.25rem;line-height:1.65">XRP (Ripple) <strong>$0.9782</strong></p>'
+      + '<p style="margin-top:.25rem;line-height:1.65">SOL (Solana) <strong>$74.84</strong></p>'
+      + '<p style="margin-top:.25rem;line-height:1.65">DOGE (Dogecoin) <strong>$0.0593</strong></p>';
+  }
+
+  /* ---------- Crypto Currency ---------- */
+  /* One room, both sides inside: DAY TELLS up front, LONG TERM behind
+     its horizon buttons (30+ days / 6 months / 1–5 years), each horizon
+     holding LONG / SHORT / PAIR vs BTC views. Every play and list in
+     the room carries the COMING SOON label — no live plays, nothing
+     tradeable. */
+  var cryptoView = "c1";
+  function showCryptoView(v){
+    cryptoView = v;
+    CRYPTO_HORIZONS.forEach(function(hz){
+      var view = $("crypto-view-" + hz.id);
+      if(view) view.classList.toggle("hidden", v !== hz.id);
+      var btn = $("crypto-btn-" + hz.id);
+      if(btn) btn.setAttribute("aria-pressed", v === hz.id ? "true" : "false");
+    });
+  }
+  function renderCrypto(){
+    cryptoView = "c1";
+    var h = '<div id="crypto-board"><div style="margin-top:1.5rem"><p class="kicker">Crypto Currency</p>'
+      + '<h2 style="margin-top:.25rem;font-size:24px">CRYPTO CURRENCY</h2>'
+      + '<p style="margin-top:.75rem;line-height:1.65;font-weight:700"><strong>***THIS IS A RESEARCH TOOL TO HELP YOU MAKE AN INFORMED DECISION***</strong></p>'
+      + '<p style="margin-top:.75rem;line-height:1.65" class="dim">One room, both sides inside — the day tells and the long-term lists together, and unlike Long Term Investing Mode this room can short as well as buy. Every play in it stands as <strong>COMING SOON</strong>.</p></div>';
+
+    /* Top 5 price strip — heading + ABOUT tap sit outside the panel,
+       in the same about-head-row form as the Day Trading Mode
+       sections; the panel itself keeps its prices and stamp. */
+    h += '<section style="margin-top:1.5rem"><div class="about-head-row"><h3 style="font-size:18px;line-height:1.4">Top 5 Cryptos</h3>' + cryptoAboutTapHTML("Top 5 Cryptos") + '</div><article class="card" style="margin-top:.75rem">'
+      + cryptoTop5ListHTML()
+      + '<p style="margin-top:.75rem;font-size:13px;line-height:1.5" class="faint">Prices as of 7:14 PM PT on <strong style="color:var(--text)">Tuesday, November 17, 2026</strong>.</p></article></section>';
+
+    /* Day tells */
+    h += '<section style="margin-top:2rem"><div class="about-head-row"><h3 style="font-size:20px">Day Trades</h3><span class="pill pill-soon">Coming Soon</span></div>'
+      + '<p style="margin-top:.375rem;line-height:1.65" class="dim">Five trading strategies are in forward practice — they book nightly from tonight&rsquo;s candle, and the first graded read comes at about 30 trades. The daily side of the room.</p>'
+      + '<div class="stack" style="margin-top:1rem">';
+    CRYPTO_DAY_TELLS.forEach(function(t){
+      h += '<div><div class="about-head-row"><h3 style="font-size:18px;line-height:1.4">' + esc(t.name) + '</h3>' + cryptoAboutTapHTML(t.name) + '</div>'
+        + '<article class="card" style="margin-top:.5rem"><div style="display:flex;justify-content:flex-end"><span class="pill pill-soon">Coming Soon</span></div><div style="margin-top:.75rem">' + cryptoTop5ListHTML() + '</div></article></div>';
+    });
+    h += '</div></section>';
+
+    /* Long term — horizon buttons inside the room */
+    h += '<section style="margin-top:2.5rem"><div class="about-head-row"><h3 style="font-size:20px">Long Term</h3><span class="pill pill-soon">Coming Soon</span></div>'
+      + '<p style="margin-top:.375rem;line-height:1.65" class="dim">The long-term side of the same room — pick a horizon. Each one holds three views: <strong>LONG</strong>, <strong>SHORT</strong>, and <strong>PAIR vs BTC</strong>. The lists stand empty today; the first screens print December 1.</p>'
+      + '<div class="tabs" style="margin-top:1rem;padding-bottom:0" role="group" aria-label="Crypto long-term horizons">';
+    CRYPTO_HORIZONS.forEach(function(hz){
+      h += '<button type="button" id="crypto-btn-' + hz.id + '" data-crypto-horizon="' + hz.id + '" aria-pressed="' + (hz.id === "c1" ? "true" : "false") + '">' + esc(hz.label) + '</button>';
+    });
+    h += '</div>';
+    CRYPTO_HORIZONS.forEach(function(hz){
+      h += '<div id="crypto-view-' + hz.id + '"' + (hz.id === "c1" ? "" : ' class="hidden"') + '>'
+        + '<div class="traj-banner" style="margin-top:1rem"><p class="b-label">Crypto Currency · Long Term</p>'
+        + '<p class="b-horizon">' + esc(hz.big) + '</p>'
+        + '<p class="b-sub">Long, short, and paired against Bitcoin — every list below stands as COMING SOON.</p></div>'
+        + '<div class="stack" style="margin-top:1rem">';
+      hz.views.forEach(function(v){
+        h += '<div><div class="about-head-row"><h3 style="font-size:18px;line-height:1.4">' + esc(v.side) + '</h3>' + cryptoAboutTapHTML(v.side) + '</div>'
+          + '<article class="card" style="margin-top:.5rem"><div style="display:flex;justify-content:flex-end"><span class="pill pill-soon">Coming Soon</span></div><div style="margin-top:.75rem">' + cryptoTop5ListHTML() + '</div>'
+          + (v.note ? '<p style="margin-top:.5rem;line-height:1.65" class="dim">' + esc(v.note) + '</p>' : '') + '</article></div>';
+      });
+      h += '</div></div>';
+    });
+    h += '</section>';
+
+    h += '<p style="margin-top:2.5rem;line-height:1.65" class="dim">Nothing in this room prints on a hunch. Every play is tested before it earns a place here — a list appears only when a play has earned it.</p></div>' + cryptoAboutScreensHTML();
+
+    $("tab-crypto").innerHTML = h;
+    var hzBtns = $("tab-crypto").querySelectorAll("[data-crypto-horizon]");
+    for(var i=0;i<hzBtns.length;i++){
+      hzBtns[i].addEventListener("click", function(){ showCryptoView(this.getAttribute("data-crypto-horizon")); });
+    }
+    wireCryptoAboutTaps($("tab-crypto"));
+  }
+
+  /* ---------- Record ---------- */
+  function renderRecord(){
+    var h = '<div style="margin-top:1.5rem"><p class="kicker">Back Pages · the record</p>'
+      + '<h2 style="margin-top:.25rem;font-size:24px">The graded record — nothing graduates on a friendly window</h2>'
+      + '<p style="margin-top:.75rem;line-height:1.65" class="dim">Every tell on this desk is tested the full way — three years, 2024–2026, split by year, best trades removed to check it isn&rsquo;t two lucky days carrying the system. This is the record a reader can inspect before they ever follow a play. Quality first, then market.</p></div>'
+      + '<div class="stack" style="margin-top:1.5rem">';
+    RECORD_ENTRIES.forEach(function(e){
+      h += '<article class="card"><div class="row-between"><h3 style="font-size:18px;line-height:1.4;max-width:28rem">'+esc(e.title)+'</h3><p class="fig" style="color:'+(e.up?"var(--up)":"var(--down)")+'">'+esc(e.figure)+'</p></div>'
+        + '<p style="margin-top:.5rem;line-height:1.65" class="dim">'+esc(e.body)+'</p></article>';
+    });
+    h += '</div><section style="margin-top:2rem"><h3 style="font-size:20px">How a reader&rsquo;s money is reported</h3>'
+      + '<p style="margin-top:.5rem;line-height:1.65" class="dim">Long Term Investing Mode runs quiet by design — no twenty alerts a day. Losses print at the same size as wins. That&rsquo;s the whole pitch: advice that earned its place, with the record open on the table.</p></section>';
+    $("tab-record").innerHTML = h;
+  }
+
+  /* ---------- Social ---------- */
+  function renderSocial(){
+    var h = '<div style="margin-top:1.5rem"><p class="kicker">Social</p>'
+      + '<h2 style="margin-top:.25rem;font-size:24px">What the public feed gets — the weather, never the map</h2></div><div class="stack" style="margin-top:1.5rem">';
+    SOCIAL_POSTS.forEach(function(post){
+      h += '<article class="card"><div style="display:flex;align-items:center;gap:.75rem">'
+        + '<img class="face" src="data:image/webp;base64,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" alt="" width="40" height="40" />'
+        + '<div><p style="font-weight:600">Money (Ai)&trade;</p><p style="font-size:12px" class="faint">Money (Ai)&trade; · TradingPlaces Las Vegas</p></div></div>'
+        + '<p style="margin-top:.25rem;font-size:12px;font-weight:500;color:var(--accent)">'+esc(post.label)+'</p>'
+        + '<p style="margin-top:.5rem;line-height:1.65">'+esc(post.body)+'</p></article>';
+    });
+    h += '</div>';
+    $("tab-social").innerHTML = h;
+  }
+
+  /* ---------- walk / stages ---------- */
+  var stage = "door", entryMode = "day", acceptedAt = null, roomTab = "front", pendingLtimTraj = null;
+  var stages = { door: $("stage-door"), disclaimer: $("stage-disclaimer"), room: $("stage-room") };
+  function show(name){
+    stage = name;
+    Object.keys(stages).forEach(function(k){ stages[k].classList.toggle("hidden", k!==name); });
+    window.scrollTo(0,0);
+  }
+  function openRoom(){
+    renderFront(); renderLtim(); renderCrypto(); renderRecord(); renderSocial();
+    if(entryMode==="ltim"){
+      /* The Long Term Investing door opens straight onto the Long Term
+         shelves — no tab bar, no other sections in the room. */
+      $("room-tabbar").classList.add("hidden");
+      roomTab = "ltim";
+      ["front","ltim","crypto","record","social"].forEach(function(k){
+        $("tab-"+k).classList.toggle("hidden", k!=="ltim");
+      });
+    } else if(entryMode==="crypto"){
+      /* The Crypto Currency door opens straight onto the crypto room —
+         no tab bar, no other sections in the room. */
+      $("room-tabbar").classList.add("hidden");
+      roomTab = "crypto";
+      ["front","ltim","crypto","record","social"].forEach(function(k){
+        $("tab-"+k).classList.toggle("hidden", k!=="crypto");
+      });
+    } else {
+      /* The Day Trading door opens straight onto the DTM board —
+         no tab bar, no other sections in the room. */
+      $("room-tabbar").classList.add("hidden");
+      roomTab = "front";
+      ["front","ltim","crypto","record","social"].forEach(function(k){
+        $("tab-"+k).classList.toggle("hidden", k!=="front");
+      });
+    }
+    show("room");
+    if(entryMode==="ltim" && pendingLtimTraj){
+      /* A front-page horizon pill brought the visitor here: open the
+         LTIM room directly on that trajectory's list, not the picker.
+         Consumed on use so the Enter button still lands on the picker. */
+      var pendingTraj = pendingLtimTraj;
+      pendingLtimTraj = null;
+      showLtimView(pendingTraj);
+    }
+  }
+  function setTab(t){
+    roomTab = t;
+    ["front","ltim","crypto","record","social"].forEach(function(k){
+      $("tab-"+k).classList.toggle("hidden", k!==t);
+    });
+    var btns = $("room-tabs").querySelectorAll("button");
+    for(var i=0;i<btns.length;i++){ btns[i].setAttribute("aria-pressed", btns[i].getAttribute("data-tab")===t ? "true" : "false"); }
+  }
+  var enterBtns = document.querySelectorAll("[data-enter]");
+  for(var i=0;i<enterBtns.length;i++){
+    enterBtns[i].addEventListener("click", function(){
+      entryMode = this.getAttribute("data-enter");
+      pendingLtimTraj = null;
+      if(acceptedAt){
+        /* Acceptance already on file — go straight in, exactly like the
+           accept tap does: no acceptance-record card in between. */
+        openRoom();
+      } else {
+        $("disclaimer-actions").classList.remove("hidden");
+        show("disclaimer");
+      }
+    });
+  }
+  /* Front-page LTIM horizon pills: each is a door straight to its
+     trajectory's list in the LTIM room. The disclaimer gate guards
+     this route exactly as it guards Enter — unaccepted visitors see
+     the gate first and land on the list only after accepting;
+     remembered acceptance goes straight to the list. */
+  function openDoorTraj(traj){
+    entryMode = "ltim";
+    pendingLtimTraj = traj;
+    if(acceptedAt){
+      openRoom();
+    } else {
+      $("disclaimer-actions").classList.remove("hidden");
+      show("disclaimer");
+    }
+  }
+  var doorTrajPills = document.querySelectorAll("[data-door-traj]");
+  for(var d=0;d<doorTrajPills.length;d++){
+    doorTrajPills[d].addEventListener("click", function(){ openDoorTraj(this.getAttribute("data-door-traj")); });
+    doorTrajPills[d].addEventListener("keydown", function(e){
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openDoorTraj(this.getAttribute("data-door-traj")); }
+    });
+  }
+  $("btn-accept").addEventListener("click", function(){
+    acceptedAt = new Date().toLocaleString("en-US", { timeZone:"America/Los_Angeles", weekday:"short", month:"short", day:"numeric", hour:"numeric", minute:"2-digit" });
+    openRoom();
+  });
+  $("btn-decline").addEventListener("click", function(){ pendingLtimTraj = null; show("door"); });
+  $("btn-close").addEventListener("click", function(){
+    /* On an LTIM trajectory list, "Close the door" steps back one
+       level — to the trajectory picker inside the room — instead of
+       throwing the reader all the way out of the room. From the
+       picker itself (and from every other room page) it keeps its
+       meaning exactly as built: out of the room, to the door. */
+    if(roomTab === "ltim" && ltimView !== "picker"){
+      showLtimView("picker");
+      return;
+    }
+    show("door");
+  });
+  $("room-tabs").addEventListener("click", function(e){
+    var b = e.target.closest ? e.target.closest("button[data-tab]") : null;
+    if(b) setTab(b.getAttribute("data-tab"));
+  });
+  renderDoorIntro();
+  show("door");
+})();
+</script>
+</body>
+</html>
