@@ -160,6 +160,11 @@
      outside any card or inner box. */
   .info-btn[data-about-btn]{border:2px solid var(--safe-line)}
   .info-btn[data-about-close-btn]{border:2px solid var(--safe-line)}
+  /* SPY & QQQ LONG tap — the same pill form and bold Door outline as
+     the ABOUT taps above. It sits in the SPY & QQQ section only and
+     opens the panel holding that section's plays whose hold runs
+     past 10 days. */
+  .info-btn[data-long-btn]{border:2px solid var(--safe-line)}
   /* Crypto room ABOUT taps — the same form as the Day Trading Mode
      ABOUT taps above: one tap beside each item's heading, outside
      the item's inner box (its card), opening that item's own screen
@@ -805,6 +810,81 @@ var BOARD = {"dateLabel": "Wednesday, November 18, 2026", "gradedLine": "WEDNESD
       });
     }
   }
+  /* SPY & QQQ LONG — Maurice's ruling (Nov 18): any SPY/QQQ play whose
+     hold runs PAST 10 days (entry date — the board's date — to its
+     exit date) comes out of the open daily list and sits behind a
+     LONG tap, styled like the ABOUT/info tap. Plays at 10 days or
+     under stay in the open list exactly as before. Presentation
+     only: no play's spec, prices, Win Line, exit, or book changes,
+     and no other section is touched. */
+  function parseBoardDateText(text){
+    if(!text) return null;
+    var m = String(text).match(/(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),\s*(\d{4})/);
+    if(!m) return null;
+    var months = {January:0,February:1,March:2,April:3,May:4,June:5,July:6,August:7,September:8,October:9,November:10,December:11};
+    return Date.UTC(parseInt(m[3],10), months[m[1]], parseInt(m[2],10));
+  }
+  function spyPlayHoldDays(p){
+    var entry = parseBoardDateText(typeof BOARD !== "undefined" ? BOARD.dateLabel : null);
+    var exit = parseBoardDateText(p ? p.exitRule : null);
+    if(exit === null) exit = parseBoardDateText(p ? p.read : null);
+    if(entry === null || exit === null) return null;
+    return Math.round((exit - entry) / 86400000);
+  }
+  function isLongSpyPlay(p){
+    var d = spyPlayHoldDays(p);
+    return d !== null && d > 10;
+  }
+  /* The board's standard full play format — phone stacked cards plus
+     the wide-screen table — exactly as the open list renders it:
+     headline, close line, opening sentence / Win Line, exit box,
+     exit note, trailing-stop tap, and the 3 HOUR CANDLE READS tap.
+     Used for the open list and, unchanged, for the plays inside the
+     SPY & QQQ LONG panel. */
+  function playsCardsHTML(plays){
+    var h = "";
+    if(entryMode!=="ltim"){
+      h += '<ul class="open-cards">';
+      plays.forEach(function(p){
+        h += '<li><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.125rem .5rem">'+(isDirAction(p.action)?'':'<span style="font-weight:700">'+esc(p.action)+'</span>')+'<span style="font-weight:700">('+esc(p.ticker)+')</span>'+playNameHTML(p)+'</div>'
+          + (p.action==="[NON-CALL]" ? '<p style="margin-top:.375rem"><span style="font-size:12px;font-weight:700" class="faint">'+escBoard(p.closeLabel)+'</span> <span class="mono" style="font-size:16px;font-weight:700">'+esc(p.close)+'</span></p>' : "")
+          + '<p style="margin-top:.5rem;line-height:1.65">'+readHTML(p)+'</p>'
+          + (p.exitRule?'<p class="exitbox"><strong>Your exit, on this play:</strong> '+exitRuleHTML(p)+'</p>':"")
+          + (p.exitNote?'<p style="margin-top:.5rem;line-height:1.65">'+escBoard(p.exitNote)+'</p>':"")
+          + stopTapHTML(p)
+          + (p.previous3?prev3TapHTML(p.previous3):"")
+          + '</li>';
+      });
+      h += '</ul>';
+    }
+    h += '<div class="tblwrap'+(entryMode!=="ltim" ? " open-table" : "")+'"><table><thead><tr><th scope="col">Play</th><th scope="col">Closed at</th><th scope="col">The read</th></tr></thead><tbody>';
+    plays.forEach(function(p){
+      var leanClose = p.action==="[NON-CALL]";
+      h += '<tr><td>'+(entryMode!=="ltim" && isDirAction(p.action) ? '' : '<span style="font-weight:700">'+esc(p.action)+'</span> ')+(entryMode!=="ltim" ? '<span style="font-weight:700">('+esc(p.ticker)+')</span>' : '<span class="mono" style="font-weight:600">('+esc(p.ticker)+')</span>')+'<span style="display:block">'+playNameHTML(p)+'</span></td>'
+        + '<td style="white-space:nowrap"><span style="display:block;font-size:12px'+(leanClose?';font-weight:700':'')+'" class="faint">'+escBoard(p.closeLabel)+'</span><span class="mono" style="font-size:16px;font-weight:'+(leanClose?'700':'600')+'">'+esc(p.close)+'</span></td>'
+        + '<td style="line-height:1.65">'+readHTML(p)+(p.exitRule?'<span class="exitbox" style="display:block;margin-top:.5rem"><strong>Your exit, on this play:</strong> '+exitRuleHTML(p)+'</span>':"")+(p.exitNote?'<span style="display:block;margin-top:.5rem;line-height:1.65">'+escBoard(p.exitNote)+'</span>':"")+stopTapHTML(p)+(p.previous3?prev3TapHTML(p.previous3):"")+'</td></tr>';
+    });
+    h += '</tbody></table></div>';
+    return h;
+  }
+  var longSeq = 0;
+  function longPanelHTML(longPlays){
+    longSeq += 1;
+    var id = "spy-long-" + longSeq;
+    return '<button type="button" class="info-btn" data-long-btn aria-expanded="false" aria-controls="' + id + '" aria-label="Long SPY and QQQ plays — holds past 10 days">LONG</button>'
+      + '<div class="info-text hidden" id="' + id + '">' + playsCardsHTML(longPlays) + closeBtnHTML(id) + '</div>';
+  }
+  function wireLongTaps(root){
+    var btns = root.querySelectorAll("[data-long-btn]");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click", function(){
+        var panel = $(this.getAttribute("aria-controls"));
+        if(!panel) return;
+        var open = panel.classList.toggle("hidden") === false;
+        this.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    }
+  }
   function sectionHTML(s){
     /* The leans section heading carries its [NON-CALL] label in bold. */
     var titleHTML = escBoard(s.title).replace("[NON-CALL]", "<strong>[NON-CALL]</strong>");
@@ -836,29 +916,19 @@ var BOARD = {"dateLabel": "Wednesday, November 18, 2026", "gradedLine": "WEDNESD
     if((s.kind==="plays" || s.kind==="spyqqq") && s.plays && s.plays.length){
       /* DTM door only — phone: stacked cards, play + close up top and the
          full read wrapped underneath, so no word runs off the screen.
-         The LTIM door's room renders this board exactly as built. */
-      if(entryMode!=="ltim"){
-      h += '<ul class="open-cards">';
-      s.plays.forEach(function(p){
-        h += '<li><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.125rem .5rem">'+(isDirAction(p.action)?'':'<span style="font-weight:700">'+esc(p.action)+'</span>')+'<span style="font-weight:700">('+esc(p.ticker)+')</span>'+playNameHTML(p)+'</div>'
-          + (p.action==="[NON-CALL]" ? '<p style="margin-top:.375rem"><span style="font-size:12px;font-weight:700" class="faint">'+escBoard(p.closeLabel)+'</span> <span class="mono" style="font-size:16px;font-weight:700">'+esc(p.close)+'</span></p>' : "")
-          + '<p style="margin-top:.5rem;line-height:1.65">'+readHTML(p)+'</p>'
-          + (p.exitRule?'<p class="exitbox"><strong>Your exit, on this play:</strong> '+exitRuleHTML(p)+'</p>':"")
-          + (p.exitNote?'<p style="margin-top:.5rem;line-height:1.65">'+escBoard(p.exitNote)+'</p>':"")
-          + stopTapHTML(p)
-          + (p.previous3?prev3TapHTML(p.previous3):"")
-          + '</li>';
-      });
-      h += '</ul>';
+         The LTIM door's room renders this board exactly as built.
+         SPY & QQQ only: plays whose hold runs past 10 days come out
+         of this open list and sit behind the LONG tap below it, in
+         the same full card form, with a CLOSE tap at the panel's
+         bottom. Every other section renders all its plays here. */
+      if(s.kind==="spyqqq"){
+        var openPlays = [], longPlays = [];
+        s.plays.forEach(function(p){ (isLongSpyPlay(p) ? longPlays : openPlays).push(p); });
+        if(openPlays.length) h += playsCardsHTML(openPlays);
+        if(longPlays.length) h += longPanelHTML(longPlays);
+      } else {
+        h += playsCardsHTML(s.plays);
       }
-      h += '<div class="tblwrap'+(entryMode!=="ltim" ? " open-table" : "")+'"><table><thead><tr><th scope="col">Play</th><th scope="col">Closed at</th><th scope="col">The read</th></tr></thead><tbody>';
-      s.plays.forEach(function(p){
-        var leanClose = p.action==="[NON-CALL]";
-        h += '<tr><td>'+(entryMode!=="ltim" && isDirAction(p.action) ? '' : '<span style="font-weight:700">'+esc(p.action)+'</span> ')+(entryMode!=="ltim" ? '<span style="font-weight:700">('+esc(p.ticker)+')</span>' : '<span class="mono" style="font-weight:600">('+esc(p.ticker)+')</span>')+'<span style="display:block">'+playNameHTML(p)+'</span></td>'
-          + '<td style="white-space:nowrap"><span style="display:block;font-size:12px'+(leanClose?';font-weight:700':'')+'" class="faint">'+escBoard(p.closeLabel)+'</span><span class="mono" style="font-size:16px;font-weight:'+(leanClose?'700':'600')+'">'+esc(p.close)+'</span></td>'
-          + '<td style="line-height:1.65">'+readHTML(p)+(p.exitRule?'<span class="exitbox" style="display:block;margin-top:.5rem"><strong>Your exit, on this play:</strong> '+exitRuleHTML(p)+'</span>':"")+(p.exitNote?'<span style="display:block;margin-top:.5rem;line-height:1.65">'+escBoard(p.exitNote)+'</span>':"")+stopTapHTML(p)+(p.previous3?prev3TapHTML(p.previous3):"")+'</td></tr>';
-      });
-      h += '</tbody></table></div>';
     }
     if(s.kind==="open" && s.openRows){
       h += '<ul class="open-cards">';
@@ -954,6 +1024,7 @@ var BOARD = {"dateLabel": "Wednesday, November 18, 2026", "gradedLine": "WEDNESD
     $("tab-front").innerHTML = h;
     wirePrev3Taps($("tab-front"));
     wireStopTaps($("tab-front"));
+    wireLongTaps($("tab-front"));
     wireCloseBtns($("tab-front"));
     wireAboutTaps($("tab-front"));
   }
