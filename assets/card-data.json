@@ -9,73 +9,18 @@
   "checkedAtDateLabel": "Wednesday, November 18, 2026"
  },
  "sections": [
-  {
-   "kind": "bare",
-   "title": "The Connors Trade",
-   "state": "NONE"
-  },
-  {
-   "kind": "spyqqq",
-   "title": "SPY & QQQ",
-   "state": "NONE",
-   "plays": []
-  },
-  {
-   "kind": "bare",
-   "title": "The Breakout Trade",
-   "state": "NONE"
-  },
-  {
-   "kind": "bare",
-   "title": "Falling Knife Trade",
-   "state": "NONE"
-  },
-  {
-   "kind": "bare",
-   "title": "The Comeback Trade",
-   "state": "NONE"
-  },
-  {
-   "kind": "bare",
-   "title": "The Swing Tell Trade",
-   "state": "NONE"
-  },
-  {
-   "kind": "bare",
-   "title": "The Snap-Back Trade",
-   "state": "NONE"
-  },
-  {
-   "kind": "bare",
-   "title": "The Bounce Trade",
-   "state": "NONE"
-  },
-  {
-   "kind": "bare",
-   "title": "The Earnings Trade",
-   "state": "NONE"
-  },
-  {
-   "kind": "bare",
-   "title": "Buy the Dip Trade",
-   "state": "NONE"
-  },
-  {
-   "kind": "bare",
-   "title": "Fade the Stock Trade",
-   "state": "NONE"
-  },
-  {
-   "kind": "bare",
-   "title": "The Fakeout Trade",
-   "state": "NONE"
-  },
-  {
-   "kind": "special",
-   "title": "SPECIAL PLAY",
-   "intro": "Owner's Pick",
-   "state": "NONE",
-   "plays": []
-  }
+  {"kind": "bare", "title": "The Connors Trade", "state": "NONE"},
+  {"kind": "spyqqq", "title": "SPY & QQQ", "state": "NONE", "plays": []},
+  {"kind": "bare", "title": "The Breakout Trade", "state": "NONE"},
+  {"kind": "bare", "title": "Falling Knife Trade", "state": "NONE"},
+  {"kind": "bare", "title": "The Comeback Trade", "state": "NONE"},
+  {"kind": "bare", "title": "The Swing Tell Trade", "state": "NONE"},
+  {"kind": "bare", "title": "The Snap-Back Trade", "state": "NONE"},
+  {"kind": "bare", "title": "The Bounce Trade", "state": "NONE"},
+  {"kind": "bare", "title": "The Earnings Trade", "state": "NONE"},
+  {"kind": "bare", "title": "Buy the Dip Trade", "state": "NONE"},
+  {"kind": "bare", "title": "Fade the Stock Trade", "state": "NONE"},
+  {"kind": "bare", "title": "The Fakeout Trade", "state": "NONE"},
+  {"kind": "special", "title": "SPECIAL PLAY", "intro": "Owner's Pick", "state": "NONE", "plays": []}
  ]
 }
