@@ -167,10 +167,14 @@
   .info-btn[data-long-btn]{border:2px solid var(--safe-line)}
   /* SPY & QQQ per-instrument window taps — the same pill form and bold
      Door outline as the ABOUT and LONG taps. Two taps sit under the
-     SPY & QQQ heading, one per instrument ("<N> plays for SPY" /
-     "<N> plays for QQQ"), each opening its own window panel holding
-     only that instrument's plays. */
+     SPY & QQQ heading, one per instrument ("SPY - <N> plays for the
+     day" / "QQQ - <N> plays for the day"), each opening its own
+     window panel holding only that instrument's plays. The ticker
+     leads the label in bold black; the rest of the label keeps the
+     tap's gold text styling. The same ticker treatment carries to
+     the zero-count plain line. */
   .info-btn[data-view-plays-btn]{border:2px solid var(--safe-line)}
+  .spy-window-ticker{font-weight:700;color:var(--text)}
   /* Crypto room ABOUT taps — the same form as the Day Trading Mode
      ABOUT taps above: one tap beside each item's heading, outside
      the item's inner box (its card), opening that item's own screen
@@ -902,8 +906,12 @@ var BOARD = {"dateLabel": "Wednesday, November 18, 2026", "gradedLine": "WEDNESD
      longer print in the open under the heading. The section shows
      TWO taps in the same .info-btn pill form as ABOUT and LONG, one
      per instrument, each carrying that instrument's exact count:
-     "<N> plays for SPY" and "<N> plays for QQQ" ("1 play for SPY"
-     when N is 1). There is no combined summary line and no single
+     "SPY - <N> plays for the day" and "QQQ - <N> plays for the day"
+     ("SPY - 1 play for the day" when N is 1) — label refinement,
+     Nov 18: the ticker leads, set bold and black (.spy-window-
+     ticker, the page's text color); the rest of the label
+     (" - <N> plays for the day") keeps the tap's gold text styling.
+     There is no combined summary line and no single
      VIEW PLAYS tap. Tapping an instrument's tap opens its own
      panel — its window — holding ONLY that instrument's plays, in
      the exact full card form (playsCardsHTML, unchanged). Inside
@@ -913,21 +921,25 @@ var BOARD = {"dateLabel": "Wednesday, November 18, 2026", "gradedLine": "WEDNESD
      window's open list. Each window panel carries a CLOSE tap at
      its bottom, like every other opened panel on the page. If one
      instrument has 0 plays on a day when the other has plays, its
-     line still shows — "0 plays for SPY" / "0 plays for QQQ" — as
-     a plain non-opening line, with no tap and no empty panel. When
-     the section has NO plays at all it never reaches here — it
-     renders bare (heading, ABOUT tap, NONE) exactly as before. The
-     plays still count toward the card's play-count heading exactly
-     as before: boardPlayCount counts the section's plays array,
-     untouched. */
+     line still shows — "SPY - 0 plays for the day" /
+     "QQQ - 0 plays for the day", ticker bold black the same way —
+     as a plain non-opening line, with no tap and no empty panel.
+     When the section has NO plays at all it never reaches here —
+     it renders bare (heading, ABOUT tap, NONE) exactly as before.
+     The plays still count toward the card's play-count heading
+     exactly as before: boardPlayCount counts the section's plays
+     array, untouched. */
   var windowSeq = 0;
   function spyCountLabel(n, ticker){
-    return n === 1 ? "1 play for " + ticker : n + " plays for " + ticker;
+    return ticker + (n === 1 ? " - 1 play for the day" : " - " + n + " plays for the day");
+  }
+  function spyCountLabelHTML(n, ticker){
+    return '<span class="spy-window-ticker">' + esc(ticker) + '</span>' + esc(spyCountLabel(n, ticker).slice(ticker.length));
   }
   function instrumentWindowHTML(ticker, plays){
-    var label = spyCountLabel(plays.length, ticker);
+    var labelHTML = spyCountLabelHTML(plays.length, ticker);
     if(!plays.length){
-      return '<p style="margin-top:.375rem;line-height:1.65">' + esc(label) + '</p>';
+      return '<p style="margin-top:.375rem;line-height:1.65">' + labelHTML + '</p>';
     }
     windowSeq += 1;
     var id = "spy-window-" + ticker.toLowerCase() + "-" + windowSeq;
@@ -936,7 +948,7 @@ var BOARD = {"dateLabel": "Wednesday, November 18, 2026", "gradedLine": "WEDNESD
     var inner = "";
     if(openPlays.length) inner += playsCardsHTML(openPlays);
     if(longPlays.length) inner += longPanelHTML(longPlays);
-    return '<div><button type="button" class="info-btn" data-view-plays-btn aria-expanded="false" aria-controls="' + id + '" aria-label="View ' + esc(ticker) + ' plays">' + esc(label) + '</button></div>'
+    return '<div><button type="button" class="info-btn" data-view-plays-btn aria-expanded="false" aria-controls="' + id + '" aria-label="View ' + esc(ticker) + ' plays">' + labelHTML + '</button></div>'
       + '<div class="info-text hidden" id="' + id + '">' + inner + closeBtnHTML(id) + '</div>';
   }
   function spyQqqWindowsHTML(allPlays){
