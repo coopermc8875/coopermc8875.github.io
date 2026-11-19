@@ -1,26 +1,224 @@
 {
- "sessionDate": "2026-11-19",
  "dateLabel": "Thursday, November 19, 2026",
  "gradedLine": "THURSDAY, NOVEMBER 19, 2026",
  "priceStamp": {
   "closeDateLabel": "Wednesday, November 18, 2026",
   "closeTime": "1:00 PM PT",
-  "checkedAtTime": "6:19 PM PT",
-  "checkedAtDateLabel": "Wednesday, November 18, 2026"
+  "checkedAtTime": "5:30 AM PT",
+  "checkedAtDateLabel": "Thursday, November 19, 2026"
  },
  "sections": [
-  {"kind": "bare", "title": "The Connors Trade", "state": "NONE"},
-  {"kind": "spyqqq", "title": "SPY & QQQ", "state": "NONE", "plays": []},
-  {"kind": "bare", "title": "The Breakout Trade", "state": "NONE"},
-  {"kind": "bare", "title": "Falling Knife Trade", "state": "NONE"},
-  {"kind": "bare", "title": "The Comeback Trade", "state": "NONE"},
-  {"kind": "bare", "title": "The Swing Tell Trade", "state": "NONE"},
-  {"kind": "bare", "title": "The Snap-Back Trade", "state": "NONE"},
-  {"kind": "bare", "title": "The Bounce Trade", "state": "NONE"},
-  {"kind": "bare", "title": "The Earnings Trade", "state": "NONE"},
-  {"kind": "bare", "title": "Buy the Dip Trade", "state": "NONE"},
-  {"kind": "bare", "title": "Fade the Stock Trade", "state": "NONE"},
-  {"kind": "bare", "title": "The Fakeout Trade", "state": "NONE"},
-  {"kind": "special", "title": "SPECIAL PLAY", "intro": "Owner's Pick", "state": "NONE", "plays": []}
- ]
+  {
+   "kind": "spyqqq",
+   "plays": [
+    {
+     "action": "BUY",
+     "close": "$730.20",
+     "closeLabel": "Closed Wednesday at",
+     "exitRule": "Sell at close (1:00 PM PT) on Friday, December 4, 2026.",
+     "name": "SPDR S&P 500 ETF Trust",
+     "previous3": "Previous 3 (Wednesday, November 18) — 10:30 AM PT — sellers won the hour — open $732.09, high $733.87, low $729.94, close $730.87. · 11:30 AM PT — sellers won the hour — open $730.83, high $731.09, low $729.51, close $729.91. · 12:30 PM PT — buyers won the hour — open $729.91, high $731.57, low $729.45, close $730.33.",
+     "read": "BUY at Thursday's open — SPY closed Wednesday below its 200-day average line ($730.20 against the line at $732.55), and this play buys that state and holds ten sessions, to the close on Friday, December 4, 2026. Win rate in the Below-200 State play (24-year test): 60.3% (809 of 1,341 trades won)",
+     "ticker": "SPY"
+    },
+    {
+     "action": "BUY",
+     "close": "$730.20",
+     "closeLabel": "Closed Wednesday at",
+     "exitRule": "Sell at close (1:00 PM PT) on Friday, November 20, 2026.",
+     "name": "SPDR S&P 500 ETF Trust",
+     "previous3": "Previous 3 (Wednesday, November 18) — 10:30 AM PT — sellers won the hour — open $732.09, high $733.87, low $729.94, close $730.87. · 11:30 AM PT — sellers won the hour — open $730.83, high $731.09, low $729.51, close $729.91. · 12:30 PM PT — buyers won the hour — open $729.91, high $731.57, low $729.45, close $730.33.",
+     "read": "BUY at Thursday's open — SPY's two-day RSI washed out to 4.4, deep in oversold ground, and this play buys the snap-back for one session, to the close on Friday, November 20, 2026. Win rate in the Connors play on SPY (24-year test): 56.1% (194 of 346 trades won)",
+     "ticker": "SPY"
+    },
+    {
+     "action": "BUY",
+     "close": "$730.20",
+     "closeLabel": "Closed Wednesday at",
+     "exitRule": "Sell at close (1:00 PM PT) on Friday, November 27, 2026.",
+     "name": "SPDR S&P 500 ETF Trust",
+     "previous3": "Previous 3 (Wednesday, November 18) — 10:30 AM PT — sellers won the hour — open $732.09, high $733.87, low $729.94, close $730.87. · 11:30 AM PT — sellers won the hour — open $730.83, high $731.09, low $729.51, close $729.91. · 12:30 PM PT — buyers won the hour — open $729.91, high $731.57, low $729.45, close $730.33.",
+     "read": "BUY at Thursday's open — SPY's two-day RSI washed out to 4.4, deep in oversold ground, and this play buys the snap-back and holds five sessions, to the close on Friday, November 27, 2026. Win rate in the Connors play on SPY (24-year test): 57.8% (200 of 346 trades won)",
+     "ticker": "SPY"
+    },
+    {
+     "action": "BUY",
+     "close": "$730.20",
+     "closeLabel": "Closed Wednesday at",
+     "exitRule": "Sell at close (1:00 PM PT) on Friday, November 20, 2026.",
+     "name": "SPDR S&P 500 ETF Trust",
+     "previous3": "Previous 3 (Wednesday, November 18) — 10:30 AM PT — sellers won the hour — open $732.09, high $733.87, low $729.94, close $730.87. · 11:30 AM PT — sellers won the hour — open $730.83, high $731.09, low $729.51, close $729.91. · 12:30 PM PT — buyers won the hour — open $729.91, high $731.57, low $729.45, close $730.33.",
+     "read": "BUY at Thursday's open — SPY closed Wednesday 1.92% below its own 10-day average, stretched hard to the downside, and this play buys the stretch for one session, to the close on Friday, November 20, 2026. Win rate in the Buy the Dip play on SPY (24-year test): 59.6% (193 of 324 trades won)",
+     "ticker": "SPY"
+    },
+    {
+     "action": "BUY",
+     "close": "$730.20",
+     "closeLabel": "Closed Wednesday at",
+     "exitRule": "Sell at close (1:00 PM PT) on Friday, November 27, 2026.",
+     "name": "SPDR S&P 500 ETF Trust",
+     "previous3": "Previous 3 (Wednesday, November 18) — 10:30 AM PT — sellers won the hour — open $732.09, high $733.87, low $729.94, close $730.87. · 11:30 AM PT — sellers won the hour — open $730.83, high $731.09, low $729.51, close $729.91. · 12:30 PM PT — buyers won the hour — open $729.91, high $731.57, low $729.45, close $730.33.",
+     "read": "BUY at Thursday's open — SPY closed Wednesday 1.92% below its own 10-day average, stretched hard to the downside, and this play buys the stretch and holds five sessions, to the close on Friday, November 27, 2026. Win rate in the Buy the Dip play on SPY (24-year test): 59.9% (194 of 324 trades won)",
+     "ticker": "SPY"
+    },
+    {
+     "action": "BUY",
+     "close": "$730.20",
+     "closeLabel": "Closed Wednesday at",
+     "exitRule": "Sell at close (1:00 PM PT) on Friday, December 4, 2026.",
+     "name": "SPDR S&P 500 ETF Trust",
+     "previous3": "Previous 3 (Wednesday, November 18) — 10:30 AM PT — sellers won the hour — open $732.09, high $733.87, low $729.94, close $730.87. · 11:30 AM PT — sellers won the hour — open $730.83, high $731.09, low $729.51, close $729.91. · 12:30 PM PT — buyers won the hour — open $729.91, high $731.57, low $729.45, close $730.33.",
+     "read": "BUY at Thursday's open — SPY closed Wednesday 1.92% below its own 10-day average, stretched hard to the downside, and this play buys the stretch and holds ten sessions, to the close on Friday, December 4, 2026. Win rate in the Buy the Dip play on SPY (24-year test): 61.8% (199 of 322 trades won)",
+     "ticker": "SPY"
+    },
+    {
+     "action": "BUY",
+     "close": "$659.51",
+     "closeLabel": "Closed Wednesday at",
+     "exitRule": "Sell at close (1:00 PM PT) on Friday, December 4, 2026.",
+     "name": "Invesco QQQ Trust",
+     "previous3": "Previous 3 (Wednesday, November 18) — 10:30 AM PT — buyers won the hour — open $659.64, high $662.20, low $657.86, close $659.76. · 11:30 AM PT — sellers won the hour — open $659.67, high $659.86, low $657.22, close $657.80. · 12:30 PM PT — buyers won the hour — open $657.76, high $660.81, low $657.30, close $659.51.",
+     "read": "BUY at Thursday's open — QQQ closed Wednesday below its 200-day average line ($659.51 against the line at $682.81), and this play buys that state and holds ten sessions, to the close on Friday, December 4, 2026. Win rate in the Below-200 State play (24-year test): 61.6% (772 of 1,254 trades won)",
+     "ticker": "QQQ"
+    },
+    {
+     "action": "BUY",
+     "close": "$659.51",
+     "closeLabel": "Closed Wednesday at",
+     "exitRule": "Sell at close (1:00 PM PT) on Friday, November 20, 2026.",
+     "name": "Invesco QQQ Trust",
+     "previous3": "Previous 3 (Wednesday, November 18) — 10:30 AM PT — buyers won the hour — open $659.64, high $662.20, low $657.86, close $659.76. · 11:30 AM PT — sellers won the hour — open $659.67, high $659.86, low $657.22, close $657.80. · 12:30 PM PT — buyers won the hour — open $657.76, high $660.81, low $657.30, close $659.51.",
+     "read": "BUY at Thursday's open — QQQ printed a hammer candle at its 10-day low on Wednesday, sellers driving it down to $657.30 before buyers took it back to close up at $659.51, and this play buys that rejection of lower prices for one session, to the close on Friday, November 20, 2026. Win rate in the Hammer play on QQQ (24-year test): 57.1% (112 of 196 trades won)",
+     "ticker": "QQQ"
+    },
+    {
+     "action": "BUY",
+     "close": "$659.51",
+     "closeLabel": "Closed Wednesday at",
+     "exitRule": "Sell at close (1:00 PM PT) on Friday, November 27, 2026.",
+     "name": "Invesco QQQ Trust",
+     "previous3": "Previous 3 (Wednesday, November 18) — 10:30 AM PT — buyers won the hour — open $659.64, high $662.20, low $657.86, close $659.76. · 11:30 AM PT — sellers won the hour — open $659.67, high $659.86, low $657.22, close $657.80. · 12:30 PM PT — buyers won the hour — open $657.76, high $660.81, low $657.30, close $659.51.",
+     "read": "BUY at Thursday's open — QQQ printed a hammer candle at its 10-day low on Wednesday, sellers driving it down to $657.30 before buyers took it back to close up at $659.51, and this play buys that rejection of lower prices and holds five sessions, to the close on Friday, November 27, 2026. Win rate in the Hammer play on QQQ (24-year test): 56.1% (110 of 196 trades won)",
+     "ticker": "QQQ"
+    },
+    {
+     "action": "BUY",
+     "close": "$659.51",
+     "closeLabel": "Closed Wednesday at",
+     "exitRule": "Sell at close (1:00 PM PT) on Friday, December 4, 2026.",
+     "name": "Invesco QQQ Trust",
+     "previous3": "Previous 3 (Wednesday, November 18) — 10:30 AM PT — buyers won the hour — open $659.64, high $662.20, low $657.86, close $659.76. · 11:30 AM PT — sellers won the hour — open $659.67, high $659.86, low $657.22, close $657.80. · 12:30 PM PT — buyers won the hour — open $657.76, high $660.81, low $657.30, close $659.51.",
+     "read": "BUY at Thursday's open — QQQ printed a hammer candle at its 10-day low on Wednesday, sellers driving it down to $657.30 before buyers took it back to close up at $659.51, and this play buys that rejection of lower prices and holds ten sessions, to the close on Friday, December 4, 2026. Win rate in the Hammer play on QQQ (24-year test): 65.3% (128 of 196 trades won)",
+     "ticker": "QQQ"
+    },
+    {
+     "action": "BUY",
+     "ticker": "SPY",
+     "name": "SPDR S&P 500 ETF Trust",
+     "closeLabel": "Closed Wednesday at",
+     "close": "$730.20",
+     "read": "Entered at Wednesday's open — SPY closed Tuesday just above its 200-day average line ($732.34), a seat it only takes after running well above that line in the months before, and this play holds to the close on Monday, February 22, 2027. Win rate in The Seat (2024–2026): 77.8% (7 of 9 trades won)",
+     "previous3": "Previous 3 (Wednesday, November 18) — 10:30 AM PT — sellers won the hour — open $732.09, high $733.87, low $729.94, close $730.87. · 11:30 AM PT — sellers won the hour — open $730.83, high $731.09, low $729.51, close $729.91. · 12:30 PM PT — buyers won the hour — open $729.91, high $731.57, low $729.45, close $730.33.",
+     "exitRule": "Sell at close (1:00 PM PT) on Monday, February 22, 2027."
+    },
+    {
+     "action": "BUY",
+     "ticker": "SPY",
+     "name": "SPDR S&P 500 ETF Trust",
+     "closeLabel": "Closed Wednesday at",
+     "close": "$730.20",
+     "read": "BUY at Thursday's open — SPY closed Wednesday below its 200-day average line ($730.20 against the line at $732.55), the first close under the line after 155 consecutive sessions above it, and this play holds its first leg to the close on Monday, February 22, 2027, with a second leg to the close of the 252nd session after the signal (November 2027). Win rate in Below the 200 (24-year test): 77.8% (7 of 9 trades won) at hold 63; the hold-252 leg won 87.5% (7 of 8)",
+     "previous3": "Previous 3 (Wednesday, November 18) — 10:30 AM PT — sellers won the hour — open $732.09, high $733.87, low $729.94, close $730.87. · 11:30 AM PT — sellers won the hour — open $730.83, high $731.09, low $729.51, close $729.91. · 12:30 PM PT — buyers won the hour — open $729.91, high $731.57, low $729.45, close $730.33.",
+     "exitRule": "First leg: sell at close (1:00 PM PT) on Monday, February 22, 2027; second leg at the close of the 252nd session after the signal (November 2027)."
+    },
+    {
+     "action": "BUY",
+     "ticker": "QQQ",
+     "name": "Invesco QQQ Trust",
+     "closeLabel": "Closed Wednesday at",
+     "close": "$659.51",
+     "read": "Entered at Tuesday, November 3's open — QQQ had drawn down 10% from its high, and this play holds its first leg to the close on Wednesday, February 3, 2027, with a second leg to the close on Wednesday, November 3, 2027. Win rate in Drawdown Depth −10% (24-year test): 84.6% (11 of 13 trades won) at hold 63; the hold-252 leg won 90.9% (10 of 11)",
+     "previous3": "Previous 3 (Wednesday, November 18) — 10:30 AM PT — buyers won the hour — open $659.64, high $662.20, low $657.86, close $659.76. · 11:30 AM PT — sellers won the hour — open $659.67, high $659.86, low $657.22, close $657.80. · 12:30 PM PT — buyers won the hour — open $657.76, high $660.81, low $657.30, close $659.51.",
+     "exitRule": "First leg: sell at close (1:00 PM PT) on Wednesday, February 3, 2027; second leg at the close on Wednesday, November 3, 2027."
+    },
+    {
+     "action": "BUY",
+     "ticker": "QQQ",
+     "name": "Invesco QQQ Trust",
+     "closeLabel": "Closed Wednesday at",
+     "close": "$659.51",
+     "read": "Entered at Friday, November 6's open — QQQ washed out 6.49% in a single session on Thursday, November 5, and this play holds to the close on Tuesday, December 8, 2026. Win rate in The Deep Wash Leg B (24-year test): 61.5% (24 of 39 trades won). Leg A closed Friday, November 13 at +3.27%.",
+     "previous3": "Previous 3 (Wednesday, November 18) — 10:30 AM PT — buyers won the hour — open $659.64, high $662.20, low $657.86, close $659.76. · 11:30 AM PT — sellers won the hour — open $659.67, high $659.86, low $657.22, close $657.80. · 12:30 PM PT — buyers won the hour — open $657.76, high $660.81, low $657.30, close $659.51.",
+     "exitRule": "Sell at close (1:00 PM PT) on Tuesday, December 8, 2026."
+    }
+   ],
+   "state": "plays",
+   "title": "SPY & QQQ"
+  },
+  {
+   "kind": "bare",
+   "state": "NONE",
+   "title": "The Breakout Trade"
+  },
+  {
+   "kind": "bare",
+   "state": "NONE",
+   "title": "Falling Knife Trade"
+  },
+  {
+   "kind": "bare",
+   "state": "NONE",
+   "title": "Fade the Stock Trade"
+  },
+  {
+   "kind": "bare",
+   "state": "NONE",
+   "title": "The Comeback Trade"
+  },
+  {
+   "kind": "bare",
+   "state": "NONE",
+   "title": "The Swing Tell Trade"
+  },
+  {
+   "body": "None. Whole market scanned (525 names) — none.",
+   "kind": "bare",
+   "state": "NONE",
+   "title": "The Snap-Back Trade"
+  },
+  {
+   "kind": "bare",
+   "state": "NONE",
+   "title": "The Connors Trade"
+  },
+  {
+   "kind": "bare",
+   "state": "NONE",
+   "title": "The Fakeout Trade"
+  },
+  {
+   "kind": "bare",
+   "state": "NONE",
+   "title": "The Bounce Trade"
+  },
+  {
+   "body": "None. Whole market scanned (525 names) — none.",
+   "kind": "bare",
+   "state": "NONE",
+   "title": "The Earnings Trade"
+  },
+  {
+   "kind": "bare",
+   "state": "NONE",
+   "title": "Buy the Dip Trade"
+  },
+  {
+   "intro": "Owner's Pick",
+   "kind": "special",
+   "plays": [],
+   "state": "NONE",
+   "title": "SPECIAL PLAY"
+  }
+ ],
+ "sessionDate": "2026-11-19"
 }
