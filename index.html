@@ -165,6 +165,13 @@
      opens the panel holding that section's plays whose hold runs
      past 10 days. */
   .info-btn[data-long-btn]{border:2px solid var(--safe-line)}
+  /* SPY & QQQ per-instrument window taps — the same pill form and bold
+     Door outline as the ABOUT and LONG taps. Two taps sit under the
+     SPY & QQQ heading, one per instrument ("SPY - <N> plays for the
+     day" / "QQQ - <N> plays for the day", the ticker bold black),
+     each opening its own window panel holding only that instrument's
+     plays. */
+  .info-btn[data-view-plays-btn]{border:2px solid var(--safe-line)}
   /* Crypto room ABOUT taps — the same form as the Day Trading Mode
      ABOUT taps above: one tap beside each item's heading, outside
      the item's inner box (its card), opening that item's own screen
@@ -888,6 +895,74 @@ var BOARD = {"dateLabel": "Wednesday, November 18, 2026", "gradedLine": "WEDNESD
       });
     }
   }
+  /* THE WINDOWS — SPY & QQQ only (Maurice's ruling, Nov 18, refined
+     same day): when the SPY & QQQ section HAS plays, the plays no
+     longer print in the open under the heading. The section shows
+     TWO taps in the same .info-btn pill form as ABOUT and LONG, one
+     per instrument, each carrying that instrument's exact count:
+     "SPY - <N> plays for the day" and "QQQ - <N> plays for the day"
+     ("SPY - 1 play for the day" when N is 1; the ticker bold black,
+     the rest of the label in the tap's gold). There is no combined summary line and no single
+     VIEW PLAYS tap. Tapping an instrument's tap opens its own
+     panel — its window — holding ONLY that instrument's plays, in
+     the exact full card form (playsCardsHTML, unchanged). Inside
+     each window the standing LONG rule still applies: holds past
+     10 days sit behind the LONG tap (which now lives inside that
+     instrument's window); holds of 10 days or under print in the
+     window's open list. Each window panel carries a CLOSE tap at
+     its bottom, like every other opened panel on the page. If one
+     instrument has 0 plays on a day when the other has plays, its
+     line still shows — "SPY - 0 plays for the day" / "QQQ - 0 plays
+     for the day", ticker bold black — as a plain non-opening line,
+     with no tap and no empty panel. When
+     the section has NO plays at all it never reaches here — it
+     renders bare (heading, ABOUT tap, NONE) exactly as before. The
+     plays still count toward the card's play-count heading exactly
+     as before: boardPlayCount counts the section's plays array,
+     untouched. */
+  var windowSeq = 0;
+  function spyCountLabel(n, ticker){
+    /* The label reads "<TICKER> - <N> plays for the day" ("1 play"
+       when N is 1). The ticker itself is bold black — the page's
+       --text ink, near-black in light mode — while the rest of the
+       label keeps the tap's gold text styling. */
+    return '<strong style="color:var(--text)">' + esc(ticker) + '</strong> - '
+      + (n === 1 ? "1 play for the day" : n + " plays for the day");
+  }
+  function instrumentWindowHTML(ticker, plays){
+    var label = spyCountLabel(plays.length, ticker);
+    if(!plays.length){
+      return '<p style="margin-top:.375rem;line-height:1.65">' + label + '</p>';
+    }
+    windowSeq += 1;
+    var id = "spy-window-" + ticker.toLowerCase() + "-" + windowSeq;
+    var openPlays = [], longPlays = [];
+    plays.forEach(function(p){ (isLongSpyPlay(p) ? longPlays : openPlays).push(p); });
+    var inner = "";
+    if(openPlays.length) inner += playsCardsHTML(openPlays);
+    if(longPlays.length) inner += longPanelHTML(longPlays);
+    return '<div><button type="button" class="info-btn" data-view-plays-btn aria-expanded="false" aria-controls="' + id + '" aria-label="View ' + esc(ticker) + ' plays">' + label + '</button></div>'
+      + '<div class="info-text hidden" id="' + id + '">' + inner + closeBtnHTML(id) + '</div>';
+  }
+  function spyQqqWindowsHTML(allPlays){
+    var spyPlays = [], qqqPlays = [];
+    allPlays.forEach(function(p){
+      if(String(p.ticker == null ? "" : p.ticker).toUpperCase() === "QQQ") qqqPlays.push(p);
+      else spyPlays.push(p);
+    });
+    return instrumentWindowHTML("SPY", spyPlays) + instrumentWindowHTML("QQQ", qqqPlays);
+  }
+  function wireViewPlaysTaps(root){
+    var btns = root.querySelectorAll("[data-view-plays-btn]");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click", function(){
+        var panel = $(this.getAttribute("aria-controls"));
+        if(!panel) return;
+        var open = panel.classList.toggle("hidden") === false;
+        this.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    }
+  }
   function sectionHTML(s){
     /* The leans section heading carries its [NON-CALL] label in bold. */
     var titleHTML = escBoard(s.title).replace("[NON-CALL]", "<strong>[NON-CALL]</strong>");
@@ -920,15 +995,17 @@ var BOARD = {"dateLabel": "Wednesday, November 18, 2026", "gradedLine": "WEDNESD
       /* DTM door only — phone: stacked cards, play + close up top and the
          full read wrapped underneath, so no word runs off the screen.
          The LTIM door's room renders this board exactly as built.
-         SPY & QQQ only: plays whose hold runs past 10 days come out
-         of this open list and sit behind the LONG tap below it, in
-         the same full card form, with a CLOSE tap at the panel's
-         bottom. Every other section renders all its plays here. */
+         SPY & QQQ only: the plays sit inside THE WINDOWS (see
+         spyQqqWindowsHTML) — two count taps under the heading, one
+         per instrument, each opening its own panel with only that
+         instrument's plays in full card form; inside each window,
+         plays whose hold runs past 10 days sit behind the LONG tap,
+         in the same full card form, with a CLOSE tap at the
+         window's bottom. An instrument with no plays today prints
+         its "0 plays" line plain, with no panel.
+         Every other section renders all its plays here, in the open. */
       if(s.kind==="spyqqq"){
-        var openPlays = [], longPlays = [];
-        s.plays.forEach(function(p){ (isLongSpyPlay(p) ? longPlays : openPlays).push(p); });
-        if(openPlays.length) h += playsCardsHTML(openPlays);
-        if(longPlays.length) h += longPanelHTML(longPlays);
+        h += spyQqqWindowsHTML(s.plays);
       } else {
         h += playsCardsHTML(s.plays);
       }
@@ -1040,6 +1117,7 @@ var BOARD = {"dateLabel": "Wednesday, November 18, 2026", "gradedLine": "WEDNESD
     wirePrev3Taps($("tab-front"));
     wireStopTaps($("tab-front"));
     wireLongTaps($("tab-front"));
+    wireViewPlaysTaps($("tab-front"));
     wireCloseBtns($("tab-front"));
     wireAboutTaps($("tab-front"));
   }
