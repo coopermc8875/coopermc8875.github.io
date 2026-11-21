@@ -77,8 +77,13 @@
      not use, the text scrolling inside that grown card, and the
      accept / decline controls at the bottom of the screen. The 4rem
      the column gives back is the wrap's own bottom padding, so the
-     gate lands at exactly one full screen. */
-  #stage-disclaimer{display:flex;flex-direction:column;min-height:calc(100dvh - 4rem);padding-top:1.5rem}
+     gate lands at exactly one full screen. The height is FIXED, not
+     a minimum (Maurice's correction, Sat Nov 21, 2026): a minimum lets
+     the column grow with the text and pushes the buttons off the
+     screen; a fixed height bounds the column, so the page itself
+     never scrolls — the disclaimer text scrolls inside its card and
+     the buttons stay on the one screen. */
+  #stage-disclaimer{display:flex;flex-direction:column;height:calc(100dvh - 4rem);padding-top:1.5rem}
   #stage-disclaimer>section{display:flex;flex-direction:column;flex:1;min-height:0}
   #stage-disclaimer .card{flex:1;display:flex;flex-direction:column;min-height:0}
   .disc-scroll{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-right:.5rem}
