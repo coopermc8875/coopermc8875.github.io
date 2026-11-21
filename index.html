@@ -439,7 +439,7 @@ var SOCIAL_POSTS = [
     body: "October's audit is public: one tell demoted, losses printed next to wins. If a service won't show you its losing months, it isn't showing you a record — it's showing you an advertisement.",
   },
 ];
-var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY, NOVEMBER 19, 2026", "sections": [{"kind": "pounce", "title": "The Pounce Trade", "plays": []}, {"kind": "spyqqq", "plays": [], "state": "plays", "title": "SPY & QQQ"}, {"kind": "bare", "title": "The Connors Trade", "state": "NONE"}, {"kind": "bare", "title": "Falling Knife Trade", "state": "NONE"}, {"intro": "Owner's Pick", "kind": "special", "plays": [], "state": "NONE", "title": "SPECIAL PLAY"}]};
+var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY, NOVEMBER 19, 2026", "sections": [{"kind": "pounce", "title": "The Pounce Trade", "plays": []}, {"kind": "spyqqq", "plays": [], "state": "plays", "title": "SPY & QQQ"}, {"kind": "bare", "title": "The Connors Trade", "state": "NONE"}, {"kind": "bare", "title": "Falling Knife Trade", "state": "NONE"}, {"kind": "fourYearLine", "title": "The 4-Year Line Trade", "plays": []}, {"intro": "Owner's Pick", "kind": "special", "plays": [], "state": "NONE", "title": "SPECIAL PLAY"}]};
 </script>
 <script>
 (function(){
@@ -776,6 +776,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
     "The Comeback Trade": "Looks for a stock that got knocked down during the day and fought its way back before the close — the first real sign buyers are stepping in at the bottom. We buy the next morning if the fight-back continues. There is no stop on this play: we hold it to the close of that day and take whatever the day gives us, win or lose.",
     "The Swing Tell Trade": "Looks for a stock that was beaten down over several days, washed all the way out, and then held its low and turned. We buy the turn. There is no stop on this play: we hold it to the close of that day and take whatever the day gives us, win or lose.",
     "Falling Knife Trade": "Looks for a healthy stock that fell hard for days in a row — and then stopped falling. A falling knife is dangerous to catch, so this play waits for the fall to end and takes it one day at a time. There is no price stop on this one: Money (Ai) watches the close every day and tells you the morning it’s time to sell, before the open, and if that morning hasn’t come by the tenth day, you’re out at the close on Day 10.",
+    "The 4-Year Line Trade": "The 4-Year Line is the average of a stock's last 1,008 closing prices — its 4-year moving average. When a stock falls to that line and closes back above it, the line has held as support. The play buys the next open and exits at the Day-10 close. This trade was graded on 12 years of whole-market data before it earned this section.",
     "The Breakout Trade": "Looks for a stock that pushed up through the top of its recent range — a breakout. We buy the push, set the stop under the candle that made the move, aim for twice what we risked, and if neither the stop nor the target comes by the tenth day, we’re out at that day’s close.",
     "The Connors Trade": "Named for Larry Connors, the trader who published the idea. It looks for a strong stock that has pulled back hard for a few days — stretched too far down, like a rubber band — and buys it expecting the snap back toward its trend. We hold it until the snap back comes or about a week passes, whichever comes first. There is no stop on this play.",
     "The Bounce Trade": "Looks for a stock that closed at a new short-term low after being weak for days — and then did the same thing again. Two washed-out closes in a row is the tell. We buy it and hold up to about a week, looking for the bounce. There is no stop on this play.",
@@ -786,7 +787,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
     "The Fakeout Trade": "The Fakeout Trade watches for a breakout that fails. A stock pushes to a new high, then slips back under it within a couple of days — and that's when we buy, as the disappointed sellers clear out. A trailing safety stop follows the price up and locks the trade if it turns down, and any trade still open closes on the fifth day.",
     "SPECIAL PLAY": "The owner’s own pick, posted by hand when something specific is happening — an FDA decision, a merger vote, a stock in the news. It is not one of the tested plays and it carries no win record: it’s Maurice’s call, event-driven, and most days there isn’t one."
   };
-  var ABOUT_ORDER = ["The Pounce Trade", "SPY & QQQ", "The Comeback Trade", "The Swing Tell Trade", "Falling Knife Trade", "The Breakout Trade", "The Connors Trade", "The Bounce Trade", "The Earnings Trade", "Buy the Dip Trade", "The Snap-Back Trade", "Fade the Stock Trade", "The Fakeout Trade", "SPECIAL PLAY"];
+  var ABOUT_ORDER = ["The Pounce Trade", "SPY & QQQ", "The Comeback Trade", "The Swing Tell Trade", "Falling Knife Trade", "The 4-Year Line Trade", "The Breakout Trade", "The Connors Trade", "The Bounce Trade", "The Earnings Trade", "Buy the Dip Trade", "The Snap-Back Trade", "Fade the Stock Trade", "The Fakeout Trade", "SPECIAL PLAY"];
   function aboutScreenId(title){
     return "about-" + String(title).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
   }
@@ -1040,6 +1041,17 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
         h += '<p style="margin-top:.375rem;line-height:1.65">NONE</p>';
       }
     }
+    if(s.kind==="fourYearLine"){
+      /* The 4-Year Line Trade (section added Sat Nov 21, 2026 on
+         Maurice's ruling in MAIN): plays print in the standard full
+         card form; with no plays the section prints NONE under its
+         heading, like any other tell. */
+      if(s.plays && s.plays.length){
+        h += playsCardsHTML(s.plays);
+      } else {
+        h += '<p style="margin-top:.375rem;line-height:1.65">NONE</p>';
+      }
+    }
     if((s.kind==="plays" || s.kind==="spyqqq") && s.plays && s.plays.length){
       /* DTM door only — phone: stacked cards, play + close up top and the
          full read wrapped underneath, so no word runs off the screen.
@@ -1144,7 +1156,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
   function boardPlayCount(){
     var n = 0;
     if(typeof BOARD !== "undefined" && BOARD.sections){
-      BOARD.sections.forEach(function(s){ if((s.kind==="plays" || s.kind==="spyqqq" || s.kind==="pounce") && s.plays) n += s.plays.length; });
+      BOARD.sections.forEach(function(s){ if((s.kind==="plays" || s.kind==="spyqqq" || s.kind==="pounce" || s.kind==="fourYearLine") && s.plays) n += s.plays.length; });
     }
     return n;
   }
@@ -1158,7 +1170,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
       + '<p style="margin-top:.75rem;line-height:1.65" class="dim dtm-price-stamp-line" data-dtm-price-stamp>'+escBoard(convertDtmStamp(DTM_PRICE_STAMP))+'</p>';
     /* Room order is the file's order (DTM room rebuild, Nov 19, 2026):
        The Pounce Trade, SPY & QQQ, The Connors Trade, Falling Knife
-       Trade, SPECIAL PLAY. No section is hoisted — the SPY & QQQ
+       Trade, The 4-Year Line Trade, SPECIAL PLAY. No section is hoisted — the SPY & QQQ
        section prints second whether it holds plays or stands NONE. */
     BOARD.sections.forEach(function(s){ h += sectionHTML(s); });
     h += '</div>' + aboutScreensHTML();
