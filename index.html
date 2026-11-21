@@ -70,10 +70,18 @@
   tr:last-child td{border-bottom:0}
   .tblwrap{margin-top:.75rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);overflow:hidden}
   .exitbox{margin-top:.75rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);padding:.75rem 1rem;line-height:1.6}
-  /* Disclaimer gate: the text sits in a fixed-height box with its own
-     vertical scroll — the gate itself never stretches to the text length,
-     and the accept / decline controls stay put below the box. */
-  .disc-scroll{height:20rem;max-height:60vh;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-right:.5rem}
+  /* Disclaimer gate: the gate fills the whole page (Maurice's call,
+     Sat Nov 21, 2026 — the full page, not three-quarters of it). The
+     stage is a full-height column: heading at the top, the text card
+     grown to take every bit of space the heading and the buttons do
+     not use, the text scrolling inside that grown card, and the
+     accept / decline controls at the bottom of the screen. The 4rem
+     the column gives back is the wrap's own bottom padding, so the
+     gate lands at exactly one full screen. */
+  #stage-disclaimer{display:flex;flex-direction:column;min-height:calc(100dvh - 4rem);padding-top:1.5rem}
+  #stage-disclaimer>section{display:flex;flex-direction:column;flex:1;min-height:0}
+  #stage-disclaimer .card{flex:1;display:flex;flex-direction:column;min-height:0}
+  .disc-scroll{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-right:.5rem}
   .disc-scroll:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   .pill{display:inline-block;border-radius:9999px;padding:.125rem .5rem;font-size:12px;font-weight:700;text-transform:uppercase}
   .pill-on{background:var(--safe);color:#fff}
@@ -232,7 +240,7 @@
 
   <!-- ================= STAGE: DISCLAIMER ================= -->
   <div id="stage-disclaimer" class="hidden">
-    <section style="margin-top:1.5rem">
+    <section>
       <h2 style="margin-top:.5rem;font-size:24px">Disclaimer</h2>
       <div class="card" style="margin-top:1.25rem;line-height:1.65">
         <div class="disc-scroll" tabindex="0" role="region" aria-label="Disclaimer — scroll to read the full text">
