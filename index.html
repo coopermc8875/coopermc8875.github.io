@@ -2074,7 +2074,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
         + '<span style="line-height:1.65">' + c.compactHTML + '</span></div>'
         + (c.flagHTML ? '<p style="margin-top:.375rem;line-height:1.5;font-weight:700;color:var(--accent)">' + c.flagHTML + '</p>' : '')
         + '<button type="button" class="info-btn" data-pc-open="pc-panel-' + c.rank + '" aria-label="Info on ' + esc(c.name) + '" style="margin-top:.5rem">INFO</button></li>';
-      if(c.rank === 33 || c.rank === 66){
+      if(c.rank === 33 || c.rank === 66 || c.rank === 99){
         h += '<li><button type="button" class="btn btn-main btn-ghost" data-pc-door-close style="width:auto;padding:.5rem 1rem;font-size:14px">Close the door</button></li>';
       }
     });
