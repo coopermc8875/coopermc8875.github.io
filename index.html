@@ -776,7 +776,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
     "The Comeback Trade": "Looks for a stock that got knocked down during the day and fought its way back before the close — the first real sign buyers are stepping in at the bottom. We buy the next morning if the fight-back continues. There is no stop on this play: we hold it to the close of that day and take whatever the day gives us, win or lose.",
     "The Swing Tell Trade": "Looks for a stock that was beaten down over several days, washed all the way out, and then held its low and turned. We buy the turn. There is no stop on this play: we hold it to the close of that day and take whatever the day gives us, win or lose.",
     "Falling Knife Trade": "Looks for a healthy stock that fell hard for days in a row — and then stopped falling. A falling knife is dangerous to catch, so this play waits for the fall to end and takes it one day at a time. There is no price stop on this one: Money (Ai) watches the close every day and tells you the morning it’s time to sell, before the open, and if that morning hasn’t come by the tenth day, you’re out at the close on Day 10.",
-    "4 YEAR MOVING AVERAGE": "The 4 Year Moving Average is the average of a stock's last 1,008 closing prices. When a stock falls to that line and closes back above it, the line has held as support. The play buys the next open and exits at the Day-10 close. This trade was graded on 12 years of whole-market data before it earned this section.",
+    "4 YEAR MOVING AVERAGE": "The 4 Year Moving Average is the average of a stock's last 1,008 closing prices — its 4-year moving average. When a stock falls to that line and closes back above it, the line has held as support. The play buys the next open and exits at the Day-10 close. This trade was graded on 12 years of whole-market data before it earned this section.",
     "The Breakout Trade": "Looks for a stock that pushed up through the top of its recent range — a breakout. We buy the push, set the stop under the candle that made the move, aim for twice what we risked, and if neither the stop nor the target comes by the tenth day, we’re out at that day’s close.",
     "The Connors Trade": "Named for Larry Connors, the trader who published the idea. It looks for a strong stock that has pulled back hard for a few days — stretched too far down, like a rubber band — and buys it expecting the snap back toward its trend. We hold it until the snap back comes or about a week passes, whichever comes first. There is no stop on this play.",
     "The Bounce Trade": "Looks for a stock that closed at a new short-term low after being weak for days — and then did the same thing again. Two washed-out closes in a row is the tell. We buy it and hold up to about a week, looking for the bounce. There is no stop on this play.",
@@ -1675,7 +1675,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
       else if(Array.isArray(s.plays) && s.plays.length) kind = "plays";
       else kind = "bare";
     }
-    if(["plays", "spyqqq", "bare", "special", "open", "notes", "pounce"].indexOf(kind) === -1) return null;
+    if(["plays", "spyqqq", "bare", "special", "open", "notes", "pounce", "fourYearLine"].indexOf(kind) === -1) return null;
     var out = { kind: kind, title: title };
     var intro = dtmStr(s.intro);
     if(intro) out.intro = intro;
@@ -1713,6 +1713,26 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
         var pp = dtmNormalizePlay(s.plays[pi]);
         if(!pp) return null;
         out.plays.push(pp);
+      }
+      return out;
+    }
+    if(kind === "fourYearLine"){
+      /* 4 YEAR MOVING AVERAGE (section added Sat Nov 21, 2026):
+         plays ride in the standard play shape and the kind survives
+         normalization so the renderer prints them in full card form;
+         no plays (or an explicit NONE) keeps the kind with an empty
+         plays list, and the section prints NONE under its heading. A
+         malformed play fails the whole card, like any malformed
+         play. */
+      if(isNone || !Array.isArray(s.plays) || !s.plays.length){
+        out.plays = [];
+        return out;
+      }
+      out.plays = [];
+      for(var fi = 0; fi < s.plays.length; fi++){
+        var fp = dtmNormalizePlay(s.plays[fi]);
+        if(!fp) return null;
+        out.plays.push(fp);
       }
       return out;
     }
