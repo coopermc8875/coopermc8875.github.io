@@ -91,6 +91,12 @@
    "title": "Falling Knife Trade"
   },
   {
+   "kind": "fourYearLine",
+   "plays": [],
+   "state": "NONE",
+   "title": "4 YEAR MOVING AVERAGE"
+  },
+  {
    "intro": "Owner's Pick",
    "kind": "special",
    "plays": [],
