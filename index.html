@@ -1027,7 +1027,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
        it at the right edge whether it wraps or not. The other five
        sections keep the shared form exactly. */
     if(s.kind === "fourYearLine" && headingAbout){
-      headingAbout = headingAbout.replace('class="info-btn"', 'class="info-btn" style="margin-left:auto"');
+      headingAbout = headingAbout.replace('class="info-btn"', 'class="info-btn" style="margin-left:auto;margin-right:1.5rem"');
     }
     var h = '<section style="margin-top:2rem">'
       + (headingAbout ? '<div class="about-head-row"><h3 style="font-size:20px;font-family:var(--sans);font-weight:700">'+titleHTML+'</h3>' + headingAbout + '</div>' : '<h3 style="font-size:20px;font-family:var(--sans);font-weight:700">'+titleHTML+'</h3>');
