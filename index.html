@@ -1022,7 +1022,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
        holds plays today, prints NONE, or is SPECIAL PLAY. */
     var headingAbout = aboutTapHTML(s.title);
     var h = '<section style="margin-top:2rem">'
-      + (headingAbout ? '<div class="about-head-row"><h3 style="font-size:20px;font-family:var(--sans);font-weight:700">'+titleHTML+'</h3>' + headingAbout + '</div>' : '<h3 style="font-size:20px;font-family:var(--sans);font-weight:700">'+titleHTML+'</h3>');
+      + (headingAbout ? '<div class="about-head-row" style="flex-wrap:nowrap"><h3 style="font-size:20px;font-family:var(--sans);font-weight:700;min-width:0">'+titleHTML+'</h3>' + headingAbout + '</div>' : '<h3 style="font-size:20px;font-family:var(--sans);font-weight:700">'+titleHTML+'</h3>');
     if(s.intro) h += '<p style="margin-top:.375rem;line-height:1.65" class="dim">'+escBoard(s.intro)+'</p>';
     if(s.kind==="special"){
       if(s.plays && s.plays.length){
