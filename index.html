@@ -33,6 +33,11 @@
   .mono{font-family:var(--mono)}
   .kicker{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin:0}
   .kicker-sm{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin:0}
+  /* DTM front-page kicker: the time ("6am") prints bigger, bolder, and in
+     the page's deep green — Maurice's order, Mon Nov 23, 2026. The rest of
+     the line keeps the gold kicker form untouched. */
+  .dtm-time{font-size:1.45em;font-weight:800;color:var(--safe)}
+  @media (prefers-color-scheme: dark){ .dtm-time{color:var(--up)} }
   .dim{color:var(--dim)} .mid{color:var(--mid)} .faint{color:var(--faint)}
   .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem}
   .section{margin-top:3rem;border-top:1px solid var(--border);padding-top:2rem}
@@ -229,7 +234,7 @@
           <button type="button" class="btn btn-enter" style="margin-top:1rem" aria-label="Enter Long Term Investing Mode" data-enter="ltim">Enter</button>
         </article>
         <article class="card mode-card">
-          <p class="kicker" data-dtm-kicker>Prints daily at 6am</p>
+          <p class="kicker" data-dtm-kicker>Prints daily at <span class="dtm-time" data-dtm-time>6am</span></p>
           <h2 style="margin-top:.5rem;font-size:24px">Day Trading Mode</h2>
           <p style="margin-top:.5rem;line-height:1.65" class="dim">The plays for the day, posted fresh every trading day. Positions run 1 to 10 days, every play graded with the exit written on the line.</p>
           <button type="button" class="btn btn-enter" style="margin-top:1rem" aria-label="Enter Day Trading Mode" data-enter="day">Enter</button>
@@ -581,7 +586,8 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
     var parts = new Intl.DateTimeFormat("en-US", { hour:"numeric", hour12:true }).formatToParts(inst);
     var hourVal = "", period = "";
     parts.forEach(function(p){ if(p.type === "hour") hourVal = p.value; if(p.type === "dayPeriod") period = p.value; });
-    if(hourVal) el.textContent = "Prints daily at " + hourVal + period.toLowerCase();
+    var t = el.querySelector("[data-dtm-time]");
+    if(hourVal && t) t.textContent = hourVal + period.toLowerCase();
   }
 
   $("disclaimer-body").innerHTML = DISCLAIMER_PARAS.map(function(p){ return "<p>"+esc(p)+"</p>"; }).join("");
