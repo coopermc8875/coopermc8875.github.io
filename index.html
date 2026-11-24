@@ -2381,7 +2381,11 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
     var b = e.target.closest ? e.target.closest("button[data-tab]") : null;
     if(b) setTab(b.getAttribute("data-tab"));
   });
-  document.getElementById("door-date").textContent = new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" }).format(new Date());
+  /* The door date is pinned to Pacific (Maurice's ruling via MAIN,
+     Tue Nov 24, 2026): the door always shows the Pacific calendar
+     date, agreeing with the card's authored date line for every
+     viewer — never the device's own local date. */
+  document.getElementById("door-date").textContent = new Intl.DateTimeFormat("en-US", { timeZone: PACIFIC_TZ, weekday: "long", month: "long", day: "numeric", year: "numeric" }).format(new Date());
   renderDtmKicker();
   renderDoorIntro();
   show("door");
