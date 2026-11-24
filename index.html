@@ -966,12 +966,25 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
   function compactPlayHTML(p){
     compactSeq += 1;
     var id = "play-panel-" + String(p.ticker == null ? "" : p.ticker).toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-" + compactSeq;
-    return '<li>'
+    /* THE PILL FACE (Maurice's ruling via MAIN, Tue Nov 24, 2026):
+       every play's face is ONE slim pill in the old SPY & QQQ window
+       form \u2014 "<TICKER> - 1 play for the day" (the .info-btn styling
+       uppercases it) \u2014 and the pill IS the tap target. The face
+       carries nothing else: no action word, no price, no date, no
+       rider state; the BUY or SHORT is the suspense and reveals only
+       inside the panel. The panel leads with what the compact face
+       used to show \u2014 the name line, then the dated action line (a
+       rider's panel leads with its bought-on / Day-N state line) \u2014
+       then the standing panel order: the story, the Win Line, the
+       Previous 3 behind their tap, the Your Exit box last, CLOSE at
+       the bottom. The <li> sheds the compact card box so the face
+       reads as the bare pill, like the old windows. */
+    return '<li style="background:transparent;border:none;padding:0">'
+      + '<div><button type="button" class="info-btn" data-view-plays-btn aria-expanded="false" aria-controls="' + id + '" aria-label="View the ' + esc(p.ticker) + ' play">' + spyCountLabel(1, p.ticker) + '</button></div>'
+      + '<div class="info-text hidden" id="' + id + '">'
       + '<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.125rem .5rem"><span style="font-weight:700">(' + esc(p.ticker) + ')</span>' + playNameHTML(p) + '</div>'
       + compactActionLine(p)
-      + '<div style="margin-top:.5rem"><button type="button" class="info-btn" data-view-plays-btn aria-expanded="false" aria-controls="' + id + '" aria-label="View the ' + esc(p.ticker) + ' play">VIEW PLAY</button></div>'
-      + '<div class="info-text hidden" id="' + id + '">'
-      + '<p style="line-height:1.65">' + readHTML(p) + '</p>'
+      + '<p style="margin-top:.5rem;line-height:1.65">' + readHTML(p) + '</p>'
       + (p.winLine ? '<p class="win-line" style="margin-top:.5rem;line-height:1.65">' + escBoard(p.winLine) + '</p>' : "")
       + (p.previous3 ? '<div style="margin-top:.5rem">' + prev3TapHTML(p.previous3) + '</div>' : "")
       + (p.exitRule ? '<p class="exitbox" style="margin-top:.75rem"><strong>Your exit, on this play:</strong> ' + exitRuleHTML(p) + '</p>' : "")
