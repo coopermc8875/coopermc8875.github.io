@@ -1156,7 +1156,15 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
          its "0 plays" line plain, with no panel.
          Every other section renders all its plays here, in the open. */
       if(s.kind==="spyqqq"){
-        h += spyQqqWindowsHTML(s.plays);
+        /* SPY & QQQ in the compact play form (Maurice's ruling via MAIN,
+           Tue Nov 24, 2026): the section's daily plays render exactly
+           like every other section's plays — name line, the action word
+           with its when, one VIEW PLAY button, the panel behind it.
+           The windows/pills form is retired on the DTM door; the LTIM
+           door keeps its built rendering. The section has been
+           daily-plays-only since the same morning (v5.316), so no
+           LONG split applies here. */
+        h += (entryMode === "ltim" ? spyQqqWindowsHTML(s.plays) : compactPlaysHTML(s.plays));
       } else {
         h += (entryMode === "ltim" ? playsCardsHTML(s.plays) : compactPlaysHTML(s.plays));
       }
