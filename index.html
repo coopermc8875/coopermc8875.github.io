@@ -113,6 +113,11 @@
      is a single card per play, never a table, never an essay. */
   .compact-plays{list-style:none;margin:.75rem 0 0;padding:0;display:grid;gap:.625rem}
   .compact-plays li{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem}
+  /* THE WIN LINE (Maurice's styling ruling via BUSINESS, Mon Nov 23,
+     2026; playbook v5.315): every Win Line on the card — every play,
+     every section — renders BOLD and BLACK (the page's --text ink,
+     so it stands out in both color schemes), wherever it prints. */
+  .win-line{font-weight:700;color:var(--text)}
   .stack{display:grid;gap:.75rem}
   .stack-lg{display:grid;gap:1rem}
   a{color:var(--accent)}
@@ -900,6 +905,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
         h += '<li><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.125rem .5rem">'+(isDirAction(p.action)?'':'<span style="font-weight:700">'+esc(p.action)+'</span>')+'<span style="font-weight:700">('+esc(p.ticker)+')</span>'+playNameHTML(p)+'</div>'
           + (p.action==="[NON-CALL]" ? '<p style="margin-top:.375rem"><span style="font-size:12px;font-weight:700" class="faint">'+escBoard(p.closeLabel)+'</span> <span class="mono" style="font-size:16px;font-weight:700">'+esc(p.close)+'</span></p>' : "")
           + '<p style="margin-top:.5rem;line-height:1.65">'+readHTML(p)+'</p>'
+          + (p.winLine?'<p class="win-line" style="margin-top:.5rem;line-height:1.65">'+escBoard(p.winLine)+'</p>':"")
           + (p.exitRule?'<p class="exitbox"><strong>Your exit, on this play:</strong> '+exitRuleHTML(p)+'</p>':"")
           + (p.exitNote?'<p style="margin-top:.5rem;line-height:1.65">'+escBoard(p.exitNote)+'</p>':"")
           + stopTapHTML(p)
@@ -913,7 +919,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
       var leanClose = p.action==="[NON-CALL]";
       h += '<tr><td>'+(entryMode!=="ltim" && isDirAction(p.action) ? '' : '<span style="font-weight:700">'+esc(p.action)+'</span> ')+(entryMode!=="ltim" ? '<span style="font-weight:700">('+esc(p.ticker)+')</span>' : '<span class="mono" style="font-weight:600">('+esc(p.ticker)+')</span>')+'<span style="display:block">'+playNameHTML(p)+'</span></td>'
         + '<td style="white-space:nowrap"><span style="display:block;font-size:12px'+(leanClose?';font-weight:700':'')+'" class="faint">'+escBoard(p.closeLabel)+'</span><span class="mono" style="font-size:16px;font-weight:'+(leanClose?'700':'600')+'">'+esc(p.close)+'</span></td>'
-        + '<td style="line-height:1.65">'+readHTML(p)+(p.exitRule?'<span class="exitbox" style="display:block;margin-top:.5rem"><strong>Your exit, on this play:</strong> '+exitRuleHTML(p)+'</span>':"")+(p.exitNote?'<span style="display:block;margin-top:.5rem;line-height:1.65">'+escBoard(p.exitNote)+'</span>':"")+stopTapHTML(p)+(p.previous3?prev3TapHTML(p.previous3):"")+'</td></tr>';
+        + '<td style="line-height:1.65">'+readHTML(p)+(p.winLine?'<span class="win-line" style="display:block;margin-top:.5rem">'+escBoard(p.winLine)+'</span>':"")+(p.exitRule?'<span class="exitbox" style="display:block;margin-top:.5rem"><strong>Your exit, on this play:</strong> '+exitRuleHTML(p)+'</span>':"")+(p.exitNote?'<span style="display:block;margin-top:.5rem;line-height:1.65">'+escBoard(p.exitNote)+'</span>':"")+stopTapHTML(p)+(p.previous3?prev3TapHTML(p.previous3):"")+'</td></tr>';
     });
     h += '</tbody></table></div>';
     return h;
@@ -955,7 +961,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
       + '<div style="margin-top:.5rem"><button type="button" class="info-btn" data-view-plays-btn aria-expanded="false" aria-controls="' + id + '" aria-label="View the ' + esc(p.ticker) + ' play">VIEW PLAY</button></div>'
       + '<div class="info-text hidden" id="' + id + '">'
       + '<p style="line-height:1.65">' + readHTML(p) + '</p>'
-      + (p.winLine ? '<p style="margin-top:.5rem;line-height:1.65">' + escBoard(p.winLine) + '</p>' : "")
+      + (p.winLine ? '<p class="win-line" style="margin-top:.5rem;line-height:1.65">' + escBoard(p.winLine) + '</p>' : "")
       + (p.previous3 ? '<div style="margin-top:.5rem">' + prev3TapHTML(p.previous3) + '</div>' : "")
       + (p.exitRule ? '<p class="exitbox" style="margin-top:.75rem"><strong>Your exit, on this play:</strong> ' + exitRuleHTML(p) + '</p>' : "")
       + (p.exitNote ? '<p style="margin-top:.5rem;line-height:1.65">' + escBoard(p.exitNote) + '</p>' : "")
