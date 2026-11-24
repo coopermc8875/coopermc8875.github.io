@@ -68,7 +68,10 @@
      "ticker": "MSFT",
      "winLine": "Win rate in THE CONNORS (3-year test): 75.9% (44 of 58 trades won)",
      "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour — upper wick 10.1%, lower wick 30.6%, closed at 30.6% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 33.4%, lower wick 40.8%, closed at 66.6% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 7.0%, lower wick 16.5%, closed at 16.5% of the hour's range.",
-     "read": "Still riding — this buy got in on Wednesday, November 18 and is on Day 5 of 10. It closed Monday at $492.50. Nothing about the ride changes today: no price stop, and Money tells you the morning it's time to sell. MSFT is holding up far better than the chip names before Tuesday's open — the ride stands exactly as booked."
+     "read": "Still riding — this buy got in on Wednesday, November 18 and is on Day 5 of 10. It closed Monday at $492.50. Nothing about the ride changes today: no price stop, and Money tells you the morning it's time to sell. MSFT is holding up far better than the chip names before Tuesday's open — the ride stands exactly as booked.",
+     "boughtOn": "Wednesday, November 18",
+     "dayOf": 5,
+     "dayTotal": 10
     }
    ]
   },
@@ -141,7 +144,10 @@
      "ticker": "FSLR",
      "winLine": "Win rate in FALLING KNIFE (3-year test): 50.0% (7 of 14 trades won)",
      "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour — upper wick 6.9%, lower wick 34.6%, closed at 34.6% of the hour's range. · 11:30 AM PT — sellers won the hour — upper wick 25.4%, lower wick 55.8%, closed at 55.8% of the hour's range. · 12:30 PM PT — buyers won the hour — upper wick 17.3%, lower wick 53.4%, closed at 82.7% of the hour's range.",
-     "read": "Still riding — this buy got in on Monday, November 16 and is on Day 7 of 10. It closed Monday at $146.53, still below where it got in — that gap fights this buy, stated plainly. The ride stands exactly as booked; no price stop."
+     "read": "Still riding — this buy got in on Monday, November 16 and is on Day 7 of 10. It closed Monday at $146.53, still below where it got in — that gap fights this buy, stated plainly. The ride stands exactly as booked; no price stop.",
+     "boughtOn": "Monday, November 16",
+     "dayOf": 7,
+     "dayTotal": 10
     }
    ]
   },
