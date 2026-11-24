@@ -1,222 +1,162 @@
 {
-  "sessionDate": "2026-11-24",
-  "dateLabel": "Tuesday, November 24, 2026",
-  "gradedLine": "TUESDAY, NOVEMBER 24, 2026",
-  "priceStamp": {
-    "closeDateLabel": "Monday, November 23, 2026",
-    "closeTime": "1:00 PM PT",
-    "checkedAtTime": "5:26 AM PT",
-    "checkedAtDateLabel": "Tuesday, November 24, 2026"
-  },
-  "sections": [
+ "sessionDate": "2026-11-24",
+ "dateLabel": "Tuesday, November 24, 2026",
+ "gradedLine": "TUESDAY, NOVEMBER 24, 2026",
+ "priceStamp": {
+  "closeDateLabel": "Monday, November 23, 2026",
+  "closeTime": "1:00 PM PT",
+  "checkedAtTime": "5:26 AM PT",
+  "checkedAtDateLabel": "Tuesday, November 24, 2026"
+ },
+ "sections": [
+  {
+   "kind": "pounce",
+   "title": "The Pounce Trade",
+   "state": "plays",
+   "plays": [
     {
-      "kind": "pounce",
-      "title": "The Pounce Trade",
-      "state": "plays",
-      "plays": [
-        {
-          "action": "BUY",
-          "close": "$212.08",
-          "closeLabel": "Closed Monday at",
-          "exitRule": "Out at the close (1:00 PM PT) on Tuesday, November 24, 2026.",
-          "name": "Moderna, Inc.",
-          "ticker": "MRNA",
-          "winLine": "No graded win record for The Pounce Trade yet — this play is called on its staging evidence, stated plainly.",
-          "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour — upper wick 62.4%, lower wick 26.8%, closed at 26.8% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 0.0%, lower wick 82.7%, closed at 100.0% of the hour's range. · 12:30 PM PT — buyers won the hour — upper wick 36.4%, lower wick 34.3%, closed at 63.6% of the hour's range.",
-          "read": "BUY at Tuesday's opening bell — MRNA fell to $189.98 on Friday and buyers stepped in there. On Monday it never fell as low as it had on Friday — its lowest price was $202.29 — and it closed at $212.08, above the $210.00 level it had not been able to get past before. Buying means we make money if the price goes up. Flagged plainly: the wider market's Monday bounce faded into its close and the indexes are set to open lower — this play stands on MRNA's own tape, not the market's, and it is out at Tuesday's close either way."
-        }
-      ]
-    },
-    {
-      "kind": "spyqqq",
-      "title": "SPY & QQQ",
-      "state": "plays",
-      "plays": [
-        {
-          "action": "SHORT",
-          "close": "$722.29",
-          "closeLabel": "Closed Monday at",
-          "exitRule": "Out at the close (1:00 PM PT) on Tuesday, November 24, 2026.",
-          "name": "SPDR S&P 500 ETF Trust",
-          "ticker": "SPY",
-          "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour narrowly — upper wick 19.8%, lower wick 78.8%, closed at 78.8% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 7.5%, lower wick 71.4%, closed at 92.5% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 16.1%, lower wick 28.1%, closed at 28.1% of the hour's range. The bounce faded into the close.",
-          "read": "SHORT at the open — Monday's +4.71% bounce printed its high in the first hour ($727.98), never reclaimed it, and the final hour sold to a 28.1% close position; overnight futures are down and SPY is lower before the open. It's a good short in my opinion. CONFIRM: the first hour holds below $724.33 (Monday's open) and breaks $720.60. KILL: an hourly close above $727.98 (Monday's high) — then the bounce is continuing and the short is done. Flagged openly: Monday was a genuine capitulation reversal on heavy volume, and shorting day 2 of a washout bounce carries squeeze risk — the kill line governs."
-        },
-        {
-          "action": "SHORT",
-          "close": "$651.03",
-          "closeLabel": "Closed Monday at",
-          "exitRule": "Out at the close (1:00 PM PT) on Tuesday, November 24, 2026.",
-          "name": "Invesco QQQ Trust",
-          "ticker": "QQQ",
-          "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour narrowly — upper wick 17.9%, lower wick 72.5%, closed at 72.5% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 7.8%, lower wick 65.5%, closed at 92.2% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 27.1%, lower wick 31.0%, closed at 31.0% of the hour's range. The same late fade as SPY, harder.",
-          "read": "SHORT at the open — QQQ bounced harder than SPY on Monday (+7.00%) and is fading harder before the open, with its final hour closing at 31.0% of its range under a 27.1% upper wick, and it remains the weaker index below its long averages. It's a good short in my opinion. CONFIRM: the first hour holds below $655.98 (Monday's open) and breaks $647.90. KILL: an hourly close above $657.53 (Monday's high). Flagged openly: the same squeeze risk as SPY, larger — the kill line governs."
-        },
-        {
-          "action": "BUY",
-          "close": "$722.29",
-          "closeLabel": "Closed Monday at",
-          "exitRule": "Sell at close (1:00 PM PT) on Monday, February 22, 2027.",
-          "name": "SPDR S&P 500 ETF Trust",
-          "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour narrowly — upper wick 19.8%, lower wick 78.8%, closed at 78.8% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 7.5%, lower wick 71.4%, closed at 92.5% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 16.1%, lower wick 28.1%, closed at 28.1% of the hour's range. The bounce faded into the close.",
-          "read": "Entered at Wednesday's open — SPY closed Tuesday just above its 200-day average line ($732.34), a seat it only takes after running well above that line in the months before, and this play holds to the close on Monday, February 22, 2027. Win rate in The Seat (2024–2026): 77.8% (7 of 9 trades won)",
-          "ticker": "SPY"
-        },
-        {
-          "action": "BUY",
-          "close": "$722.29",
-          "closeLabel": "Closed Monday at",
-          "exitRule": "First leg: sell at close (1:00 PM PT) on Monday, February 22, 2027; second leg at the close of the 252nd session after the signal (November 2027).",
-          "name": "SPDR S&P 500 ETF Trust",
-          "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour narrowly — upper wick 19.8%, lower wick 78.8%, closed at 78.8% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 7.5%, lower wick 71.4%, closed at 92.5% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 16.1%, lower wick 28.1%, closed at 28.1% of the hour's range. The bounce faded into the close.",
-          "read": "BUY at Thursday's open — SPY closed Wednesday below its 200-day average line ($730.20 against the line at $732.55), the first close under the line after 155 consecutive sessions above it, and this play holds its first leg to the close on Monday, February 22, 2027, with a second leg to the close of the 252nd session after the signal (November 2027). Win rate in Below the 200 (24-year test): 77.8% (7 of 9 trades won) at hold 63; the hold-252 leg won 87.5% (7 of 8)",
-          "ticker": "SPY"
-        },
-        {
-          "action": "BUY",
-          "close": "$651.03",
-          "closeLabel": "Closed Monday at",
-          "exitRule": "First leg: sell at close (1:00 PM PT) on Wednesday, February 3, 2027; second leg at the close on Wednesday, November 3, 2027.",
-          "name": "Invesco QQQ Trust",
-          "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour narrowly — upper wick 17.9%, lower wick 72.5%, closed at 72.5% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 7.8%, lower wick 65.5%, closed at 92.2% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 27.1%, lower wick 31.0%, closed at 31.0% of the hour's range. The same late fade as SPY, harder.",
-          "read": "Entered at Tuesday, November 3's open — QQQ had drawn down 10% from its high, and this play holds its first leg to the close on Wednesday, February 3, 2027, with a second leg to the close on Wednesday, November 3, 2027. Win rate in Drawdown Depth −10% (24-year test): 84.6% (11 of 13 trades won) at hold 63; the hold-252 leg won 90.9% (10 of 11)",
-          "ticker": "QQQ"
-        },
-        {
-          "action": "BUY",
-          "close": "$651.03",
-          "closeLabel": "Closed Monday at",
-          "exitRule": "Sell at close (1:00 PM PT) on Tuesday, December 8, 2026.",
-          "name": "Invesco QQQ Trust",
-          "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour narrowly — upper wick 17.9%, lower wick 72.5%, closed at 72.5% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 7.8%, lower wick 65.5%, closed at 92.2% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 27.1%, lower wick 31.0%, closed at 31.0% of the hour's range. The same late fade as SPY, harder.",
-          "read": "Entered at Friday, November 6's open — QQQ washed out 6.49% in a single session on Thursday, November 5, and this play holds to the close on Tuesday, December 8, 2026. Win rate in The Deep Wash Leg B (24-year test): 61.5% (24 of 39 trades won). Leg A closed Friday, November 13 at +3.27%.",
-          "ticker": "QQQ"
-        },
-        {
-          "action": "BUY",
-          "close": "$651.03",
-          "closeLabel": "Closed Monday at",
-          "exitRule": "Sell at close (1:00 PM PT) on Wednesday, February 24, 2027.",
-          "name": "Invesco QQQ Trust",
-          "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour narrowly — upper wick 17.9%, lower wick 72.5%, closed at 72.5% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 7.8%, lower wick 65.5%, closed at 92.2% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 27.1%, lower wick 31.0%, closed at 31.0% of the hour's range. The same late fade as SPY, harder.",
-          "read": "BUY at Monday's open — QQQ's relative weakness against SPY printed a 252-session extreme on Friday (the QQQ/SPY ratio at the 2.4th percentile, past the 10th-percentile line), and this play holds to the close on Wednesday, February 24, 2027. Win rate in Ratio Snap-Back (2024–2026 test): 66.7% (10 of 15 trades won)",
-          "ticker": "QQQ"
-        },
-        {
-          "action": "BUY",
-          "close": "$651.03",
-          "closeLabel": "Closed Monday at",
-          "exitRule": "First leg: sell at close (1:00 PM PT) on Tuesday, December 1, 2026; second leg at the close on Tuesday, December 22, 2026.",
-          "name": "Invesco QQQ Trust",
-          "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour narrowly — upper wick 17.9%, lower wick 72.5%, closed at 72.5% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 7.8%, lower wick 65.5%, closed at 92.2% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 27.1%, lower wick 31.0%, closed at 31.0% of the hour's range. The same late fade as SPY, harder.",
-          "read": "BUY at Monday's open — QQQ washed out 5.67% in a single session on Friday, past the Deep Wash line, and this play holds its first leg to the close on Tuesday, December 1, 2026, with a second leg to the close on Tuesday, December 22, 2026. Win rate in The Deep Wash (24-year test): Leg A 67.5% (27 of 40 trades won); Leg B 61.5% (24 of 39 trades won)",
-          "ticker": "QQQ"
-        }
-      ]
-    },
-    {
-      "kind": "plays",
-      "title": "The Connors Trade",
-      "state": "plays",
-      "plays": [
-        {
-          "action": "BUY",
-          "close": "$492.50",
-          "closeLabel": "Closed Monday at",
-          "exitRule": "There's no price stop — Money watches the close every day and tells you the morning it's time to sell, before the open — if that day never comes, you're out at the close on Day 10 (today is Day 5 of 10).",
-          "name": "Microsoft Corporation",
-          "ticker": "MSFT",
-          "winLine": "Win rate in THE CONNORS (3-year test): 75.9% (44 of 58 trades won)",
-          "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour — upper wick 10.1%, lower wick 30.6%, closed at 30.6% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 33.4%, lower wick 40.8%, closed at 66.6% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 7.0%, lower wick 16.5%, closed at 16.5% of the hour's range.",
-          "read": "Still riding — this buy got in on Wednesday, November 18 and is on Day 5 of 10. It closed Monday at $492.50. Nothing about the ride changes today: no price stop, and Money tells you the morning it's time to sell. MSFT is holding up far better than the chip names before Tuesday's open — the ride stands exactly as booked."
-        }
-      ]
-    },
-    {
-      "kind": "plays",
-      "title": "Falling Knife Trade",
-      "state": "plays",
-      "plays": [
-        {
-          "action": "BUY",
-          "close": "$282.10",
-          "closeLabel": "Closed Monday at",
-          "exitRule": "there's no price stop on this one — Money (Ai) watches the close every day and tells you the morning it's time to sell, before the open. If that morning hasn't come by the tenth day, you're out at the close on Day 10 (today is Day 1 of 10).",
-          "name": "Alphabet Inc.",
-          "ticker": "GOOGL",
-          "winLine": "Win rate in FALLING KNIFE (3-year test): 75.0% (3 of 4 trades won)",
-          "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — buyers won the hour, upper wick 32.2%, lower wick 35.7%, close sat 67.8% up from the hour's low, $282.17 low rejected · 11:30 AM PT — sellers won the hour, upper wick 14.5%, lower wick 48.8%, close sat 48.8% up from the hour's low, $284.46 high rejected · 12:30 PM PT — buyers won the hour, upper wick 11.9%, lower wick 85.0%, close sat 88.1% up from the hour's low, $281.99 low rejected",
-          "read": "BUY at Tuesday's open — this name fell hard into Friday, then buyers stepped in on Monday and defended it, closing Monday at $282.10 near the top of its afternoon hours. Buying means we make money if the price goes up."
-        },
-        {
-          "action": "BUY",
-          "close": "$597.60",
-          "closeLabel": "Closed Monday at",
-          "exitRule": "there's no price stop on this one — Money (Ai) watches the close every day and tells you the morning it's time to sell, before the open. If that morning hasn't come by the tenth day, you're out at the close on Day 10 (today is Day 1 of 10).",
-          "name": "Meta Platforms, Inc.",
-          "ticker": "META",
-          "winLine": "Win rate in FALLING KNIFE (3-year test): 71.4% (5 of 7 trades won)",
-          "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — buyers won the hour, upper wick 22.5%, lower wick 41.6%, close sat 77.5% up from the hour's low, $591.86 low rejected · 11:30 AM PT — buyers won the hour, upper wick 19.6%, lower wick 44.9%, close sat 80.4% up from the hour's low, $596.50 low rejected · 12:30 PM PT — buyers won the hour, upper wick 6.2%, lower wick 62.4%, close sat 93.8% up from the hour's low, $596.88 low rejected",
-          "read": "BUY at Tuesday's open — this name fell hard into Friday, then buyers won all three of Monday's final hours and closed it at $597.60, pinned near the high of the last hour. Buying means we make money if the price goes up."
-        },
-        {
-          "action": "BUY",
-          "close": "$222.12",
-          "closeLabel": "Closed Monday at",
-          "exitRule": "there's no price stop on this one — Money (Ai) watches the close every day and tells you the morning it's time to sell, before the open. If that morning hasn't come by the tenth day, you're out at the close on Day 10 (today is Day 1 of 10).",
-          "name": "Astera Labs, Inc.",
-          "ticker": "ALAB",
-          "winLine": "Win rate in FALLING KNIFE (3-year test): 100.0% (6 of 6 trades won)",
-          "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour, upper wick 14.4%, lower wick 61.0%, close sat 61.0% up from the hour's low, $219.38 high rejected · 11:30 AM PT — sellers won the hour, upper wick 9.5%, lower wick 58.9%, close sat 58.9% up from the hour's low, $218.59 high rejected · 12:30 PM PT — buyers won the hour, upper wick 7.7%, lower wick 19.2%, close sat 92.3% up from the hour's low, $214.76 low rejected",
-          "read": "BUY at Tuesday's open — this name fell hard into Friday, then Monday's last hour turned up hard and closed at $222.12, at 92.3% of its range. Buying means we make money if the price goes up. Flagged plainly: the price is lower before Tuesday's open in the broad chip pullback — the play has no price stop and stands as booked."
-        },
-        {
-          "action": "BUY",
-          "close": "$133.79",
-          "closeLabel": "Closed Monday at",
-          "exitRule": "there's no price stop on this one — Money (Ai) watches the close every day and tells you the morning it's time to sell, before the open. If that morning hasn't come by the tenth day, you're out at the close on Day 10 (today is Day 1 of 10).",
-          "name": "Insulet Corporation",
-          "ticker": "PODD",
-          "winLine": "Win rate in FALLING KNIFE (3-year test): 87.5% (7 of 8 trades won)",
-          "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — buyers won the hour, upper wick 11.2%, lower wick 4.3%, close sat 88.8% up from the hour's low, $132.07 low rejected · 11:30 AM PT — buyers won the hour, upper wick 15.5%, lower wick 18.2%, close sat 84.5% up from the hour's low, $132.71 low rejected · 12:30 PM PT — sellers won the hour, upper wick 0.4%, lower wick 32.3%, close sat 32.3% up from the hour's low, $134.18 high rejected",
-          "read": "BUY at Tuesday's open — this name fell hard into Friday, then buyers won Monday's first two final hours and closed it at $133.79. Buying means we make money if the price goes up."
-        },
-        {
-          "action": "BUY",
-          "close": "$346.87",
-          "closeLabel": "Closed Monday at",
-          "exitRule": "there's no price stop on this one — Money (Ai) watches the close every day and tells you the morning it's time to sell, before the open. If that morning hasn't come by the tenth day, you're out at the close on Day 10 (today is Day 1 of 10).",
-          "name": "Applied Materials, Inc.",
-          "ticker": "AMAT",
-          "winLine": "Win rate in FALLING KNIFE (3-year test): 83.3% (5 of 6 trades won)",
-          "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour, upper wick 14.9%, lower wick 41.3%, close sat 41.3% up from the hour's low, $345.69 high rejected · 11:30 AM PT — buyers won the hour, upper wick 48.3%, lower wick 31.1%, close sat 51.7% up from the hour's low, $342.65 low rejected · 12:30 PM PT — buyers won the hour, upper wick 8.1%, lower wick 41.7%, close sat 91.9% up from the hour's low, $341.30 low rejected",
-          "read": "BUY at Tuesday's open — this name fell hard into Friday, then buyers won Monday's last two final hours and closed it at $346.87, at 91.9% of the last hour's range. Buying means we make money if the price goes up. Flagged plainly: the price is lower before Tuesday's open in the broad chip pullback — the play has no price stop and stands as booked."
-        },
-        {
-          "action": "BUY",
-          "close": "$146.53",
-          "closeLabel": "Closed Monday at",
-          "exitRule": "there's no price stop on this one — Money (Ai) watches the close every day and tells you the morning it's time to sell, before the open. If that morning hasn't come by the tenth day, you're out at the close on Day 10 (today is Day 7 of 10).",
-          "name": "First Solar, Inc.",
-          "ticker": "FSLR",
-          "winLine": "Win rate in FALLING KNIFE (3-year test): 50.0% (7 of 14 trades won)",
-          "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour — upper wick 6.9%, lower wick 34.6%, closed at 34.6% of the hour's range. · 11:30 AM PT — sellers won the hour — upper wick 25.4%, lower wick 55.8%, closed at 55.8% of the hour's range. · 12:30 PM PT — buyers won the hour — upper wick 17.3%, lower wick 53.4%, closed at 82.7% of the hour's range.",
-          "read": "Still riding — this buy got in on Monday, November 16 and is on Day 7 of 10. It closed Monday at $146.53, still below where it got in — that gap fights this buy, stated plainly. The ride stands exactly as booked; no price stop."
-        }
-      ]
-    },
-    {
-      "kind": "fourYearLine",
-      "title": "4 YEAR MOVING AVERAGE",
-      "state": "NONE",
-      "plays": []
-    },
-    {
-      "kind": "special",
-      "title": "SPECIAL PLAY",
-      "intro": "Owner's Pick",
-      "state": "NONE",
-      "plays": []
+     "action": "BUY",
+     "close": "$212.08",
+     "closeLabel": "Closed Monday at",
+     "exitRule": "Out at the close (1:00 PM PT) on Tuesday, November 24, 2026.",
+     "name": "Moderna, Inc.",
+     "ticker": "MRNA",
+     "winLine": "No graded win record for The Pounce Trade yet — this play is called on its staging evidence, stated plainly.",
+     "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour — upper wick 62.4%, lower wick 26.8%, closed at 26.8% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 0.0%, lower wick 82.7%, closed at 100.0% of the hour's range. · 12:30 PM PT — buyers won the hour — upper wick 36.4%, lower wick 34.3%, closed at 63.6% of the hour's range.",
+     "read": "BUY at Tuesday's opening bell — MRNA fell to $189.98 on Friday and buyers stepped in there. On Monday it never fell as low as it had on Friday — its lowest price was $202.29 — and it closed at $212.08, above the $210.00 level it had not been able to get past before. Buying means we make money if the price goes up. Flagged plainly: the wider market's Monday bounce faded into its close and the indexes are set to open lower — this play stands on MRNA's own tape, not the market's, and it is out at Tuesday's close either way."
     }
-  ]
+   ]
+  },
+  {
+   "kind": "spyqqq",
+   "title": "SPY & QQQ",
+   "state": "plays",
+   "plays": [
+    {
+     "action": "SHORT",
+     "close": "$722.29",
+     "closeLabel": "Closed Monday at",
+     "exitRule": "Out at the close (1:00 PM PT) on Tuesday, November 24, 2026.",
+     "name": "SPDR S&P 500 ETF Trust",
+     "ticker": "SPY",
+     "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour narrowly — upper wick 19.8%, lower wick 78.8%, closed at 78.8% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 7.5%, lower wick 71.4%, closed at 92.5% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 16.1%, lower wick 28.1%, closed at 28.1% of the hour's range. The bounce faded into the close.",
+     "read": "SHORT at the open — Monday's +4.71% bounce printed its high in the first hour ($727.98), never reclaimed it, and the final hour sold to a 28.1% close position; overnight futures are down and SPY is lower before the open. It's a good short in my opinion. CONFIRM: the first hour holds below $724.33 (Monday's open) and breaks $720.60. KILL: an hourly close above $727.98 (Monday's high) — then the bounce is continuing and the short is done. Flagged openly: Monday was a genuine capitulation reversal on heavy volume, and shorting day 2 of a washout bounce carries squeeze risk — the kill line governs."
+    },
+    {
+     "action": "SHORT",
+     "close": "$651.03",
+     "closeLabel": "Closed Monday at",
+     "exitRule": "Out at the close (1:00 PM PT) on Tuesday, November 24, 2026.",
+     "name": "Invesco QQQ Trust",
+     "ticker": "QQQ",
+     "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour narrowly — upper wick 17.9%, lower wick 72.5%, closed at 72.5% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 7.8%, lower wick 65.5%, closed at 92.2% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 27.1%, lower wick 31.0%, closed at 31.0% of the hour's range. The same late fade as SPY, harder.",
+     "read": "SHORT at the open — QQQ bounced harder than SPY on Monday (+7.00%) and is fading harder before the open, with its final hour closing at 31.0% of its range under a 27.1% upper wick, and it remains the weaker index below its long averages. It's a good short in my opinion. CONFIRM: the first hour holds below $655.98 (Monday's open) and breaks $647.90. KILL: an hourly close above $657.53 (Monday's high). Flagged openly: the same squeeze risk as SPY, larger — the kill line governs."
+    }
+   ]
+  },
+  {
+   "kind": "plays",
+   "title": "The Connors Trade",
+   "state": "plays",
+   "plays": [
+    {
+     "action": "BUY",
+     "close": "$492.50",
+     "closeLabel": "Closed Monday at",
+     "exitRule": "There's no price stop — Money watches the close every day and tells you the morning it's time to sell, before the open — if that day never comes, you're out at the close on Day 10 (today is Day 5 of 10).",
+     "name": "Microsoft Corporation",
+     "ticker": "MSFT",
+     "winLine": "Win rate in THE CONNORS (3-year test): 75.9% (44 of 58 trades won)",
+     "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour — upper wick 10.1%, lower wick 30.6%, closed at 30.6% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 33.4%, lower wick 40.8%, closed at 66.6% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 7.0%, lower wick 16.5%, closed at 16.5% of the hour's range.",
+     "read": "Still riding — this buy got in on Wednesday, November 18 and is on Day 5 of 10. It closed Monday at $492.50. Nothing about the ride changes today: no price stop, and Money tells you the morning it's time to sell. MSFT is holding up far better than the chip names before Tuesday's open — the ride stands exactly as booked."
+    }
+   ]
+  },
+  {
+   "kind": "plays",
+   "title": "Falling Knife Trade",
+   "state": "plays",
+   "plays": [
+    {
+     "action": "BUY",
+     "close": "$282.10",
+     "closeLabel": "Closed Monday at",
+     "exitRule": "there's no price stop on this one — Money (Ai) watches the close every day and tells you the morning it's time to sell, before the open. If that morning hasn't come by the tenth day, you're out at the close on Day 10 (today is Day 1 of 10).",
+     "name": "Alphabet Inc.",
+     "ticker": "GOOGL",
+     "winLine": "Win rate in FALLING KNIFE (3-year test): 75.0% (3 of 4 trades won)",
+     "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — buyers won the hour, upper wick 32.2%, lower wick 35.7%, close sat 67.8% up from the hour's low, $282.17 low rejected · 11:30 AM PT — sellers won the hour, upper wick 14.5%, lower wick 48.8%, close sat 48.8% up from the hour's low, $284.46 high rejected · 12:30 PM PT — buyers won the hour, upper wick 11.9%, lower wick 85.0%, close sat 88.1% up from the hour's low, $281.99 low rejected",
+     "read": "BUY at Tuesday's open — this name fell hard into Friday, then buyers stepped in on Monday and defended it, closing Monday at $282.10 near the top of its afternoon hours. Buying means we make money if the price goes up."
+    },
+    {
+     "action": "BUY",
+     "close": "$597.60",
+     "closeLabel": "Closed Monday at",
+     "exitRule": "there's no price stop on this one — Money (Ai) watches the close every day and tells you the morning it's time to sell, before the open. If that morning hasn't come by the tenth day, you're out at the close on Day 10 (today is Day 1 of 10).",
+     "name": "Meta Platforms, Inc.",
+     "ticker": "META",
+     "winLine": "Win rate in FALLING KNIFE (3-year test): 71.4% (5 of 7 trades won)",
+     "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — buyers won the hour, upper wick 22.5%, lower wick 41.6%, close sat 77.5% up from the hour's low, $591.86 low rejected · 11:30 AM PT — buyers won the hour, upper wick 19.6%, lower wick 44.9%, close sat 80.4% up from the hour's low, $596.50 low rejected · 12:30 PM PT — buyers won the hour, upper wick 6.2%, lower wick 62.4%, close sat 93.8% up from the hour's low, $596.88 low rejected",
+     "read": "BUY at Tuesday's open — this name fell hard into Friday, then buyers won all three of Monday's final hours and closed it at $597.60, pinned near the high of the last hour. Buying means we make money if the price goes up."
+    },
+    {
+     "action": "BUY",
+     "close": "$222.12",
+     "closeLabel": "Closed Monday at",
+     "exitRule": "there's no price stop on this one — Money (Ai) watches the close every day and tells you the morning it's time to sell, before the open. If that morning hasn't come by the tenth day, you're out at the close on Day 10 (today is Day 1 of 10).",
+     "name": "Astera Labs, Inc.",
+     "ticker": "ALAB",
+     "winLine": "Win rate in FALLING KNIFE (3-year test): 100.0% (6 of 6 trades won)",
+     "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour, upper wick 14.4%, lower wick 61.0%, close sat 61.0% up from the hour's low, $219.38 high rejected · 11:30 AM PT — sellers won the hour, upper wick 9.5%, lower wick 58.9%, close sat 58.9% up from the hour's low, $218.59 high rejected · 12:30 PM PT — buyers won the hour, upper wick 7.7%, lower wick 19.2%, close sat 92.3% up from the hour's low, $214.76 low rejected",
+     "read": "BUY at Tuesday's open — this name fell hard into Friday, then Monday's last hour turned up hard and closed at $222.12, at 92.3% of its range. Buying means we make money if the price goes up. Flagged plainly: the price is lower before Tuesday's open in the broad chip pullback — the play has no price stop and stands as booked."
+    },
+    {
+     "action": "BUY",
+     "close": "$133.79",
+     "closeLabel": "Closed Monday at",
+     "exitRule": "there's no price stop on this one — Money (Ai) watches the close every day and tells you the morning it's time to sell, before the open. If that morning hasn't come by the tenth day, you're out at the close on Day 10 (today is Day 1 of 10).",
+     "name": "Insulet Corporation",
+     "ticker": "PODD",
+     "winLine": "Win rate in FALLING KNIFE (3-year test): 87.5% (7 of 8 trades won)",
+     "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — buyers won the hour, upper wick 11.2%, lower wick 4.3%, close sat 88.8% up from the hour's low, $132.07 low rejected · 11:30 AM PT — buyers won the hour, upper wick 15.5%, lower wick 18.2%, close sat 84.5% up from the hour's low, $132.71 low rejected · 12:30 PM PT — sellers won the hour, upper wick 0.4%, lower wick 32.3%, close sat 32.3% up from the hour's low, $134.18 high rejected",
+     "read": "BUY at Tuesday's open — this name fell hard into Friday, then buyers won Monday's first two final hours and closed it at $133.79. Buying means we make money if the price goes up."
+    },
+    {
+     "action": "BUY",
+     "close": "$346.87",
+     "closeLabel": "Closed Monday at",
+     "exitRule": "there's no price stop on this one — Money (Ai) watches the close every day and tells you the morning it's time to sell, before the open. If that morning hasn't come by the tenth day, you're out at the close on Day 10 (today is Day 1 of 10).",
+     "name": "Applied Materials, Inc.",
+     "ticker": "AMAT",
+     "winLine": "Win rate in FALLING KNIFE (3-year test): 83.3% (5 of 6 trades won)",
+     "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour, upper wick 14.9%, lower wick 41.3%, close sat 41.3% up from the hour's low, $345.69 high rejected · 11:30 AM PT — buyers won the hour, upper wick 48.3%, lower wick 31.1%, close sat 51.7% up from the hour's low, $342.65 low rejected · 12:30 PM PT — buyers won the hour, upper wick 8.1%, lower wick 41.7%, close sat 91.9% up from the hour's low, $341.30 low rejected",
+     "read": "BUY at Tuesday's open — this name fell hard into Friday, then buyers won Monday's last two final hours and closed it at $346.87, at 91.9% of the last hour's range. Buying means we make money if the price goes up. Flagged plainly: the price is lower before Tuesday's open in the broad chip pullback — the play has no price stop and stands as booked."
+    },
+    {
+     "action": "BUY",
+     "close": "$146.53",
+     "closeLabel": "Closed Monday at",
+     "exitRule": "there's no price stop on this one — Money (Ai) watches the close every day and tells you the morning it's time to sell, before the open. If that morning hasn't come by the tenth day, you're out at the close on Day 10 (today is Day 7 of 10).",
+     "name": "First Solar, Inc.",
+     "ticker": "FSLR",
+     "winLine": "Win rate in FALLING KNIFE (3-year test): 50.0% (7 of 14 trades won)",
+     "previous3": "Previous 3 (Monday, November 23) — 10:30 AM PT — sellers won the hour — upper wick 6.9%, lower wick 34.6%, closed at 34.6% of the hour's range. · 11:30 AM PT — sellers won the hour — upper wick 25.4%, lower wick 55.8%, closed at 55.8% of the hour's range. · 12:30 PM PT — buyers won the hour — upper wick 17.3%, lower wick 53.4%, closed at 82.7% of the hour's range.",
+     "read": "Still riding — this buy got in on Monday, November 16 and is on Day 7 of 10. It closed Monday at $146.53, still below where it got in — that gap fights this buy, stated plainly. The ride stands exactly as booked; no price stop."
+    }
+   ]
+  },
+  {
+   "kind": "fourYearLine",
+   "title": "4 YEAR MOVING AVERAGE",
+   "state": "NONE",
+   "plays": []
+  },
+  {
+   "kind": "special",
+   "title": "SPECIAL PLAY",
+   "intro": "Owner's Pick",
+   "state": "NONE",
+   "plays": []
+  }
+ ]
 }
