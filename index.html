@@ -113,6 +113,12 @@
      is a single card per play, never a table, never an essay. */
   .compact-plays{list-style:none;margin:.75rem 0 0;padding:0;display:grid;gap:.625rem}
   .compact-plays li{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem}
+  /* THE OPENED PILL'S BOX (Maurice's refinement via MAIN, Tue Nov 24,
+     2026): when a pill opens, the panel sits on the old card box
+     \u2014 the lighter surface fill, the border, the rounded corners
+     \u2014 so the opened play stands out from the page background
+     instead of blending into it. The closed pills are unchanged. */
+  .compact-plays .info-text{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem}
   /* THE WIN LINE (Maurice's styling ruling via BUSINESS, Mon Nov 23,
      2026; playbook v5.315): every Win Line on the card — every play,
      every section — renders BOLD and BLACK (the page's --text ink,
