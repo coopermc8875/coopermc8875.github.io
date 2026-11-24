@@ -1,141 +1,141 @@
 {
- "sessionDate": "2026-11-23",
- "dateLabel": "Monday, November 23, 2026",
- "gradedLine": "MONDAY, NOVEMBER 23, 2026",
- "priceStamp": {
-  "closeDateLabel": "Friday, November 20, 2026",
-  "closeTime": "1:00 PM PT",
-  "checkedAtTime": "5:27 AM PT",
-  "checkedAtDateLabel": "Monday, November 23, 2026"
- },
- "sections": [
-  {
-   "kind": "pounce",
-   "title": "The Pounce Trade",
-   "plays": []
+  "sessionDate": "2026-11-23",
+  "dateLabel": "Monday, November 23, 2026",
+  "gradedLine": "MONDAY, NOVEMBER 23, 2026",
+  "priceStamp": {
+    "closeDateLabel": "Friday, November 20, 2026",
+    "closeTime": "1:00 PM PT",
+    "checkedAtTime": "5:27 AM PT",
+    "checkedAtDateLabel": "Monday, November 23, 2026"
   },
-  {
-   "kind": "spyqqq",
-   "title": "SPY & QQQ",
-   "state": "plays",
-   "plays": [
+  "sections": [
     {
-     "action": "BUY",
-     "close": "$689.81",
-     "closeLabel": "Closed Friday at",
-     "exitRule": "Out at the close (1:00 PM PT) on Monday, November 23, 2026.",
-     "name": "SPDR S&P 500 ETF Trust",
-     "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — open $700.08, high $703.98, low $694.69, close $694.70; close position 0.1% of the hour's range; upper wick 42.0%. · 11:30 AM PT — sellers won the hour — open $694.67, high $696.98, low $692.35, close $692.65; close position 6.5%; upper wick 49.9%. · 12:30 PM PT — sellers won the body — open $692.68, high $694.12, low $686.75, close $690.91 (hourly-bar close; official close $689.81); close position 56.4%. The day's low printed in this hour and buyers lifted the close $4.16 off it — the first bounce attempt of the afternoon.",
-     "read": "BUY at Monday's open — Friday was capitulation, not orderly selling: −3.64% on double volume (151.4M), RSI(2) 0.0, seven straight down closes, and the final hour printed the low at $686.75 then lifted the close off it. The overnight hand-off ratifies the turn — ES +2.7%, SPY pre-market +2.53% at $707.28, holding near the highs. It's a good buy in my opinion. CONFIRM: the first hour holds above $689.81 (Friday's close) and pushes through $703.98. KILL: an hourly close below $689.81 — then the gap was a trap and the buy is done. Flagged openly: sellers won all three final hours Friday and every bounce that day was sold; a gap-up fade is the known failure mode, and the kill line is the discipline.",
-     "ticker": "SPY"
+      "kind": "pounce",
+      "title": "The Pounce Trade",
+      "plays": []
     },
     {
-     "action": "BUY",
-     "close": "$608.45",
-     "closeLabel": "Closed Friday at",
-     "exitRule": "Out at the close (1:00 PM PT) on Monday, November 23, 2026.",
-     "name": "Invesco QQQ Trust",
-     "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — open $620.41, high $625.22, low $614.63, close $614.63; close position 0.0% of the hour's range; upper wick 45.4%. · 11:30 AM PT — sellers won the hour — open $614.63, high $617.41, low $611.60, close $612.03; close position 7.4%; upper wick 47.8%. · 12:30 PM PT — sellers won the body — open $610.25, high $614.03, low $606.23, close $610.04 (hourly-bar close; official close $608.45); close position 48.9%; upper wick 48.5%. The day's low printed in this hour and the close lifted $3.81 off it.",
-     "read": "BUY at Monday's open — QQQ washed harder than SPY (−5.67%, RSI(2) 0.0, IBS 0.060, drawdown −19.90%) and is bouncing harder — NQ +3.4%, QQQ pre-market +3.29% at $628.48, and its relative weakness just printed a 252-session extreme (QQQ/SPY ratio at the 2.4th percentile), which is exactly where the graded C4A record buys QQQ. It's a good buy in my opinion. CONFIRM: the first hour holds above $608.45 (Friday's close) and pushes through $625.22. KILL: an hourly close below $608.45 — then the sellers still own it and the buy is done. Flagged openly: QQQ is the weaker instrument in a defensive regime, its final-hour upper wick was 48.5%, and in a true bear the wash has kept washing before — the kill line governs.",
-     "ticker": "QQQ"
+      "kind": "spyqqq",
+      "title": "SPY & QQQ",
+      "state": "plays",
+      "plays": [
+        {
+          "action": "BUY",
+          "close": "$689.81",
+          "closeLabel": "Closed Friday at",
+          "exitRule": "Out at the close (1:00 PM PT) on Monday, November 23, 2026.",
+          "name": "SPDR S&P 500 ETF Trust",
+          "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — open $700.08, high $703.98, low $694.69, close $694.70; close position 0.1% of the hour's range; upper wick 42.0%. · 11:30 AM PT — sellers won the hour — open $694.67, high $696.98, low $692.35, close $692.65; close position 6.5%; upper wick 49.9%. · 12:30 PM PT — sellers won the body — open $692.68, high $694.12, low $686.75, close $690.91 (hourly-bar close; official close $689.81); close position 56.4%. The day's low printed in this hour and buyers lifted the close $4.16 off it — the first bounce attempt of the afternoon.",
+          "read": "BUY at Monday's open — Friday was capitulation, not orderly selling: −3.64% on double volume (151.4M), RSI(2) 0.0, seven straight down closes, and the final hour printed the low at $686.75 then lifted the close off it. The overnight hand-off ratifies the turn — ES +2.7%, SPY pre-market +2.53% at $707.28, holding near the highs. It's a good buy in my opinion. CONFIRM: the first hour holds above $689.81 (Friday's close) and pushes through $703.98. KILL: an hourly close below $689.81 — then the gap was a trap and the buy is done. Flagged openly: sellers won all three final hours Friday and every bounce that day was sold; a gap-up fade is the known failure mode, and the kill line is the discipline.",
+          "ticker": "SPY"
+        },
+        {
+          "action": "BUY",
+          "close": "$608.45",
+          "closeLabel": "Closed Friday at",
+          "exitRule": "Out at the close (1:00 PM PT) on Monday, November 23, 2026.",
+          "name": "Invesco QQQ Trust",
+          "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — open $620.41, high $625.22, low $614.63, close $614.63; close position 0.0% of the hour's range; upper wick 45.4%. · 11:30 AM PT — sellers won the hour — open $614.63, high $617.41, low $611.60, close $612.03; close position 7.4%; upper wick 47.8%. · 12:30 PM PT — sellers won the body — open $610.25, high $614.03, low $606.23, close $610.04 (hourly-bar close; official close $608.45); close position 48.9%; upper wick 48.5%. The day's low printed in this hour and the close lifted $3.81 off it.",
+          "read": "BUY at Monday's open — QQQ washed harder than SPY (−5.67%, RSI(2) 0.0, IBS 0.060, drawdown −19.90%) and is bouncing harder — NQ +3.4%, QQQ pre-market +3.29% at $628.48, and its relative weakness just printed a 252-session extreme (QQQ/SPY ratio at the 2.4th percentile), which is exactly where the graded C4A record buys QQQ. It's a good buy in my opinion. CONFIRM: the first hour holds above $608.45 (Friday's close) and pushes through $625.22. KILL: an hourly close below $608.45 — then the sellers still own it and the buy is done. Flagged openly: QQQ is the weaker instrument in a defensive regime, its final-hour upper wick was 48.5%, and in a true bear the wash has kept washing before — the kill line governs.",
+          "ticker": "QQQ"
+        },
+        {
+          "action": "BUY",
+          "close": "$689.81",
+          "closeLabel": "Closed Friday at",
+          "exitRule": "Sell at close (1:00 PM PT) on Monday, February 22, 2027.",
+          "name": "SPDR S&P 500 ETF Trust",
+          "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — open $700.08, high $703.98, low $694.69, close $694.70; close position 0.1% of the hour's range; upper wick 42.0%. · 11:30 AM PT — sellers won the hour — open $694.67, high $696.98, low $692.35, close $692.65; close position 6.5%; upper wick 49.9%. · 12:30 PM PT — sellers won the body — open $692.68, high $694.12, low $686.75, close $690.91 (hourly-bar close; official close $689.81); close position 56.4%. The day's low printed in this hour and buyers lifted the close $4.16 off it — the first bounce attempt of the afternoon.",
+          "read": "Entered at Wednesday's open — SPY closed Tuesday just above its 200-day average line ($732.34), a seat it only takes after running well above that line in the months before, and this play holds to the close on Monday, February 22, 2027. Win rate in The Seat (2024–2026): 77.8% (7 of 9 trades won)",
+          "ticker": "SPY"
+        },
+        {
+          "action": "BUY",
+          "close": "$689.81",
+          "closeLabel": "Closed Friday at",
+          "exitRule": "First leg: sell at close (1:00 PM PT) on Monday, February 22, 2027; second leg at the close of the 252nd session after the signal (November 2027).",
+          "name": "SPDR S&P 500 ETF Trust",
+          "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — open $700.08, high $703.98, low $694.69, close $694.70; close position 0.1% of the hour's range; upper wick 42.0%. · 11:30 AM PT — sellers won the hour — open $694.67, high $696.98, low $692.35, close $692.65; close position 6.5%; upper wick 49.9%. · 12:30 PM PT — sellers won the body — open $692.68, high $694.12, low $686.75, close $690.91 (hourly-bar close; official close $689.81); close position 56.4%. The day's low printed in this hour and buyers lifted the close $4.16 off it — the first bounce attempt of the afternoon.",
+          "read": "BUY at Thursday's open — SPY closed Wednesday below its 200-day average line ($730.20 against the line at $732.55), the first close under the line after 155 consecutive sessions above it, and this play holds its first leg to the close on Monday, February 22, 2027, with a second leg to the close of the 252nd session after the signal (November 2027). Win rate in Below the 200 (24-year test): 77.8% (7 of 9 trades won) at hold 63; the hold-252 leg won 87.5% (7 of 8)",
+          "ticker": "SPY"
+        },
+        {
+          "action": "BUY",
+          "close": "$608.45",
+          "closeLabel": "Closed Friday at",
+          "exitRule": "First leg: sell at close (1:00 PM PT) on Wednesday, February 3, 2027; second leg at the close on Wednesday, November 3, 2027.",
+          "name": "Invesco QQQ Trust",
+          "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — open $620.41, high $625.22, low $614.63, close $614.63; close position 0.0% of the hour's range; upper wick 45.4%. · 11:30 AM PT — sellers won the hour — open $614.63, high $617.41, low $611.60, close $612.03; close position 7.4%; upper wick 47.8%. · 12:30 PM PT — sellers won the body — open $610.25, high $614.03, low $606.23, close $610.04 (hourly-bar close; official close $608.45); close position 48.9%; upper wick 48.5%. The day's low printed in this hour and the close lifted $3.81 off it.",
+          "read": "Entered at Tuesday, November 3's open — QQQ had drawn down 10% from its high, and this play holds its first leg to the close on Wednesday, February 3, 2027, with a second leg to the close on Wednesday, November 3, 2027. Win rate in Drawdown Depth −10% (24-year test): 84.6% (11 of 13 trades won) at hold 63; the hold-252 leg won 90.9% (10 of 11)",
+          "ticker": "QQQ"
+        },
+        {
+          "action": "BUY",
+          "close": "$608.45",
+          "closeLabel": "Closed Friday at",
+          "exitRule": "Sell at close (1:00 PM PT) on Tuesday, December 8, 2026.",
+          "name": "Invesco QQQ Trust",
+          "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — open $620.41, high $625.22, low $614.63, close $614.63; close position 0.0% of the hour's range; upper wick 45.4%. · 11:30 AM PT — sellers won the hour — open $614.63, high $617.41, low $611.60, close $612.03; close position 7.4%; upper wick 47.8%. · 12:30 PM PT — sellers won the body — open $610.25, high $614.03, low $606.23, close $610.04 (hourly-bar close; official close $608.45); close position 48.9%; upper wick 48.5%. The day's low printed in this hour and the close lifted $3.81 off it.",
+          "read": "Entered at Friday, November 6's open — QQQ washed out 6.49% in a single session on Thursday, November 5, and this play holds to the close on Tuesday, December 8, 2026. Win rate in The Deep Wash Leg B (24-year test): 61.5% (24 of 39 trades won). Leg A closed Friday, November 13 at +3.27%.",
+          "ticker": "QQQ"
+        },
+        {
+          "action": "BUY",
+          "close": "$608.45",
+          "closeLabel": "Closed Friday at",
+          "exitRule": "Sell at close (1:00 PM PT) on Wednesday, February 24, 2027.",
+          "name": "Invesco QQQ Trust",
+          "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — open $620.41, high $625.22, low $614.63, close $614.63; close position 0.0% of the hour's range; upper wick 45.4%. · 11:30 AM PT — sellers won the hour — open $614.63, high $617.41, low $611.60, close $612.03; close position 7.4%; upper wick 47.8%. · 12:30 PM PT — sellers won the body — open $610.25, high $614.03, low $606.23, close $610.04 (hourly-bar close; official close $608.45); close position 48.9%; upper wick 48.5%. The day's low printed in this hour and the close lifted $3.81 off it.",
+          "read": "BUY at Monday's open — QQQ's relative weakness against SPY printed a 252-session extreme on Friday (the QQQ/SPY ratio at the 2.4th percentile, past the 10th-percentile line), and this play holds to the close on Wednesday, February 24, 2027. Win rate in Ratio Snap-Back (2024–2026 test): 66.7% (10 of 15 trades won)",
+          "ticker": "QQQ"
+        },
+        {
+          "action": "BUY",
+          "close": "$608.45",
+          "closeLabel": "Closed Friday at",
+          "exitRule": "First leg: sell at close (1:00 PM PT) on Tuesday, December 1, 2026; second leg at the close on Tuesday, December 22, 2026.",
+          "name": "Invesco QQQ Trust",
+          "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — open $620.41, high $625.22, low $614.63, close $614.63; close position 0.0% of the hour's range; upper wick 45.4%. · 11:30 AM PT — sellers won the hour — open $614.63, high $617.41, low $611.60, close $612.03; close position 7.4%; upper wick 47.8%. · 12:30 PM PT — sellers won the body — open $610.25, high $614.03, low $606.23, close $610.04 (hourly-bar close; official close $608.45); close position 48.9%; upper wick 48.5%. The day's low printed in this hour and the close lifted $3.81 off it.",
+          "read": "BUY at Monday's open — QQQ washed out 5.67% in a single session on Friday, past the Deep Wash line, and this play holds its first leg to the close on Tuesday, December 1, 2026, with a second leg to the close on Tuesday, December 22, 2026. Win rate in The Deep Wash (24-year test): Leg A 67.5% (27 of 40 trades won); Leg B 61.5% (24 of 39 trades won)",
+          "ticker": "QQQ"
+        }
+      ]
     },
     {
-     "action": "BUY",
-     "close": "$689.81",
-     "closeLabel": "Closed Friday at",
-     "exitRule": "Sell at close (1:00 PM PT) on Monday, February 22, 2027.",
-     "name": "SPDR S&P 500 ETF Trust",
-     "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — open $700.08, high $703.98, low $694.69, close $694.70; close position 0.1% of the hour's range; upper wick 42.0%. · 11:30 AM PT — sellers won the hour — open $694.67, high $696.98, low $692.35, close $692.65; close position 6.5%; upper wick 49.9%. · 12:30 PM PT — sellers won the body — open $692.68, high $694.12, low $686.75, close $690.91 (hourly-bar close; official close $689.81); close position 56.4%. The day's low printed in this hour and buyers lifted the close $4.16 off it — the first bounce attempt of the afternoon.",
-     "read": "Entered at Wednesday's open — SPY closed Tuesday just above its 200-day average line ($732.34), a seat it only takes after running well above that line in the months before, and this play holds to the close on Monday, February 22, 2027. Win rate in The Seat (2024–2026): 77.8% (7 of 9 trades won)",
-     "ticker": "SPY"
+      "kind": "plays",
+      "title": "The Connors Trade",
+      "state": "plays",
+      "plays": [
+        {
+          "action": "BUY",
+          "close": "$342.56",
+          "closeLabel": "Closed Friday at",
+          "exitRule": "There's no price stop on this one — Money (Ai) watches the close every day and tells you the morning it's time to sell, before the open. If that morning hasn't come by the tenth day, you're out at the close on Day 10 (today is Day 1 of 10).",
+          "name": "Apple Inc.",
+          "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — upper wick 47.5%, lower wick 0.0%, closed at 0.0% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 76.6%, lower wick 10.9%, closed at 23.4% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 36.8%, lower wick 49.1%, closed at 49.1% of the hour's range.",
+          "read": "BUY at Monday's open — 6:30 AM PT. AAPL closed Friday at $342.56 (−1.90% vs closed Thursday at $349.21) — close above its 200-day average ($342.56 vs $303.24) with RSI(2) at 2.9, deep under the 10 line: a textbook THE CONNORS long setup on the mildest red name on a capitulation board. Premarket Monday $347.07, +1.32%.",
+          "ticker": "AAPL",
+          "winLine": "Win rate in THE CONNORS (3-year test): 69.1% (47 of 68 trades won)"
+        }
+      ]
     },
     {
-     "action": "BUY",
-     "close": "$689.81",
-     "closeLabel": "Closed Friday at",
-     "exitRule": "First leg: sell at close (1:00 PM PT) on Monday, February 22, 2027; second leg at the close of the 252nd session after the signal (November 2027).",
-     "name": "SPDR S&P 500 ETF Trust",
-     "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — open $700.08, high $703.98, low $694.69, close $694.70; close position 0.1% of the hour's range; upper wick 42.0%. · 11:30 AM PT — sellers won the hour — open $694.67, high $696.98, low $692.35, close $692.65; close position 6.5%; upper wick 49.9%. · 12:30 PM PT — sellers won the body — open $692.68, high $694.12, low $686.75, close $690.91 (hourly-bar close; official close $689.81); close position 56.4%. The day's low printed in this hour and buyers lifted the close $4.16 off it — the first bounce attempt of the afternoon.",
-     "read": "BUY at Thursday's open — SPY closed Wednesday below its 200-day average line ($730.20 against the line at $732.55), the first close under the line after 155 consecutive sessions above it, and this play holds its first leg to the close on Monday, February 22, 2027, with a second leg to the close of the 252nd session after the signal (November 2027). Win rate in Below the 200 (24-year test): 77.8% (7 of 9 trades won) at hold 63; the hold-252 leg won 87.5% (7 of 8)",
-     "ticker": "SPY"
+      "kind": "bare",
+      "title": "Falling Knife Trade",
+      "state": "NONE"
     },
     {
-     "action": "BUY",
-     "close": "$608.45",
-     "closeLabel": "Closed Friday at",
-     "exitRule": "First leg: sell at close (1:00 PM PT) on Wednesday, February 3, 2027; second leg at the close on Wednesday, November 3, 2027.",
-     "name": "Invesco QQQ Trust",
-     "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — open $620.41, high $625.22, low $614.63, close $614.63; close position 0.0% of the hour's range; upper wick 45.4%. · 11:30 AM PT — sellers won the hour — open $614.63, high $617.41, low $611.60, close $612.03; close position 7.4%; upper wick 47.8%. · 12:30 PM PT — sellers won the body — open $610.25, high $614.03, low $606.23, close $610.04 (hourly-bar close; official close $608.45); close position 48.9%; upper wick 48.5%. The day's low printed in this hour and the close lifted $3.81 off it.",
-     "read": "Entered at Tuesday, November 3's open — QQQ had drawn down 10% from its high, and this play holds its first leg to the close on Wednesday, February 3, 2027, with a second leg to the close on Wednesday, November 3, 2027. Win rate in Drawdown Depth −10% (24-year test): 84.6% (11 of 13 trades won) at hold 63; the hold-252 leg won 90.9% (10 of 11)",
-     "ticker": "QQQ"
+      "kind": "fourYearLine",
+      "title": "4 YEAR MOVING AVERAGE",
+      "state": "NONE",
+      "plays": []
     },
     {
-     "action": "BUY",
-     "close": "$608.45",
-     "closeLabel": "Closed Friday at",
-     "exitRule": "Sell at close (1:00 PM PT) on Tuesday, December 8, 2026.",
-     "name": "Invesco QQQ Trust",
-     "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — open $620.41, high $625.22, low $614.63, close $614.63; close position 0.0% of the hour's range; upper wick 45.4%. · 11:30 AM PT — sellers won the hour — open $614.63, high $617.41, low $611.60, close $612.03; close position 7.4%; upper wick 47.8%. · 12:30 PM PT — sellers won the body — open $610.25, high $614.03, low $606.23, close $610.04 (hourly-bar close; official close $608.45); close position 48.9%; upper wick 48.5%. The day's low printed in this hour and the close lifted $3.81 off it.",
-     "read": "Entered at Friday, November 6's open — QQQ washed out 6.49% in a single session on Thursday, November 5, and this play holds to the close on Tuesday, December 8, 2026. Win rate in The Deep Wash Leg B (24-year test): 61.5% (24 of 39 trades won). Leg A closed Friday, November 13 at +3.27%.",
-     "ticker": "QQQ"
-    },
-    {
-     "action": "BUY",
-     "close": "$608.45",
-     "closeLabel": "Closed Friday at",
-     "exitRule": "Sell at close (1:00 PM PT) on Wednesday, February 24, 2027.",
-     "name": "Invesco QQQ Trust",
-     "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — open $620.41, high $625.22, low $614.63, close $614.63; close position 0.0% of the hour's range; upper wick 45.4%. · 11:30 AM PT — sellers won the hour — open $614.63, high $617.41, low $611.60, close $612.03; close position 7.4%; upper wick 47.8%. · 12:30 PM PT — sellers won the body — open $610.25, high $614.03, low $606.23, close $610.04 (hourly-bar close; official close $608.45); close position 48.9%; upper wick 48.5%. The day's low printed in this hour and the close lifted $3.81 off it.",
-     "read": "BUY at Monday's open — QQQ's relative weakness against SPY printed a 252-session extreme on Friday (the QQQ/SPY ratio at the 2.4th percentile, past the 10th-percentile line), and this play holds to the close on Wednesday, February 24, 2027. Win rate in Ratio Snap-Back (2024–2026 test): 66.7% (10 of 15 trades won)",
-     "ticker": "QQQ"
-    },
-    {
-     "action": "BUY",
-     "close": "$608.45",
-     "closeLabel": "Closed Friday at",
-     "exitRule": "First leg: sell at close (1:00 PM PT) on Tuesday, December 1, 2026; second leg at the close on Tuesday, December 22, 2026.",
-     "name": "Invesco QQQ Trust",
-     "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — open $620.41, high $625.22, low $614.63, close $614.63; close position 0.0% of the hour's range; upper wick 45.4%. · 11:30 AM PT — sellers won the hour — open $614.63, high $617.41, low $611.60, close $612.03; close position 7.4%; upper wick 47.8%. · 12:30 PM PT — sellers won the body — open $610.25, high $614.03, low $606.23, close $610.04 (hourly-bar close; official close $608.45); close position 48.9%; upper wick 48.5%. The day's low printed in this hour and the close lifted $3.81 off it.",
-     "read": "BUY at Monday's open — QQQ washed out 5.67% in a single session on Friday, past the Deep Wash line, and this play holds its first leg to the close on Tuesday, December 1, 2026, with a second leg to the close on Tuesday, December 22, 2026. Win rate in The Deep Wash (24-year test): Leg A 67.5% (27 of 40 trades won); Leg B 61.5% (24 of 39 trades won)",
-     "ticker": "QQQ"
+      "kind": "special",
+      "title": "SPECIAL PLAY",
+      "intro": "Owner's Pick",
+      "state": "NONE",
+      "plays": []
     }
-   ]
-  },
-  {
-   "kind": "plays",
-   "title": "The Connors Trade",
-   "state": "plays",
-   "plays": [
-    {
-     "action": "BUY",
-     "close": "$342.56",
-     "closeLabel": "Closed Friday at",
-     "exitRule": "There's no price stop on this one — Money (Ai) watches the close every day and tells you the morning it's time to sell, before the open. If that morning hasn't come by the tenth day, you're out at the close on Day 10 (today is Day 1 of 10).",
-     "name": "Apple Inc.",
-     "previous3": "Previous 3 (Friday, November 20) — 10:30 AM PT — sellers won the hour — upper wick 47.5%, lower wick 0.0%, closed at 0.0% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 76.6%, lower wick 10.9%, closed at 23.4% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 36.8%, lower wick 49.1%, closed at 49.1% of the hour's range.",
-     "read": "BUY at Monday's open — 6:30 AM PT, 50 shares. AAPL closed Friday at $342.56 (−1.90% vs closed Thursday at $349.21) — close above its 200-day average ($342.56 vs $303.24) with RSI(2) at 2.9, deep under the 10 line: a textbook THE CONNORS long setup on the mildest red name on a capitulation board. AAPL holds no open THE CONNORS play. Customer gates pass: 69.1% in-tell win rate (≥50%) and average daily volume well above 1M shares. Premarket Monday $347.07, +1.32% (Nasdaq API, 7:45 AM ET) — with the play, no contradiction from the Daily Read or the regime read (RISK-ON rebound morning; the Connors stance STANDS per the premarket regime read). Conflict carried from the desk, stated plainly: Friday's candle lean on AAPL was softly short [NON-CALL] while THE CONNORS prints this long mean-reversion signal on the same close — both stand, on their own books.",
-     "ticker": "AAPL",
-     "winLine": "Win rate in THE CONNORS (3-year test): 69.1% (47 of 68 trades won)"
-    }
-   ]
-  },
-  {
-   "kind": "bare",
-   "title": "Falling Knife Trade",
-   "state": "NONE"
-  },
-  {
-   "kind": "fourYearLine",
-   "title": "4 YEAR MOVING AVERAGE",
-   "state": "NONE",
-   "plays": []
-  },
-  {
-   "kind": "special",
-   "title": "SPECIAL PLAY",
-   "intro": "Owner's Pick",
-   "state": "NONE",
-   "plays": []
-  }
- ]
+  ]
 }
