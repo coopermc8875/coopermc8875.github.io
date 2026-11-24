@@ -109,6 +109,10 @@
   @media(min-width:640px){.open-cards{display:none}}
   .open-table{display:none}
   @media(min-width:640px){.open-table{display:block}}
+  /* THE COMPACT PLAY FORM (v5.313): one list at every width — the face
+     is a single card per play, never a table, never an essay. */
+  .compact-plays{list-style:none;margin:.75rem 0 0;padding:0;display:grid;gap:.625rem}
+  .compact-plays li{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem}
   .stack{display:grid;gap:.75rem}
   .stack-lg{display:grid;gap:1rem}
   a{color:var(--accent)}
@@ -155,6 +159,7 @@
      LTIM picker's trajectory cards, and every LTIM company card. Inner
      elements (exit box, taps, buttons, chips, text) keep their styling. */
   #tab-front .open-cards li{border:2px solid var(--safe-line)}
+  #tab-front .compact-plays li{border:2px solid var(--safe-line)}
   #tab-front .tblwrap{border:2px solid var(--safe-line)}
   #tab-ltim .card{border:2px solid var(--safe-line)}
   #tab-crypto .card{border:2px solid var(--safe-line)}
@@ -913,6 +918,56 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
     h += '</tbody></table></div>';
     return h;
   }
+  /* THE COMPACT PLAY FORM (Maurice's ruling from MAIN, Mon Nov 23,
+     2026; playbook v5.313): every play in The Pounce Trade, The
+     Connors Trade, Falling Knife Trade, and 4 YEAR MOVING AVERAGE
+     wears the compact form modeled on SPY & QQQ — the FACE carries
+     only the name line ((TICKER) Company Name ($price)), the ACTION
+     word with its when, and one VIEW PLAY button. Nothing else on
+     the face: no story, no exit, no size. The button opens the
+     play's panel, which carries, in order: (1) the story — the
+     play's read as sent; (2) the Win Line; (3) the Previous 3
+     candle reads behind their tap; (4) the Your Exit box LAST —
+     the exit goes behind the button, in its settled plain-words
+     form, with its exit note and stop tap riding with it. SPY &
+     QQQ keeps its windows (it already wears the form); SPECIAL
+     PLAY keeps its ruled one-line form (it carries no story fields
+     to open in a panel). The LTIM door's rendering of this board
+     stays exactly as built — the compact form applies in DTM entry
+     only, and playsCardsHTML still serves LTIM and the SPY & QQQ
+     windows and LONG panels. */
+  var compactSeq = 0;
+  function compactActionLine(p){
+    if(!isDirAction(p.action)) return "";
+    var r = String(p.read == null ? "" : p.read);
+    var head = r.split(" \u2014 ")[0];
+    if(!/^(BUY|SHORT)\b/.test(head) || head.length > 64) head = p.action;
+    var m = head.match(/^(BUY|SHORT)\b/);
+    if(!m) return '<p style="margin-top:.375rem;line-height:1.65">' + escBoard(head) + '</p>';
+    return '<p style="margin-top:.375rem;line-height:1.65"><span class="dir-word">' + esc(m[1]) + '</span>' + escBoard(head.slice(m[1].length)) + '</p>';
+  }
+  function compactPlayHTML(p){
+    compactSeq += 1;
+    var id = "play-panel-" + String(p.ticker == null ? "" : p.ticker).toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-" + compactSeq;
+    return '<li>'
+      + '<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.125rem .5rem"><span style="font-weight:700">(' + esc(p.ticker) + ')</span>' + playNameHTML(p) + '</div>'
+      + compactActionLine(p)
+      + '<div style="margin-top:.5rem"><button type="button" class="info-btn" data-view-plays-btn aria-expanded="false" aria-controls="' + id + '" aria-label="View the ' + esc(p.ticker) + ' play">VIEW PLAY</button></div>'
+      + '<div class="info-text hidden" id="' + id + '">'
+      + '<p style="line-height:1.65">' + readHTML(p) + '</p>'
+      + (p.winLine ? '<p style="margin-top:.5rem;line-height:1.65">' + escBoard(p.winLine) + '</p>' : "")
+      + (p.previous3 ? '<div style="margin-top:.5rem">' + prev3TapHTML(p.previous3) + '</div>' : "")
+      + (p.exitRule ? '<p class="exitbox" style="margin-top:.75rem"><strong>Your exit, on this play:</strong> ' + exitRuleHTML(p) + '</p>' : "")
+      + (p.exitNote ? '<p style="margin-top:.5rem;line-height:1.65">' + escBoard(p.exitNote) + '</p>' : "")
+      + stopTapHTML(p)
+      + closeBtnHTML(id)
+      + '</div></li>';
+  }
+  function compactPlaysHTML(plays){
+    var h = '<ul class="compact-plays">';
+    plays.forEach(function(p){ h += compactPlayHTML(p); });
+    return h + '</ul>';
+  }
   var longSeq = 0;
   function longPanelHTML(longPlays){
     longSeq += 1;
@@ -1065,7 +1120,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
          sent: five plays print five taps, all thirty print thirty.
          No plays — NONE under the heading, like any other tell. */
       if(s.plays && s.plays.length){
-        h += pounceWindowsHTML(s.plays);
+        h += (entryMode === "ltim" ? pounceWindowsHTML(s.plays) : compactPlaysHTML(s.plays));
       } else {
         h += '<p style="margin-top:.375rem;line-height:1.65">NONE</p>';
       }
@@ -1076,7 +1131,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
          card form; with no plays the section prints NONE under its
          heading, like any other tell. */
       if(s.plays && s.plays.length){
-        h += playsCardsHTML(s.plays);
+        h += (entryMode === "ltim" ? playsCardsHTML(s.plays) : compactPlaysHTML(s.plays));
       } else {
         h += '<p style="margin-top:.375rem;line-height:1.65">NONE</p>';
       }
@@ -1097,7 +1152,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
       if(s.kind==="spyqqq"){
         h += spyQqqWindowsHTML(s.plays);
       } else {
-        h += playsCardsHTML(s.plays);
+        h += (entryMode === "ltim" ? playsCardsHTML(s.plays) : compactPlaysHTML(s.plays));
       }
     }
     if(s.kind==="open" && s.openRows){
@@ -1689,6 +1744,11 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
     if(prev3) out.previous3 = prev3;
     var note = dtmStr(p.exitNote);
     if(note) out.exitNote = note;
+    /* The Win Line rides as its own field (the compact panel prints
+       it between the story and the candle reads); when the read fell
+       back TO the win line there is nothing separate to carry. */
+    var wl = dtmStr(p.winLine) || dtmStr(p.win_line);
+    if(wl && wl !== out.read) out.winLine = wl;
     return out;
   }
   function dtmNormalizeSection(s){
