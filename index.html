@@ -945,6 +945,17 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
   var compactSeq = 0;
   function compactActionLine(p){
     if(!isDirAction(p.action)) return "";
+    /* THE RIDER FACE LINE (Maurice's ruling via MAIN, Tue Nov 24, 2026):
+       a rider — a play already open from a prior card — carries its
+       state on its face: the action word, the date it was bought, and
+       today's day count, struck from the play's boughtOn / dayOf /
+       dayTotal fields (the lineup carries them; the same day count
+       the exit box prints, one number in both places). A same-day
+       play keeps the dated open line from its read, below. */
+    if(p.boughtOn && p.dayOf){
+      return '<p style="margin-top:.375rem;line-height:1.65"><span class="dir-word">' + esc(p.action) + '</span>'
+        + ' \u00b7 bought on ' + escBoard(p.boughtOn) + ' \u2014 Day ' + String(p.dayOf) + ' of ' + String(p.dayTotal || 10) + ' today</p>';
+    }
     var r = String(p.read == null ? "" : p.read);
     var head = r.split(" \u2014 ")[0];
     if(!/^(BUY|SHORT)\b/.test(head) || head.length > 64) head = p.action;
@@ -1763,6 +1774,10 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
        back TO the win line there is nothing separate to carry. */
     var wl = dtmStr(p.winLine) || dtmStr(p.win_line);
     if(wl && wl !== out.read) out.winLine = wl;
+    var bo = dtmStr(p.boughtOn);
+    if(bo) out.boughtOn = bo;
+    if(p.dayOf != null && isFinite(Number(p.dayOf))) out.dayOf = Number(p.dayOf);
+    if(p.dayTotal != null && isFinite(Number(p.dayTotal))) out.dayTotal = Number(p.dayTotal);
     return out;
   }
   function dtmNormalizeSection(s){
