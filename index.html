@@ -785,11 +785,11 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
      bold via .dir-word. [NON-CALL] leans keep their label in the
      headline and their read untouched, and the LTIM door's rendering
      of this board stays exactly as built. */
-  function isDirAction(a){ return a==="BUY" || a==="SHORT"; }
+  function isDirAction(a){ return a==="BUY" || a==="SHORT" || a==="SELL"; }
   function readHTML(p){
     var r = String(p.read == null ? "" : p.read);
     if(entryMode==="ltim" || !isDirAction(p.action)) return escBoard(r);
-    var m = r.match(/^(BUY|SHORT)\b/);
+    var m = r.match(/^(BUY|SHORT|SELL)\b/);
     if(!m || m[1] !== p.action) return escBoard(r);
     return '<span class="dir-word">'+esc(m[1])+'</span>' + escBoard(r.slice(m[1].length));
   }
@@ -966,8 +966,8 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
     }
     var r = String(p.read == null ? "" : p.read);
     var head = r.split(" \u2014 ")[0];
-    if(!/^(BUY|SHORT)\b/.test(head) || head.length > 64) head = p.action;
-    var m = head.match(/^(BUY|SHORT)\b/);
+    if(!/^(BUY|SHORT|SELL)\b/.test(head) || head.length > 64) head = p.action;
+    var m = head.match(/^(BUY|SHORT|SELL)\b/);
     if(!m) return '<p style="margin-top:.375rem;line-height:1.65">' + escBoard(head) + '</p>';
     return '<p style="margin-top:.375rem;line-height:1.65"><span class="dir-word">' + esc(m[1]) + '</span>' + escBoard(head.slice(m[1].length)) + '</p>';
   }
