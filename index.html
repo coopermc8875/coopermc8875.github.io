@@ -1331,7 +1331,8 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
       + '<p style="margin-top:.25rem;font-size:14px" class="dim">'+escBoard(BOARD.gradedLine)+'</p></div>'
       + '</div>'
       + '<p style="margin-top:.75rem;line-height:1.65;font-weight:700"><strong>***THIS IS A RESEARCH TOOL TO HELP YOU MAKE AN INFORMED DECISION***</strong></p>'
-      + '<p style="margin-top:.75rem;line-height:1.65" class="dim dtm-price-stamp-line" data-dtm-price-stamp>'+escBoard(convertDtmStamp(DTM_PRICE_STAMP))+'</p>';
+      + '<p style="margin-top:.75rem;line-height:1.65" class="dim dtm-price-stamp-line" data-dtm-price-stamp>'+escBoard(convertDtmStamp(DTM_PRICE_STAMP))+'</p>'
+      + (BOARD.notice ? '<p style="margin-top:1rem;line-height:1.65;font-weight:700;font-size:17px">' + escBoard(BOARD.notice) + '</p>' : '');
     /* Room order is the file's order (DTM room rebuild, Nov 19, 2026):
        The Pounce Trade, SPY & QQQ, The Connors Trade, Falling Knife
        Trade, THE WASHOUT TRADE, 4 YEAR MOVING AVERAGE, SPECIAL PLAY. No section is hoisted — the SPY & QQQ
@@ -2023,6 +2024,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
       sessionMs: sessionMs,
       stamp: stamp,
       board: {
+        notice: dtmStr(data.notice) || null,
         dateLabel: dateLabel,
         gradedLine: dtmStr(data.gradedLine) || dateLabel.toUpperCase(),
         sections: sections
