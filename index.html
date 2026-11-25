@@ -475,7 +475,7 @@ var SOCIAL_POSTS = [
     body: "October's audit is public: one tell demoted, losses printed next to wins. If a service won't show you its losing months, it isn't showing you a record — it's showing you an advertisement.",
   },
 ];
-var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY, NOVEMBER 19, 2026", "sections": [{"kind": "pounce", "title": "The Pounce Trade", "plays": []}, {"kind": "spyqqq", "plays": [], "state": "plays", "title": "SPY & QQQ"}, {"kind": "bare", "title": "The Connors Trade", "state": "NONE"}, {"kind": "bare", "title": "Falling Knife Trade", "state": "NONE"}, {"kind": "washout", "title": "THE WASHOUT TRADE", "plays": []}, {"kind": "fourYearLine", "title": "4 YEAR MOVING AVERAGE", "plays": []}, {"intro": "Owner's Pick", "kind": "special", "plays": [], "state": "NONE", "title": "SPECIAL PLAY"}]};
+var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY, NOVEMBER 19, 2026", "sections": [{"kind": "pounce", "title": "The Pounce Trade", "plays": []}, {"kind": "spyqqq", "plays": [], "state": "plays", "title": "SPY & QQQ"}, {"kind": "dailyReads", "title": "DAILY READS", "plays": []}, {"kind": "bare", "title": "The Connors Trade", "state": "NONE"}, {"kind": "bare", "title": "Falling Knife Trade", "state": "NONE"}, {"kind": "washout", "title": "THE WASHOUT TRADE", "plays": []}, {"kind": "fourYearLine", "title": "4 YEAR MOVING AVERAGE", "plays": []}, {"intro": "Owner's Pick", "kind": "special", "plays": [], "state": "NONE", "title": "SPECIAL PLAY"}]};
 </script>
 <script>
 (function(){
@@ -825,7 +825,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
     "The Fakeout Trade": "The Fakeout Trade watches for a breakout that fails. A stock pushes to a new high, then slips back under it within a couple of days — and that's when we buy, as the disappointed sellers clear out. A trailing safety stop follows the price up and locks the trade if it turns down, and any trade still open closes on the fifth day.",
     "SPECIAL PLAY": "The owner’s own pick, posted by hand when something specific is happening — an FDA decision, a merger vote, a stock in the news. It is not one of the tested plays and it carries no win record: it’s Maurice’s call, event-driven, and most days there isn’t one."
   };
-  var ABOUT_ORDER = ["The Pounce Trade", "SPY & QQQ", "The Comeback Trade", "The Swing Tell Trade", "Falling Knife Trade", "THE WASHOUT TRADE", "4 YEAR MOVING AVERAGE", "The Breakout Trade", "The Connors Trade", "The Bounce Trade", "The Earnings Trade", "Buy the Dip Trade", "The Snap-Back Trade", "Fade the Stock Trade", "The Fakeout Trade", "SPECIAL PLAY"];
+  var ABOUT_ORDER = ["The Pounce Trade", "SPY & QQQ", "DAILY READS", "The Comeback Trade", "The Swing Tell Trade", "Falling Knife Trade", "THE WASHOUT TRADE", "4 YEAR MOVING AVERAGE", "The Breakout Trade", "The Connors Trade", "The Bounce Trade", "The Earnings Trade", "Buy the Dip Trade", "The Snap-Back Trade", "Fade the Stock Trade", "The Fakeout Trade", "SPECIAL PLAY"];
   function aboutScreenId(title){
     return "about-" + String(title).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
   }
@@ -993,6 +993,8 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
       + '<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.125rem .5rem"><span style="font-weight:700">(' + esc(p.ticker) + ')</span>' + playNameHTML(p) + '</div>'
       + compactActionLine(p)
       + '<p style="margin-top:.5rem;line-height:1.65">' + readHTML(p) + '</p>'
+      + (p.confirm ? '<p style="margin-top:.5rem;line-height:1.65"><strong>Confirm:</strong> ' + escBoard(p.confirm) + '</p>' : "")
+      + (p.kill ? '<p style="margin-top:.5rem;line-height:1.65"><strong>Kill:</strong> ' + escBoard(p.kill) + '</p>' : "")
       + (p.winLine ? '<p class="win-line" style="margin-top:.5rem;line-height:1.65">' + escBoard(p.winLine) + '</p>' : "")
       + (p.previous3 ? '<div style="margin-top:.5rem">' + prev3TapHTML(p.previous3) + '</div>' : "")
       + (p.exitRule ? '<p class="exitbox" style="margin-top:.75rem"><strong>Your exit, on this play:</strong> ' + exitRuleHTML(p) + '</p>' : "")
@@ -1188,6 +1190,23 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
         h += '<p style="margin-top:.375rem;line-height:1.65">NONE</p>';
       }
     }
+    if(s.kind==="dailyReads"){
+      /* DAILY READS (section added Wed Nov 25, 2026 on Maurice's
+         ruling in MAIN, playbook v5.335): the plays Money calls
+         from the morning's Daily Read print in the compact pill
+         form exactly like the other play sections \u2014 name line,
+         the dated action line, the read, the confirm and the
+         kill, the Your Exit box last \u2014 and carry NO Win Line,
+         because a read call has no tell record. With no plays
+         the section prints NONE under its heading. The section
+         sits third on the board, between SPY & QQQ and The
+         Connors Trade, in the board's file order. */
+      if(s.plays && s.plays.length){
+        h += (entryMode === "ltim" ? playsCardsHTML(s.plays) : compactPlaysHTML(s.plays));
+      } else {
+        h += '<p style="margin-top:.375rem;line-height:1.65">NONE</p>';
+      }
+    }
     if((s.kind==="plays" || s.kind==="spyqqq") && s.plays && s.plays.length){
       /* DTM door only — phone: stacked cards, play + close up top and the
          full read wrapped underneath, so no word runs off the screen.
@@ -1300,7 +1319,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
   function boardPlayCount(){
     var n = 0;
     if(typeof BOARD !== "undefined" && BOARD.sections){
-      BOARD.sections.forEach(function(s){ if((s.kind==="plays" || s.kind==="spyqqq" || s.kind==="pounce" || s.kind==="fourYearLine" || s.kind==="washout") && s.plays) n += s.plays.length; });
+      BOARD.sections.forEach(function(s){ if((s.kind==="plays" || s.kind==="spyqqq" || s.kind==="pounce" || s.kind==="fourYearLine" || s.kind==="washout" || s.kind==="dailyReads") && s.plays) n += s.plays.length; });
     }
     return n;
   }
@@ -1809,6 +1828,14 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
        back TO the win line there is nothing separate to carry. */
     var wl = dtmStr(p.winLine) || dtmStr(p.win_line);
     if(wl && wl !== out.read) out.winLine = wl;
+    /* DAILY READS (section added Wed Nov 25, 2026): a read call
+       carries its confirm and its kill as their own fields \u2014 the
+       compact panel prints them between the story and the exit
+       box. No other section sends them. */
+    var cf = dtmStr(p.confirm);
+    if(cf) out.confirm = cf;
+    var kl = dtmStr(p.kill);
+    if(kl) out.kill = kl;
     var bo = dtmStr(p.boughtOn);
     if(bo) out.boughtOn = bo;
     if(p.dayOf != null && isFinite(Number(p.dayOf))) out.dayOf = Number(p.dayOf);
@@ -1826,10 +1853,11 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
       else if(title === "SPY & QQQ") kind = "spyqqq";
       else if(title === "The Pounce Trade") kind = "pounce";
       else if(title === "THE WASHOUT TRADE") kind = "washout";
+      else if(title === "DAILY READS") kind = "dailyReads";
       else if(Array.isArray(s.plays) && s.plays.length) kind = "plays";
       else kind = "bare";
     }
-    if(["plays", "spyqqq", "bare", "special", "open", "notes", "pounce", "fourYearLine", "washout"].indexOf(kind) === -1) return null;
+    if(["plays", "spyqqq", "bare", "special", "open", "notes", "pounce", "fourYearLine", "washout", "dailyReads"].indexOf(kind) === -1) return null;
     var out = { kind: kind, title: title };
     var intro = dtmStr(s.intro);
     if(intro) out.intro = intro;
@@ -1909,6 +1937,31 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
         var wp = dtmNormalizePlay(s.plays[wi]);
         if(!wp) return null;
         out.plays.push(wp);
+      }
+      return out;
+    }
+    if(kind === "dailyReads"){
+      /* DAILY READS (section added Wed Nov 25, 2026 on Maurice's
+         ruling in MAIN, playbook v5.335): name-level plays Money
+         calls from that morning's Daily Read work, beyond the
+         SPY & QQQ index plays. A full play section in the standing
+         form \u2014 plays ride in the standard play shape (plus
+         confirm/kill fields, minus any Win Line: a read call has
+         no tell record) and the kind survives normalization so
+         the renderer prints them in the compact pill form; no
+         plays (or an explicit NONE) keeps the kind with an empty
+         plays list, and the section prints NONE under its
+         heading. A malformed play fails the whole card, like any
+         malformed play. */
+      if(isNone || !Array.isArray(s.plays) || !s.plays.length){
+        out.plays = [];
+        return out;
+      }
+      out.plays = [];
+      for(var di = 0; di < s.plays.length; di++){
+        var dp = dtmNormalizePlay(s.plays[di]);
+        if(!dp) return null;
+        out.plays.push(dp);
       }
       return out;
     }
