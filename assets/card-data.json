@@ -69,74 +69,59 @@
       "state": "plays",
       "plays": [
         {
-          "action": "BUY",
+          "action": "SELL",
           "close": "$589.82",
           "closeLabel": "Closed Tuesday at",
-          "exitRule": "There's no price stop — Money watches the close every day and tells you the morning it's time to sell, before the open — if that day never comes, you're out at the close on Day 10 (today is Day 2 of 10).",
+          "exitRule": "Out at the close (1:00 PM PT) on Wednesday, November 25, 2026.",
           "name": "Meta Platforms, Inc.",
           "previous3": "Previous 3 (Tuesday, November 24) — 10:30 AM PT — buyers won the hour — upper wick 14.7%, lower wick 48.7%, closed at 85.3% of the hour's range. · 11:30 AM PT — sellers won the hour — upper wick 2.4%, lower wick 6.1%, closed at 6.1% of the hour's range. · 12:30 PM PT — buyers won the hour — upper wick 36.1%, lower wick 14.1%, closed at 63.9% of the hour's range.",
-          "read": "Still riding — this buy got in on Tuesday, November 24 and is on Day 2 of 10. It closed Tuesday at $589.82, just about even with where it got in. The ride stands exactly as booked; no price stop.",
+          "read": "SELL at the close on Wednesday, November 25, 2026 — Money pulled this play early — the market is falling too hard for this trade right now.",
           "ticker": "META",
-          "winLine": "Win rate in FALLING KNIFE (3-year test): 71.4% (5 of 7 trades won)",
-          "boughtOn": "Tuesday, November 24",
-          "dayOf": 2,
-          "dayTotal": 10
+          "winLine": "Win rate in FALLING KNIFE (3-year test): 71.4% (5 of 7 trades won)"
         },
         {
-          "action": "BUY",
+          "action": "SELL",
           "close": "$191.30",
           "closeLabel": "Closed Tuesday at",
-          "exitRule": "There's no price stop — Money watches the close every day and tells you the morning it's time to sell, before the open — if that day never comes, you're out at the close on Day 10 (today is Day 2 of 10).",
+          "exitRule": "Out at the close (1:00 PM PT) on Wednesday, November 25, 2026.",
           "name": "Astera Labs, Inc.",
           "previous3": "Previous 3 (Tuesday, November 24) — 10:30 AM PT — buyers won the hour — upper wick 43.8%, lower wick 55.7%, closed at 56.2% of the hour's range. · 11:30 AM PT — sellers won the hour — upper wick 6.4%, lower wick 0.6%, closed at 0.6% of the hour's range. · 12:30 PM PT — buyers won the hour — upper wick 47.0%, lower wick 24.9%, closed at 53.0% of the hour's range.",
-          "read": "Still riding — this buy got in on Tuesday, November 24 and is on Day 2 of 10. It closed Tuesday at $191.30, below where it got in after Tuesday's hard market-wide drop — that gap fights this buy, stated plainly. The ride stands exactly as booked; no price stop.",
+          "read": "SELL at the close on Wednesday, November 25, 2026 — Money pulled this play early — the market is falling too hard for this trade right now.",
           "ticker": "ALAB",
-          "winLine": "Win rate in FALLING KNIFE (3-year test): 100.0% (6 of 6 trades won)",
-          "boughtOn": "Tuesday, November 24",
-          "dayOf": 2,
-          "dayTotal": 10
+          "winLine": "Win rate in FALLING KNIFE (3-year test): 100.0% (6 of 6 trades won)"
         },
         {
-          "action": "BUY",
+          "action": "SELL",
           "close": "$323.76",
           "closeLabel": "Closed Tuesday at",
-          "exitRule": "There's no price stop — Money watches the close every day and tells you the morning it's time to sell, before the open — if that day never comes, you're out at the close on Day 10 (today is Day 2 of 10).",
+          "exitRule": "Out at the close (1:00 PM PT) on Wednesday, November 25, 2026.",
           "name": "Applied Materials, Inc.",
           "previous3": "Previous 3 (Tuesday, November 24) — 10:30 AM PT — buyers won the hour — upper wick 17.8%, lower wick 45.0%, closed at 82.2% of the hour's range. · 11:30 AM PT — sellers won the hour — upper wick 12.7%, lower wick 0.9%, closed at 0.9% of the hour's range. · 12:30 PM PT — buyers won the hour — upper wick 52.3%, lower wick 13.1%, closed at 47.7% of the hour's range.",
-          "read": "Still riding — this buy got in on Tuesday, November 24 and is on Day 2 of 10. It closed Tuesday at $323.76, below where it got in after Tuesday's hard market-wide drop — that gap fights this buy, stated plainly. The ride stands exactly as booked; no price stop.",
+          "read": "SELL at the close on Wednesday, November 25, 2026 — Money pulled this play early — the market is falling too hard for this trade right now.",
           "ticker": "AMAT",
-          "winLine": "Win rate in FALLING KNIFE (3-year test): 83.3% (5 of 6 trades won)",
-          "boughtOn": "Tuesday, November 24",
-          "dayOf": 2,
-          "dayTotal": 10
+          "winLine": "Win rate in FALLING KNIFE (3-year test): 83.3% (5 of 6 trades won)"
         },
         {
-          "action": "BUY",
+          "action": "SELL",
           "close": "$65.96",
           "closeLabel": "Closed Tuesday at",
-          "exitRule": "There's no price stop — Money watches the close every day and tells you the morning it's time to sell, before the open — if that day never comes, you're out at the close on Day 10 (today is Day 2 of 10).",
+          "exitRule": "Out at the close (1:00 PM PT) on Wednesday, November 25, 2026.",
           "name": "Carvana Co.",
           "previous3": "Previous 3 (Tuesday, November 24) — 10:30 AM PT — sellers won the hour — upper wick 10.2%, lower wick 24.5%, closed at 24.5% of the hour's range. · 11:30 AM PT — buyers won the hour — upper wick 6.9%, lower wick 22.5%, closed at 93.1% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 34.5%, lower wick 60.7%, closed at 60.7% of the hour's range.",
-          "read": "Still riding — this buy got in on Tuesday, November 24 and is on Day 2 of 10. It closed Tuesday at $65.96, a little below where it got in. The ride stands exactly as booked; no price stop.",
+          "read": "SELL at the close on Wednesday, November 25, 2026 — Money pulled this play early — the market is falling too hard for this trade right now.",
           "ticker": "CVNA",
-          "winLine": "Win rate in FALLING KNIFE (3-year test): 60.0% (3 of 5 trades won)",
-          "boughtOn": "Tuesday, November 24",
-          "dayOf": 2,
-          "dayTotal": 10
+          "winLine": "Win rate in FALLING KNIFE (3-year test): 60.0% (3 of 5 trades won)"
         },
         {
-          "action": "BUY",
+          "action": "SELL",
           "close": "$84.06",
           "closeLabel": "Closed Tuesday at",
-          "exitRule": "There's no price stop — Money watches the close every day and tells you the morning it's time to sell, before the open — if that day never comes, you're out at the close on Day 10 (today is Day 2 of 10).",
+          "exitRule": "Out at the close (1:00 PM PT) on Wednesday, November 25, 2026.",
           "name": "Bunge Global S.A.",
           "previous3": "Previous 3 (Tuesday, November 24) — 10:30 AM PT — sellers won the hour — upper wick 3.7%, lower wick 10.1%, closed at 10.1% of the hour's range. · 11:30 AM PT — sellers won the hour — upper wick 19.0%, lower wick 7.8%, closed at 7.8% of the hour's range. · 12:30 PM PT — sellers won the hour — upper wick 25.3%, lower wick 25.8%, closed at 25.8% of the hour's range.",
-          "read": "Still riding — this buy got in on Tuesday, November 24 and is on Day 2 of 10. It closed Tuesday at $84.06, well below where it got in — BG fell hard in Tuesday's final hours, and that gap fights this buy, stated plainly. The ride stands exactly as booked; no price stop.",
+          "read": "SELL at the close on Wednesday, November 25, 2026 — Money pulled this play early — the market is falling too hard for this trade right now.",
           "ticker": "BG",
-          "winLine": "Win rate in FALLING KNIFE (3-year test): 50.0% (2 of 4 trades won)",
-          "boughtOn": "Tuesday, November 24",
-          "dayOf": 2,
-          "dayTotal": 10
+          "winLine": "Win rate in FALLING KNIFE (3-year test): 50.0% (2 of 4 trades won)"
         }
       ]
     },
