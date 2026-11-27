@@ -1,1 +1,112 @@
-{"sessionDate":"2026-11-26","dateLabel":"Thursday, November 26, 2026","gradedLine":"THURSDAY, NOVEMBER 26, 2026","notice":"THE MARKET IS CLOSED TODAY — Thursday, November 26, 2026. It's Thanksgiving, so there's no card today. The market reopens Friday, November 27, and your next card prints that morning.","priceStamp":{"closeDateLabel":"Wednesday, November 25, 2026","closeTime":"1:00 PM PT","checkedAtTime":"5:26 AM PT","checkedAtDateLabel":"Thursday, November 26, 2026"},"sections":[{"kind":"bare","title":"The Pounce Trade","state":"NONE"},{"kind":"spyqqq","title":"SPY & QQQ","state":"NONE","plays":[]},{"kind":"dailyReads","title":"DAILY READS","state":"NONE","plays":[]},{"kind":"bare","title":"The Connors Trade","state":"NONE"},{"kind":"bare","title":"Falling Knife Trade","state":"NONE"},{"kind":"washout","title":"THE WASHOUT TRADE","state":"NONE","plays":[]},{"kind":"fourYearLine","title":"4 YEAR MOVING AVERAGE","state":"NONE","plays":[]},{"kind":"special","title":"SPECIAL PLAY","intro":"Owner's Pick","state":"NONE","plays":[]}]}
+{
+ "sessionDate": "2026-11-27",
+ "dateLabel": "Friday, November 27, 2026",
+ "gradedLine": "FRIDAY, NOVEMBER 27, 2026",
+ "priceStamp": {
+  "closeDateLabel": "Wednesday, November 25, 2026",
+  "closeTime": "1:00 PM PT",
+  "checkedAtTime": "5:28 AM PT",
+  "checkedAtDateLabel": "Friday, November 27, 2026"
+ },
+ "sections": [
+  {
+   "kind": "bare",
+   "title": "The Pounce Trade",
+   "state": "NONE"
+  },
+  {
+   "kind": "spyqqq",
+   "title": "SPY & QQQ",
+   "state": "plays",
+   "plays": [
+    {
+     "action": "BUY",
+     "close": "$716.70",
+     "closeLabel": "Closed Wednesday at",
+     "exitRule": "Out at the early close (10:00 AM PT) on Friday, November 27, 2026.",
+     "name": "SPDR S&P 500 ETF Trust",
+     "previous3": "Previous 3 (Wednesday, November 25) — 10:30 AM PT — buyers won the hour — upper wick 8.2%, lower wick 42.0%, closed at 91.8% of the hour's range. · 11:30 AM PT — sellers won the hour — upper wick 18.7%, lower wick 14.1%, closed at 14.1% of the hour's range. · 12:30 PM PT — buyers won the hour — upper wick 35.3%, lower wick 13.3%, closed at 64.7% of the hour's range. Buyers won two of the final three hours and held the recovery into the bell.",
+     "read": "BUY at the open on Friday, November 27, 2026 — Wednesday was a reversal day: SPY gapped down to $695.45 in the morning and buyers took it back +3.06% off the low into a $716.70 close, and the overnight futures are holding near the top of their range, backing the reversal. Buying means we make money if the price goes up. It's a good buy in my opinion. CONFIRM: the first hour holds above $712.73 (Wednesday's 10:30 AM hour low) and pushes toward $718.43 (Wednesday's high). KILL: an hourly close below $703.20 (Wednesday's open) — then the reversal has failed and the buy is done. Flagged openly: Friday is the lightest-volume session of the year with a 10:00 AM PT early close, and SPY is still below its long averages — this is a reversal trade, not a trend call. Out at Friday's early close either way.",
+     "ticker": "SPY"
+    },
+    {
+     "action": "BUY",
+     "close": "$633.93",
+     "closeLabel": "Closed Wednesday at",
+     "exitRule": "Out at the early close (10:00 AM PT) on Friday, November 27, 2026.",
+     "name": "Invesco QQQ Trust",
+     "previous3": "Previous 3 (Wednesday, November 25) — 10:30 AM PT — buyers won the hour — upper wick 8.3%, lower wick 31.1%, closed at 91.7% of the hour's range. · 11:30 AM PT — sellers won the hour — upper wick 35.5%, lower wick 20.9%, closed at 20.9% of the hour's range. · 12:30 PM PT — buyers won the hour — upper wick 14.0%, lower wick 46.3%, closed at 86.0% of the hour's range. The final hour closed near its high.",
+     "read": "BUY at the open on Friday, November 27, 2026 — QQQ printed the stronger reversal on Wednesday: its low of $607.74 sat right on its deep-drawdown line and buyers reversed it +4.31% off the low into a $633.93 close, the final hour closing near its high, and its overnight future is the stronger of the two. Buying means we make money if the price goes up. It's a good buy in my opinion. CONFIRM: the first hour holds above $626.62 (Wednesday's 10:30 AM hour low) and pushes toward $634.89 (Wednesday's high). KILL: an hourly close below $617.10 (Wednesday's open) — then the reversal has failed and the buy is done. Flagged openly: the same light holiday volume as SPY, larger — QQQ is still deep in drawdown and below its long averages; this is a reversal trade, not a trend call. Out at Friday's early close either way.",
+     "ticker": "QQQ"
+    }
+   ]
+  },
+  {
+   "kind": "dailyReads",
+   "title": "DAILY READS",
+   "state": "NONE",
+   "plays": []
+  },
+  {
+   "kind": "plays",
+   "title": "The Connors Trade",
+   "state": "plays",
+   "plays": [
+    {
+     "action": "BUY",
+     "close": "$489.93",
+     "closeLabel": "Closed Wednesday at",
+     "exitRule": "There's no price stop — Money watches the close every day and tells you the morning it's time to sell, before the open — if that day never comes, you're out at the close on Day 10, Wednesday, December 2, 2026 (today is Day 7 of 10).",
+     "name": "Microsoft Corporation",
+     "previous3": "Previous 3 (Wednesday, November 25) — 10:30 AM PT — buyers won the hour — upper wick 8.7%, lower wick 32.0%, closed at 91.3% of the hour's range. · 11:30 AM PT — sellers won the hour — upper wick 2.9%, lower wick 9.3%, closed at 9.3% of the hour's range. · 12:30 PM PT — buyers won the hour — upper wick 61.4%, lower wick 32.2%, closed at 38.6% of the hour's range.",
+     "read": "Still riding — this buy got in on Wednesday, November 18, 2026 and is on Day 7 of 10. It closed Wednesday at $489.93, below where it got in — that gap fights this buy, stated plainly. Nothing about the ride changes today: no price stop, and Money tells you the morning it's time to sell.",
+     "ticker": "MSFT",
+     "winLine": "Win rate in THE CONNORS (3-year test): 75.9% (44 of 58 trades won)"
+    }
+   ]
+  },
+  {
+   "kind": "bare",
+   "title": "Falling Knife Trade",
+   "state": "NONE",
+   "body": "PAUSED — Money took this trade off the card while the market is falling hard. It comes back when the tape settles."
+  },
+  {
+   "kind": "washout",
+   "title": "THE WASHOUT TRADE",
+   "state": "plays",
+   "plays": [
+    {
+     "action": "BUY",
+     "close": "$317.81",
+     "closeLabel": "Closed Wednesday at",
+     "exitRule": "Out at this play's fixed safety line, $268.94, if the price trades down to it first on any held day — otherwise out at the close on Day 3, Monday, November 30, 2026 (today is Day 2 of 3).",
+     "name": "Eaton Corporation",
+     "previous3": "Previous 3 (Wednesday, November 25) — 10:30 AM PT — buyers won the hour — upper wick 12.1%, lower wick 37.9%, closed at 87.9% of the hour's range. · 11:30 AM PT — sellers won the hour — upper wick 32.8%, lower wick 15.8%, closed at 15.8% of the hour's range. · 12:30 PM PT — buyers won the hour — upper wick 7.6%, lower wick 45.7%, closed at 92.4% of the hour's range.",
+     "read": "Still riding — this buy got in on Wednesday, November 25, 2026 at $305.61 and today is Day 2 of 3. It closed Wednesday at $317.81, above where it got in. The ride stands exactly as booked: out at its fixed safety line if the price trades down to it first, otherwise out at the close on Day 3, Monday, November 30, 2026.",
+     "ticker": "ETN",
+     "winLine": "Win rate in THE WASHOUT TRADE (3-year test): 61.9% (13 of 21 trades won)"
+    }
+   ]
+  },
+  {
+   "kind": "bounce",
+   "title": "The Bounce Trade",
+   "state": "NONE",
+   "plays": []
+  },
+  {
+   "kind": "fourYearLine",
+   "title": "4 YEAR MOVING AVERAGE",
+   "state": "NONE",
+   "plays": []
+  },
+  {
+   "kind": "special",
+   "title": "SPECIAL PLAY",
+   "intro": "Owner's Pick",
+   "state": "NONE",
+   "plays": []
+  }
+ ]
+}
