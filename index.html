@@ -585,7 +585,7 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
      convert to the viewer's local rendering, date kept bold. */
   function cryptoStampHTML(){
     var rawTime = "3:05 PM PT";
-    var rawDate = "Thursday, November 26, 2026";
+    var rawDate = "Friday, November 27, 2026";
     var dp = parseLongDate(rawDate);
     var tm = rawTime.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/);
     if(!dp || !tm) return 'Prices as of ' + esc(rawTime) + ' on <strong style="color:var(--text)">' + esc(rawDate) + '</strong>.';
@@ -2195,11 +2195,11 @@ var BOARD = {"dateLabel": "Thursday, November 19, 2026", "gradedLine": "THURSDAY
      renders blank. Prices bold, normal room text, no stamp inside
      the individual boxes (the stamp lives on the Top 5 panel only). */
   function cryptoTop5ListHTML(){
-    return '<p style="line-height:1.65">BTC (Bitcoin) <strong>$60,448.69</strong></p>'
-      + '<p style="margin-top:.25rem;line-height:1.65">ETH (Ethereum) <strong>$1,690.56</strong></p>'
-      + '<p style="margin-top:.25rem;line-height:1.65">XRP (Ripple) <strong>$0.9448</strong></p>'
-      + '<p style="margin-top:.25rem;line-height:1.65">SOL (Solana) <strong>$71.07</strong></p>'
-      + '<p style="margin-top:.25rem;line-height:1.65">DOGE (Dogecoin) <strong>$0.0564</strong></p>';
+    return '<p style="line-height:1.65">BTC (Bitcoin) <strong>$59,770.78</strong></p>'
+      + '<p style="margin-top:.25rem;line-height:1.65">ETH (Ethereum) <strong>$1,657.11</strong></p>'
+      + '<p style="margin-top:.25rem;line-height:1.65">XRP (Ripple) <strong>$0.9447</strong></p>'
+      + '<p style="margin-top:.25rem;line-height:1.65">SOL (Solana) <strong>$71.50</strong></p>'
+      + '<p style="margin-top:.25rem;line-height:1.65">DOGE (Dogecoin) <strong>$0.0575</strong></p>';
   }
 
   /* ---------- Crypto Currency ---------- */
